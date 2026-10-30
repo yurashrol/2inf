@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Інформатика 2 клас</title>
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-light: #e8f5e9;
+            --accent-color: #ff9800;
+            --text-color: #2c3e50;
+            --card-bg: #ffffff;
+            --bg-gradient: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .topic-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(46, 125, 50, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .topic-number {
+            background: var(--primary-color);
+            color: white;
+            font-weight: bold;
+            font-size: 1.1rem;
+            min-width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .topic-title {
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+            margin-top: 8px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>💻 Інформатика. 2 клас</h1>
+        <p>Уроки, презентації та інтерактивні завдання</p>
+    </header>
+
+    <div class="container">
+        <div class="topics-grid">
+            <a href="lessons/lesson-01.html" class="topic-card">
+                <div class="topic-number">1</div>
+                <div class="topic-title">Правила безпечної роботи в комп'ютерному класі. Навколишній світ та інформація</div>
+            </a>
+            <a href="lessons/lesson-02.html" class="topic-card">
+                <div class="topic-number">2</div>
+                <div class="topic-title">Сприймання інформації людиною</div>
+            </a>
+            <a href="lessons/lesson-03.html" class="topic-card">
+                <div class="topic-number">3</div>
+                <div class="topic-title">Види інформації за способом подання</div>
+            </a>
+            <a href="lessons/lesson-04.html" class="topic-card">
+                <div class="topic-number">4</div>
+                <div class="topic-title">Дії з інформацією. Правдива й неправдива інформація</div>
+            </a>
+            <a href="lessons/lesson-05.html" class="topic-card">
+                <div class="topic-number">5</div>
+                <div class="topic-title">Приватна й публічна інформація. Безпечна поведінка в мережі</div>
+            </a>
+            <a href="lessons/lesson-06.html" class="topic-card">
+                <div class="topic-number">6</div>
+                <div class="topic-title">Комп'ютери та цифрові пристрої навколо нас</div>
+            </a>
+            <a href="lessons/lesson-07.html" class="topic-card">
+                <div class="topic-number">7</div>
+                <div class="topic-title">Основні складові комп'ютера та їх призначення</div>
+            </a>
+            <a href="lessons/lesson-08.html" class="topic-card">
+                <div class="topic-number">8</div>
+                <div class="topic-title">Пристрої введення та виведення інформації</div>
+            </a>
+            <a href="lessons/lesson-09.html" class="topic-card">
+                <div class="topic-number">9</div>
+                <div class="topic-title">Увімкнення, завершення роботи та робочий стіл комп'ютера</div>
+            </a>
+            <a href="lessons/lesson-10.html" class="topic-card">
+                <div class="topic-number">10</div>
+                <div class="topic-title">Об'єкти навколишнього світу. Властивості об'єктів</div>
+            </a>
+            <a href="lessons/lesson-11.html" class="topic-card">
+                <div class="topic-number">11</div>
+                <div class="topic-title">Порівняння, групування та впорядкування об'єктів</div>
+            </a>
+            <a href="lessons/lesson-12.html" class="topic-card">
+                <div class="topic-number">12</div>
+                <div class="topic-title">Робочий стіл. Вікна, меню та інструменти програм</div>
+            </a>
+            <a href="lessons/lesson-13.html" class="topic-card">
+                <div class="topic-number">13</div>
+                <div class="topic-title">Графічний редактор. Інструменти та палітра кольорів</div>
+            </a>
+            <a href="lessons/lesson-14.html" class="topic-card">
+                <div class="topic-number">14</div>
+                <div class="topic-title">Геометричні фігури в графічному редакторі</div>
+            </a>
+            <a href="lessons/lesson-15.html" class="topic-card">
+                <div class="topic-number">15</div>
+                <div class="topic-title">Створення зображень з кількох об'єктів</div>
+            </a>
+            <a href="lessons/lesson-16.html" class="topic-card">
+                <div class="topic-number">16</div>
+                <div class="topic-title">Виділення, переміщення, копіювання та видалення об'єктів</div>
+            </a>
+            <a href="lessons/lesson-17.html" class="topic-card">
+                <div class="topic-number">17</div>
+                <div class="topic-title">Створення та збереження малюнка</div>
+            </a>
+            <a href="lessons/lesson-18.html" class="topic-card">
+                <div class="topic-number">18</div>
+                <div class="topic-title">Орнаменти й візерунки. Повторення елементів у зображенні</div>
+            </a>
+            <a href="lessons/lesson-19.html" class="topic-card">
+                <div class="topic-number">19</div>
+                <div class="topic-title">Додавання тексту до зображення</div>
+            </a>
+            <a href="lessons/lesson-20.html" class="topic-card">
+                <div class="topic-number">20</div>
+                <div class="topic-title">План дій. Послідовність кроків у повсякденних ситуаціях</div>
+            </a>
+            <a href="lessons/lesson-21.html" class="topic-card">
+                <div class="topic-number">21</div>
+                <div class="topic-title">Алгоритм і виконавець. Команди та система команд</div>
+            </a>
+            <a href="lessons/lesson-22.html" class="topic-card">
+                <div class="topic-number">22</div>
+                <div class="topic-title">Лінійний алгоритм. Послідовність команд</div>
+            </a>
+            <a href="lessons/lesson-23.html" class="topic-card">
+                <div class="topic-number">23</div>
+                <div class="topic-title">Способи подання алгоритмів</div>
+            </a>
+            <a href="lessons/lesson-24.html" class="topic-card">
+                <div class="topic-number">24</div>
+                <div class="topic-title">Виконання алгоритму та прогнозування результату</div>
+            </a>
+            <a href="lessons/lesson-25.html" class="topic-card">
+                <div class="topic-number">25</div>
+                <div class="topic-title">Пошук пропущеної команди та виправлення помилок</div>
+            </a>
+            <a href="lessons/lesson-26.html" class="topic-card">
+                <div class="topic-number">26</div>
+                <div class="topic-title">Середовище програмування для дітей. Виконавець і команди</div>
+            </a>
+            <a href="lessons/lesson-27.html" class="topic-card">
+                <div class="topic-number">27</div>
+                <div class="topic-title">Створення програми з послідовності команд</div>
+            </a>
+            <a href="lessons/lesson-28.html" class="topic-card">
+                <div class="topic-number">28</div>
+                <div class="topic-title">Зміна виконавця та його властивостей у програмі</div>
+            </a>
+            <a href="lessons/lesson-29.html" class="topic-card">
+                <div class="topic-number">29</div>
+                <div class="topic-title">Керування виконавцем за допомогою послідовності команд</div>
+            </a>
+            <a href="lessons/lesson-30.html" class="topic-card">
+                <div class="topic-number">30</div>
+                <div class="topic-title">Створення зображення або історії за готовим алгоритмом</div>
+            </a>
+            <a href="lessons/lesson-31.html" class="topic-card">
+                <div class="topic-number">31</div>
+                <div class="topic-title">Власний лінійний алгоритм у середовищі програмування</div>
+            </a>
+            <a href="lessons/lesson-32.html" class="topic-card">
+                <div class="topic-number">32</div>
+                <div class="topic-title">Мініпроєкт: програмований малюнок або анімація</div>
+            </a>
+            <a href="lessons/lesson-33.html" class="topic-card">
+                <div class="topic-number">33</div>
+                <div class="topic-title">Презентація програмного проєкту. Взаємооцінювання</div>
+            </a>
+            <a href="lessons/lesson-34.html" class="topic-card">
+                <div class="topic-number">34</div>
+                <div class="topic-title">Повторення та систематизація: інформація, пристрої, графіка й алгоритми</div>
+            </a>
+            <a href="lessons/lesson-35.html" class="topic-card">
+                <div class="topic-number">35</div>
+                <div class="topic-title">Підсумкове практичне заняття</div>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>Навчальний сайт з інформатики для 2 класу</p>
+    </footer>
+
+</body>
+</html>
