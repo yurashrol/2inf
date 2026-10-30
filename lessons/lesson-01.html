@@ -1,1 +1,334 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 1. Правила безпеки та інформація</title>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --primary-light: #e8f5e9;
+            --accent: #ff9800;
+            --text: #2c3e50;
+            --bg: #f4f9f4;
+            --card: #ffffff;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .nav-bar {
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        .back-btn:hover {
+            background: #1b5e20;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--primary-light);
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin: 25px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Стилі для презентації */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #eee;
+            margin-bottom: 30px;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Інтерактивний аркуш */
+        .worksheet {
+            background: var(--primary-light);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px dashed var(--primary);
+        }
+
+        .task-card {
+            background: white;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .task-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--primary);
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            background: #fff;
+        }
+
+        .option-btn.selected-correct {
+            background: #c8e6c9 !important;
+            border-color: #2e7d32 !important;
+            color: #1b5e20;
+            font-weight: bold;
+        }
+
+        .option-btn.selected-wrong {
+            background: #ffcdd2 !important;
+            border-color: #c62828 !important;
+            color: #b71c1c;
+        }
+
+        .speak-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .action-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+
+        .action-btn:hover {
+            background: #f57c00;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            display: none;
+        }
+
+        .feedback.success {
+            background: #d4edda;
+            color: #155724;
+            display: block;
+        }
+
+        .feedback.error {
+            background: #f8d7da;
+            color: #721c24;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-bar">
+        <a href="../index.html" class="back-btn">⬅ До списку тем</a>
+    </div>
+
+    <div class="container">
+        <h1>Тема 1. Правила безпечної роботи в комп'ютерному класі. Навколишній світ та інформація</h1>
+
+        <!-- РОЗДІЛ 1: ПРЕЗЕНТАЦІЯ -->
+        <div class="section-title">
+            📺 Презентація до уроку
+        </div>
+        <div class="iframe-container">
+            <!-- Замініть src на посилання вашої опублікованої Google Презентації -->
+            <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQplaceholder/embed?start=false&loop=false&delayms=3000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </div>
+
+        <!-- РОЗДІЛ 2: ІНТЕРАКТИВНИЙ РОБОЧИЙ АРКУШ -->
+        <div class="section-title">
+            ✏️ Інтерактивний робочий аркуш
+        </div>
+        
+        <div class="worksheet">
+            <!-- Завдання 1 -->
+            <div class="task-card" id="task1">
+                <div class="task-title">
+                    1. Очима безпечно працювати за комп'ютером, якщо відстань до екрана не менша ніж:
+                    <button class="speak-btn" onclick="speakText('1. Очима безпечно працювати за комп\'ютером, якщо відстань до екрана не менша ніж:')">🔊</button>
+                </div>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption(this, 'task1', false)">10 см</button>
+                    <button class="option-btn" onclick="selectOption(this, 'task1', true)">50 см (витягнута рука)</button>
+                    <button class="option-btn" onclick="selectOption(this, 'task1', false)">2 метри</button>
+                </div>
+            </div>
+
+            <!-- Завдання 2 -->
+            <div class="task-card" id="task2">
+                <div class="task-title">
+                    2. Що НЕ МOЖНА робити в комп'ютерному класі?
+                    <button class="speak-btn" onclick="speakText('2. Що не можна робити в комп\'ютерному класі?')">🔊</button>
+                </div>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption(this, 'task2', false)">Уважно слухати вчителя</button>
+                    <button class="option-btn" onclick="selectOption(this, 'task2', true)">Їсти печиво та пити воду біля клавіатури</button>
+                    <button class="option-btn" onclick="selectOption(this, 'task2', false)">Працювати чистими сухими руками</button>
+                </div>
+            </div>
+
+            <!-- Завдання 3 -->
+            <div class="task-card" id="task3">
+                <div class="task-title">
+                    3. Що з цього є джерелом зорової інформації?
+                    <button class="speak-btn" onclick="speakText('3. Що з цього є джерелом зорової інформації?')">🔊</button>
+                </div>
+                <div class="options-grid">
+                    <button class="option-btn" onclick="selectOption(this, 'task3', false)">Спів пташки</button>
+                    <button class="option-btn" onclick="selectOption(this, 'task3', true)">Яскрава веселка в небі</button>
+                    <button class="option-btn" onclick="selectOption(this, 'task3', false)">Запах свіжого хліба</button>
+                </div>
+            </div>
+
+            <button class="action-btn" onclick="checkAnswers()">Перевірити відповіді 🚀</button>
+            <div id="feedback" class="feedback"></div>
+        </div>
+    </div>
+
+    <script>
+        // Функція для озвучення тексту підказок (Web Speech API)
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'uk-UA';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Логіка вибору варіантів
+        const answers = {};
+
+        function selectOption(btn, taskId, isCorrect) {
+            const parent = document.getElementById(taskId);
+            const buttons = parent.querySelectorAll('.option-btn');
+            
+            buttons.forEach(b => b.classList.remove('selected-correct', 'selected-wrong'));
+            
+            answers[taskId] = isCorrect;
+            btn.dataset.selected = 'true';
+            
+            // Візуальна підсвітка при кліку
+            if (isCorrect) {
+                btn.classList.add('selected-correct');
+            } else {
+                btn.classList.add('selected-wrong');
+            }
+        }
+
+        // Логіка перевірки та озвучення підсумкового результату
+        function checkAnswers() {
+            const feedback = document.getElementById('feedback');
+            const totalTasks = 3;
+            const correctCount = Object.values(answers).filter(val => val === true).length;
+
+            if (Object.keys(answers).length < totalTasks) {
+                feedback.className = 'feedback error';
+                feedback.innerHTML = 'Будь ласка, дай відповіді на всі запитання! 🧐';
+                speakText('Будь ласка, дай відповіді на всі запитання!');
+                return;
+            }
+
+            if (correctCount === totalTasks) {
+                const message = 'Молодець! Ти правильно виконав усі завдання! 🎉';
+                feedback.className = 'feedback success';
+                feedback.innerHTML = message;
+                speakText(message);
+            } else {
+                const message = `Ти відповів правильно на ${correctCount} з ${totalTasks}. Спробуй ще раз! 💪`;
+                feedback.className = 'feedback error';
+                feedback.innerHTML = message;
+                speakText(message);
+            }
+        }
+    </script>
+</body>
+</html>
