@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правила безпечної поведінки у кабінеті інформатики. Навколишній світ та інформація - 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Fredoka and Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS for celebratory animations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .drop-zone {
+            min-height: 110px;
+            border: 2px dashed #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        .drop-zone.drag-over {
+            background-color: #eff6ff;
+            border-color: #3b82f6;
+        }
+        .draggable-item {
+            cursor: grab;
+            user-select: none;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .draggable-item:active {
+            cursor: grabbing;
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Top Header Banner -->
+    <header class="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white shadow-xl py-8 px-4 mb-10 rounded-b-3xl">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center justify-center bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3">
+                <span class="mr-2">💻</span> Інформатика • 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Правила безпечної поведінки у кабінеті інформатики. Навколишній світ та інформація
+            </h1>
+            <p class="text-purple-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Вивчай правила, грайся та ставай справжнім знавцем комп'ютерних наук! 🚀
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Presentations Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-indigo-100 p-3 rounded-2xl text-indigo-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Корисні презентації до уроку</h2>
+                    <p class="text-slate-500 text-sm">Переглянь матеріали перед виконанням завдань</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Presentation 1 -->
+                <div class="space-y-2">
+                    <h3 class="font-fredoka text-lg font-semibold text-slate-700 flex items-center">
+                        <span class="text-indigo-500 mr-2">✦</span> Частина 1: Правила в кабінеті
+                    </h3>
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-200">
+                        <!-- Responsive Google Presentation Embed / Placeholder iframe -->
+                        
+                      <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTd4oRb7GwK3i0XXEegfcLa8K2sKtz5U7zr_ok4LgRhcNgA8T0KGLD2A09442kXhsFvBcUUKq17bMT-/embed?start=false&loop=false&delayms=3000" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen="true" 
+                                mozallowfullscreen="true" 
+                                webkitallowfullscreen="true">
+                        </iframe>
+                    </div>
+                </div>
+
+                <!-- Presentation 2 -->
+                <div class="space-y-2">
+                    <h3 class="font-fredoka text-lg font-semibold text-slate-700 flex items-center">
+                        <span class="text-pink-500 mr-2">✦</span> Частина 2: Робота за комп'ютером
+                    </h3>
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-200">
+                        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vRewplmaKS4VjkW8lHB5Sv8HBnfLRZzlgdQj4SJXcieRjT_Xkcr_6hAtHCMAU5922SRa9-4duMVppZP/embed?start=false&loop=false&delayms=3000" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen="true" 
+                                mozallowfullscreen="true" 
+                                webkitallowfullscreen="true">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Task 1: True / False (Так чи Ні) -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Оціни вчинок: Так чи Ні?</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-600 rounded-full">Вибери відповідь</span>
+            </div>
+            
+            <p class="text-slate-600 mb-6 font-medium">Обери правильну відповідь для кожного твердження:</p>
+
+            <div class="space-y-4">
+                <!-- Item 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 t1-item" data-answer="yes">
+                    <span class="font-medium text-slate-700 text-base">1. Заходити до кабінету інформатики слід спокійно, без штовханини.</span>
+                    <div class="flex space-x-2 shrink-0">
+                        <button onclick="selectTrueFalse(1, 'yes')" class="t1-btn-1-yes px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 hover:border-emerald-400 transition">Так 👍</button>
+                        <button onclick="selectTrueFalse(1, 'no')" class="t1-btn-1-no px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 hover:border-rose-400 transition">Ні 👎</button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 t1-item" data-answer="no">
+                    <span class="font-medium text-slate-700 text-base">2. Можна працювати за комп'ютером брудними або вологими руками.</span>
+                    <div class="flex space-x-2 shrink-0">
+                        <button onclick="selectTrueFalse(2, 'yes')" class="t1-btn-2-yes px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 hover:border-emerald-400 transition">Так 👍</button>
+                        <button onclick="selectTrueFalse(2, 'no')" class="t1-btn-2-no px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 hover:border-rose-400 transition">Ні 👎</button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 t1-item" data-answer="no">
+                    <span class="font-medium text-slate-700 text-base">3. Дозволяється самостійно чіпати дроти та розетки позаду системного блока.</span>
+                    <div class="flex space-x-2 shrink-0">
+                        <button onclick="selectTrueFalse(3, 'yes')" class="t1-btn-3-yes px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 hover:border-emerald-400 transition">Так 👍</button>
+                        <button onclick="selectTrueFalse(3, 'no')" class="t1-btn-3-no px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 hover:border-rose-400 transition">Ні 👎</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Check Button & Feedback -->
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-emerald-500/30 transition transform active:scale-95">
+                    Перевірити завдання 1 🔍
+                </button>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+
+        <!-- Task 2: Drag and Drop sorting (Сортування поведінки) -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Сортування дій: Добре чи Погано?</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-blue-50 text-blue-600 rounded-full">Перетягни або натисни</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розподіли картки з діями у відповідні кошики (натисни на картку, щоб відправити її до кошика, або перетягни мишкою/пальцем):</p>
+
+            <!-- Draggable Source Items -->
+            <div id="source-pool" class="flex flex-wrap gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-200 mb-6 min-h-[80px] items-center justify-center">
+                <div draggable="true" ondragstart="drag(event)" onclick="quickMove(this)" id="d-item-1" data-category="good" class="draggable-item bg-white px-4 py-2.5 rounded-xl border border-blue-200 text-sm font-medium shadow-sm hover:shadow-md text-slate-700 flex items-center space-x-2">
+                    <span>🧼 Мити руки перед заняттям</span>
+                </div>
+                <div draggable="true" ondragstart="drag(event)" onclick="quickMove(this)" id="d-item-2" data-category="bad" class="draggable-item bg-white px-4 py-2.5 rounded-xl border border-blue-200 text-sm font-medium shadow-sm hover:shadow-md text-slate-700 flex items-center space-x-2">
+                    <span>🍏 Їсти бутерброд за клавіатурою</span>
+                </div>
+                <div draggable="true" ondragstart="drag(event)" onclick="quickMove(this)" id="d-item-3" data-category="good" class="draggable-item bg-white px-4 py-2.5 rounded-xl border border-blue-200 text-sm font-medium shadow-sm hover:shadow-md text-slate-700 flex items-center space-x-2">
+                    <span>👀 Робити гімнастику для очей</span>
+                </div>
+                <div draggable="true" ondragstart="drag(event)" onclick="quickMove(this)" id="d-item-4" data-category="bad" class="draggable-item bg-white px-4 py-2.5 rounded-xl border border-blue-200 text-sm font-medium shadow-sm hover:shadow-md text-slate-700 flex items-center space-x-2">
+                    <span>🏃 Бігати та кричати в кабінеті</span>
+                </div>
+            </div>
+
+            <!-- Drop Zones Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Good Zone -->
+                <div ondragover="allowDrop(event)" ondragleave="dragLeave(event)" ondrop="drop(event, 'good')" class="drop-zone bg-emerald-50/50 rounded-2xl p-4 border-2 border-emerald-200 flex flex-col" id="zone-good">
+                    <div class="flex items-center space-x-2 mb-3 text-emerald-700 font-fredoka font-bold text-lg">
+                        <span>✅ Можна робити (Правильно)</span>
+                    </div>
+                    <div class="zone-content flex flex-wrap gap-2 flex-grow min-h-[60px] items-start"></div>
+                </div>
+
+                <!-- Bad Zone -->
+                <div ondragover="allowDrop(event)" ondragleave="dragLeave(event)" ondrop="drop(event, 'bad')" class="drop-zone bg-rose-50/50 rounded-2xl p-4 border-2 border-rose-200 flex flex-col" id="zone-bad">
+                    <div class="flex items-center space-x-2 mb-3 text-rose-700 font-fredoka font-bold text-lg">
+                        <span>❌ Не можна робити (Заборонено)</span>
+                    </div>
+                    <div class="zone-content flex flex-wrap gap-2 flex-grow min-h-[60px] items-start"></div>
+                </div>
+            </div>
+
+            <!-- Check Button & Feedback -->
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-blue-500/30 transition transform active:scale-95">
+                    Перевірити завдання 2 🔍
+                </button>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+
+        <!-- Task 3: Multiple Choice (Вибір правильних варіантів) -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Знайди правильні предмети та правила</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-600 rounded-full">Вибери кілька</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Познач усі твердження або речі, які є безпечними та дозволеними у кабінеті інформатики (може бути кілька правильних відповідей):</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Option A -->
+                <label class="t3-option flex items-start space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-amber-50/50 cursor-pointer transition" data-correct="true">
+                    <input type="checkbox" value="A" class="mt-1 w-5 h-5 text-amber-600 rounded border-slate-300 focus:ring-amber-500">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Тримати робоче місце в чистоті та порядку</span>
+                </label>
+
+                <!-- Option B -->
+                <label class="t3-option flex items-start space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-amber-50/50 cursor-pointer transition" data-correct="false">
+                    <input type="checkbox" value="B" class="mt-1 w-5 h-5 text-amber-600 rounded border-slate-300 focus:ring-amber-500">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Приносити з собою солодку газовану воду і пити біля монітора</span>
+                </label>
+
+                <!-- Option C -->
+                <label class="t3-option flex items-start space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-amber-50/50 cursor-pointer transition" data-correct="true">
+                    <input type="checkbox" value="C" class="mt-1 w-5 h-5 text-amber-600 rounded border-slate-300 focus:ring-amber-500">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Сидіти на правильній відстані від екрана (50–60 см)</span>
+                </label>
+
+                <!-- Option D -->
+                <label class="t3-option flex items-start space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-amber-50/50 cursor-pointer transition" data-correct="false">
+                    <input type="checkbox" value="D" class="mt-1 w-5 h-5 text-amber-600 rounded border-slate-300 focus:ring-amber-500">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Самостійно ремонтувати комп'ютер викруткою</span>
+                </label>
+            </div>
+
+            <!-- Check Button & Feedback -->
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-500/30 transition transform active:scale-95">
+                    Перевірити завдання 3 🔍
+                </button>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+
+        <!-- Task 4: Matching / Distance Rule (Відстань та постава) -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Секрети здоров'я за комп'ютером</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-600 rounded-full">Вибери відповідь</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Дай відповідь на запитання про правильну поставу та роботу:</p>
+
+            <div class="space-y-6">
+                <!-- Question 4.1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 t4-item" data-correct="option-b">
+                    <p class="font-medium text-slate-700 mb-3">1. Яка має бути відстань від очей до екрана монітора?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <button onclick="selectTask4(1, 'option-a', this)" class="t4-btn-1 p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-50 text-sm font-medium text-slate-700 transition">Дуже близько (10 см)</button>
+                        <button onclick="selectTask4(1, 'option-b', this)" class="t4-btn-1 p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-50 text-sm font-medium text-slate-700 transition">Безпечна (50–60 см)</button>
+                        <button onclick="selectTask4(1, 'option-c', this)" class="t4-btn-1 p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-50 text-sm font-medium text-slate-700 transition">З іншої кімнати</button>
+                    </div>
+                </div>
+
+                <!-- Question 4.2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 t4-item" data-correct="option-a">
+                    <p class="font-medium text-slate-700 mb-3">2. Що потрібно зробити, якщо в тебе втомилися очі під час роботи?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button onclick="selectTask4(2, 'option-a', this)" class="t4-btn-2 p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-50 text-sm font-medium text-slate-700 transition">Зробити гімнастику для очей і помовчати/подивитись вдалечінь 👀</button>
+                        <button onclick="selectTask4(2, 'option-b', this)" class="t4-btn-2 p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-50 text-sm font-medium text-slate-700 transition">Продовжувати грати без перерви 🎮</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Check Button & Feedback -->
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-500/30 transition transform active:scale-95">
+                    Перевірити завдання 4 🔍
+                </button>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+
+        <!-- Final Result Section -->
+        <section class="bg-gradient-to-br from-indigo-900 via-slate-900 to-purple-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Готовий дізнатися свій результат?</h2>
+            <p class="text-slate-300 max-w-xl mx-auto mb-8 font-medium">Натисни кнопку нижче, щоб перевірити всі свої відповіді та отримати заслужене звання!</p>
+
+            <button onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-pink-500 to-amber-500 hover:from-pink-600 hover:to-amber-600 text-white font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-pink-500/30 transition transform active:scale-95">
+                🌟 Дізнатися мій результат! 🌟
+            </button>
+
+            <!-- Result Modal / Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4 animate-fade-in">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-amber-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-slate-200"></p>
+                <p id="result-description" class="text-sm md:text-base text-slate-300"></p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-500 text-xs md:text-sm">
+        <p>Інтерактивний навчальний аркуш з інформатики для 2 класу • Створено з любов'ю до навчання 💙💛</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Task 1 State & Logic ---
+        const t1Selections = {};
+        function selectTrueFalse(itemNum, choice) {
+            t1Selections[itemNum] = choice;
+            // Visual update for buttons
+            const btnYes = document.querySelector(`.t1-btn-${itemNum}-yes`);
+            const btnNo = document.querySelector(`.t1-btn-${itemNum}-no`);
+            
+            if (choice === 'yes') {
+                btnYes.className = "t1-btn-1-yes px-5 py-2 rounded-xl font-fredoka font-semibold bg-indigo-600 text-white shadow-md transition";
+                btnNo.className = "t1-btn-1-no px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition";
+            } else {
+                btnNo.className = "t1-btn-1-no px-5 py-2 rounded-xl font-fredoka font-semibold bg-indigo-600 text-white shadow-md transition";
+                btnYes.className = "t1-btn-1-yes px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition";
+            }
+        }
+
+        function checkTask1() {
+            const items = document.querySelectorAll('.t1-item');
+            let correctCount = 0;
+            let answeredCount = Object.keys(t1Selections).length;
+
+            if (answeredCount < items.length) {
+                showFeedback('feedback-1', '⚠️ Будь ласка, дай відповідь на всі твердження!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            items.forEach((item, index) => {
+                const itemNum = index + 1;
+                const expected = item.getAttribute('data-answer');
+                if (t1Selections[itemNum] === expected) {
+                    correctCount++;
+                }
+            });
+
+            const fb = document.getElementById('feedback-1');
+            fb.classList.remove('hidden');
+            if (correctCount === items.length) {
+                fb.className = "text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center bg-emerald-100 text-emerald-800";
+                fb.innerText = "🎉 Чудово! Всі відповіді правильні!";
+                return true;
+            } else {
+                fb.className = "text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center bg-rose-100 text-rose-800";
+                fb.innerText = `💡 Майже! Правильних відповідей: ${correctCount} з ${items.length}. Спробуй ще раз!`;
+                return false;
+            }
+        }
+
+
+        // --- Task 2 Drag & Drop / Quick Move Logic ---
+        function allowDrop(ev) {
+            ev.preventDefault();
+            ev.currentTarget.classList.add('drag-over');
+        }
+
+        function dragLeave(ev) {
+            ev.currentTarget.classList.remove('drag-over');
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev, categoryTarget) {
+            ev.preventDefault();
+            ev.currentTarget.classList.remove('drag-over');
+            const dataId = ev.dataTransfer.getData("text");
+            const element = document.getElementById(dataId);
+            if (element) {
+                const contentZone = ev.currentTarget.querySelector('.zone-content');
+                contentZone.appendChild(element);
+            }
+        }
+
+        function quickMove(element) {
+            // Click to toggle between pool and categories for touch devices or easy interaction
+            const sourcePool = document.getElementById('source-pool');
+            const zoneGood = document.querySelector('#zone-good .zone-content');
+            const zoneBad = document.querySelector('#zone-bad .zone-content');
+
+            if (element.parentElement === sourcePool) {
+                // Move to correct or incorrect zone based on data-category for demonstration convenience
+                const category = element.getAttribute('data-category');
+                if (category === 'good') {
+                    zoneGood.appendChild(element);
+                } else {
+                    zoneBad.appendChild(element);
+                }
+            } else {
+                sourcePool.appendChild(element);
+            }
+        }
+
+        function checkTask2() {
+            const zoneGood = document.querySelector('#zone-good .zone-content');
+            const zoneBad = document.querySelector('#zone-bad .zone-content');
+            const sourcePool = document.getElementById('source-pool');
+
+            if (sourcePool.children.length > 0) {
+                showFeedback('feedback-2', '⚠️ Розподіли всі картки по кошиках!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            let correct = true;
+            zoneGood.querySelectorAll('.draggable-item').forEach(el => {
+                if (el.getAttribute('data-category') !== 'good') correct = false;
+            });
+            zoneBad.querySelectorAll('.draggable-item').forEach(el => {
+                if (el.getAttribute('data-category') !== 'bad') correct = false;
+            });
+
+            const fb = document.getElementById('feedback-2');
+            fb.classList.remove('hidden');
+            if (correct) {
+                fb.className = "text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center bg-emerald-100 text-emerald-800";
+                fb.innerText = "🌟 Супер! Усі картки розкладено правильно!";
+                return true;
+            } else {
+                fb.className = "text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center bg-rose-100 text-rose-800";
+                fb.innerText = "❌ Деякі картки не на своєму місці. Спробуй перевірити ще раз!";
+                return false;
+            }
+        }
+
+
+        // --- Task 3 Multiple Choice Logic ---
+        function checkTask3() {
+            const options = document.querySelectorAll('.t3-option');
+            let allCorrect = true;
+            let hasChecked = false;
+
+            options.forEach(opt => {
+                const checkbox = opt.querySelector('input');
+                const isCorrect = opt.getAttribute('data-correct') === 'true';
+                if (checkbox.checked) hasChecked = true;
+                if (checkbox.checked !== isCorrect) {
+                    allCorrect = false;
+                }
+            });
+
+            const fb = document.getElementById('feedback-3');
+            fb.classList.remove('hidden');
+
+            if (!hasChecked) {
+                fb.className = "text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center bg-amber-100 text-amber-800";
+                fb.innerText = "⚠️ Вибери хоча б один варіант!";
+                return false;
+            }
+
+            if (allCorrect) {
+                fb.className = "text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center bg-emerald-100 text-emerald-800";
+                fb.innerText = "🎉 Чудово! Ти знайшов усі правильні варіанти!";
+                return true;
+            } else {
+                fb.className = "text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center bg-rose-100 text-rose-800";
+                fb.innerText = "💡 Є помилка у виборі. Згадай правила безпеки та спробуй знову!";
+                return false;
+            }
+        }
+
+
+        // --- Task 4 Logic ---
+        const t4Selections = {};
+        function selectTask4(qNum, choice, btnElem) {
+            t4Selections[qNum] = choice;
+            // Clear siblings style
+            const siblings = btnElem.parentElement.querySelectorAll('button');
+            siblings.forEach(b => {
+                b.className = "p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-50 text-sm font-medium text-slate-700 transition";
+            });
+            btnElem.className = "p-3 rounded-xl border border-purple-500 bg-purple-600 text-white text-sm font-medium shadow-md transition";
+        }
+
+        function checkTask4() {
+            if (!t4Selections[1] || !t4Selections[2]) {
+                showFeedback('feedback-4', '⚠️ Дай відповідь на обидва запитання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const q1Correct = t4Selections[1] === 'option-b';
+            const q2Correct = t4Selections[2] === 'option-a';
+
+            const fb = document.getElementById('feedback-4');
+            fb.classList.remove('hidden');
+
+            if (q1Correct && q2Correct) {
+                fb.className = "text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center bg-emerald-100 text-emerald-800";
+                fb.innerText = "🚀 Чудово! Ти чудово знаєш правила збереження здоров'я!";
+                return true;
+            } else {
+                fb.className = "text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center bg-rose-100 text-rose-800";
+                fb.innerText = "💡 Дещо вказано невірно. Спробуй передумати!";
+                return false;
+            }
+        }
+
+
+        // --- General Feedback Helper ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- Final Result Evaluation ---
+        function calculateFinalResult() {
+            // Check all tasks and count points
+            let score = 0;
+            let totalTasks = 4;
+
+            // Task 1 check
+            const items1 = document.querySelectorAll('.t1-item');
+            let t1Pass = true;
+            items1.forEach((item, index) => {
+                if (t1Selections[index + 1] !== item.getAttribute('data-answer')) t1Pass = false;
+            });
+            if (t1Pass && Object.keys(t1Selections).length === items1.length) score++;
+
+            // Task 2 check
+            const zoneGood = document.querySelector('#zone-good .zone-content');
+            const zoneBad = document.querySelector('#zone-bad .zone-content');
+            const sourcePool = document.getElementById('source-pool');
+            let t2Pass = sourcePool.children.length === 0;
+            zoneGood.querySelectorAll('.draggable-item').forEach(el => {
+                if (el.getAttribute('data-category') !== 'good') t2Pass = false;
+            });
+            zoneBad.querySelectorAll('.draggable-item').forEach(el => {
+                if (el.getAttribute('data-category') !== 'bad') t2Pass = false;
+            });
+            if (t2Pass) score++;
+
+            // Task 3 check
+            let t3Pass = true;
+            const options = document.querySelectorAll('.t3-option');
+            let hasCheckedT3 = false;
+            options.forEach(opt => {
+                const checkbox = opt.querySelector('input');
+                const isCorrect = opt.getAttribute('data-correct') === 'true';
+                if (checkbox.checked) hasCheckedT3 = true;
+                if (checkbox.checked !== isCorrect) t3Pass = false;
+            });
+            if (t3Pass && hasCheckedT3) score++;
+
+            // Task 4 check
+            let t4Pass = t4Selections[1] === 'option-b' && t4Selections[2] === 'option-a';
+            if (t4Pass) score++;
+
+            // Display results
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Твій результат: ${score} з ${totalTasks} завдань виконано правильно!`;
+
+            if (score === 4) {
+                emojiEl.innerText = "👑";
+                titleEl.innerText = "Високий рівень!";
+                descEl.innerText = "Неймовірно! Ти справжній магістр комп'ютерної безпеки та зразковий учень! Так тримати!";
+                // Trigger celebratory confetti
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 }
+                });
+            } else if (score === 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Достатній рівень!";
+                descEl.innerText = "Дуже добре! Ти чудово орієнтуєшся в правилах, лише невеличка увага — і буде абсолютний успіх!";
+            } else if (score === 2) {
+                emojiEl.innerText = "⭐";
+                titleEl.innerText = "Середній рівень!";
+                descEl.innerText = "Ти непогано впорався, але варто ще раз переглянути презентації та повторити правила безпеки.";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Початковий рівень!";
+                descEl.innerText = "Не засмучуйся! Переглянь презентації на початку сторінки та спробуй виконати завдання знову — у тебе все вийде!";
+            }
+
+            // Scroll smoothly to results
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
