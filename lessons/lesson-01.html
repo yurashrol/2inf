@@ -87,7 +87,7 @@
                 <!-- Presentation 1 -->
                 <div class="space-y-2">
                     <h3 class="font-fredoka text-lg font-semibold text-slate-700 flex items-center">
-                        <span class="text-indigo-500 mr-2">✦</span> Правила безпечної поведінки у кабінеті інформатики
+                        <span class="text-indigo-500 mr-2">✦</span> Правила безпечної поведінки
                     </h3>
                     <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-200">
                         <!-- Responsive Google Presentation Embed / Placeholder iframe -->
@@ -160,11 +160,16 @@
                 </div>
             </div>
 
-            <!-- Check Button & Feedback -->
+            <!-- Check Button & Reset & Feedback -->
             <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <button onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-emerald-500/30 transition transform active:scale-95">
-                    Перевірити завдання 1 🔍
-                </button>
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-emerald-500/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Розпочати спочатку 🔄
+                    </button>
+                </div>
                 <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
             </div>
         </section>
@@ -217,11 +222,16 @@
                 </div>
             </div>
 
-            <!-- Check Button & Feedback -->
+            <!-- Check Button & Reset & Feedback -->
             <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <button onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-blue-500/30 transition transform active:scale-95">
-                    Перевірити завдання 2 🔍
-                </button>
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-blue-500/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Розпочати спочатку 🔄
+                    </button>
+                </div>
                 <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
             </div>
         </section>
@@ -265,11 +275,16 @@
                 </label>
             </div>
 
-            <!-- Check Button & Feedback -->
+            <!-- Check Button & Reset & Feedback -->
             <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <button onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-500/30 transition transform active:scale-95">
-                    Перевірити завдання 3 🔍
-                </button>
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-500/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Розпочати спочатку 🔄
+                    </button>
+                </div>
                 <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
             </div>
         </section>
@@ -308,11 +323,16 @@
                 </div>
             </div>
 
-            <!-- Check Button & Feedback -->
+            <!-- Check Button & Reset & Feedback -->
             <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <button onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-500/30 transition transform active:scale-95">
-                    Перевірити завдання 4 🔍
-                </button>
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-500/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Розпочати спочатку 🔄
+                    </button>
+                </div>
                 <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
             </div>
         </section>
@@ -357,11 +377,11 @@
             const btnNo = document.querySelector(`.t1-btn-${itemNum}-no`);
             
             if (choice === 'yes') {
-                btnYes.className = "t1-btn-1-yes px-5 py-2 rounded-xl font-fredoka font-semibold bg-indigo-600 text-white shadow-md transition";
-                btnNo.className = "t1-btn-1-no px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition";
+                btnYes.className = `t1-btn-${itemNum}-yes px-5 py-2 rounded-xl font-fredoka font-semibold bg-indigo-600 text-white shadow-md transition`;
+                btnNo.className = `t1-btn-${itemNum}-no px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition`;
             } else {
-                btnNo.className = "t1-btn-1-no px-5 py-2 rounded-xl font-fredoka font-semibold bg-indigo-600 text-white shadow-md transition";
-                btnYes.className = "t1-btn-1-yes px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition";
+                btnNo.className = `t1-btn-${itemNum}-no px-5 py-2 rounded-xl font-fredoka font-semibold bg-indigo-600 text-white shadow-md transition`;
+                btnYes.className = `t1-btn-${itemNum}-yes px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition`;
             }
         }
 
@@ -394,6 +414,17 @@
                 fb.innerText = `💡 Майже! Правильних відповідей: ${correctCount} з ${items.length}. Спробуй ще раз!`;
                 return false;
             }
+        }
+
+        function resetTask1() {
+            for (let k in t1Selections) delete t1Selections[k];
+            for (let i = 1; i <= 3; i++) {
+                const btnYes = document.querySelector(`.t1-btn-${i}-yes`);
+                const btnNo = document.querySelector(`.t1-btn-${i}-no`);
+                if (btnYes) btnYes.className = `t1-btn-${i}-yes px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition`;
+                if (btnNo) btnNo.className = `t1-btn-${i}-no px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition`;
+            }
+            document.getElementById('feedback-1').classList.add('hidden');
         }
 
 
@@ -472,6 +503,13 @@
             }
         }
 
+        function resetTask2() {
+            const sourcePool = document.getElementById('source-pool');
+            const items = document.querySelectorAll('#task-2 .draggable-item');
+            items.forEach(item => sourcePool.appendChild(item));
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
 
         // --- Task 3 Multiple Choice Logic ---
         function checkTask3() {
@@ -508,6 +546,11 @@
             }
         }
 
+        function resetTask3() {
+            document.querySelectorAll('.t3-option input').forEach(cb => cb.checked = false);
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
 
         // --- Task 4 Logic ---
         const t4Selections = {};
@@ -516,9 +559,9 @@
             // Clear siblings style
             const siblings = btnElem.parentElement.querySelectorAll('button');
             siblings.forEach(b => {
-                b.className = "p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-50 text-sm font-medium text-slate-700 transition";
+                b.className = `t4-btn-${qNum} p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-50 text-sm font-medium text-slate-700 transition`;
             });
-            btnElem.className = "p-3 rounded-xl border border-purple-500 bg-purple-600 text-white text-sm font-medium shadow-md transition";
+            btnElem.className = `t4-btn-${qNum} p-3 rounded-xl border border-purple-500 bg-purple-600 text-white text-sm font-medium shadow-md transition`;
         }
 
         function checkTask4() {
@@ -542,6 +585,16 @@
                 fb.innerText = "💡 Дещо вказано невірно. Спробуй передумати!";
                 return false;
             }
+        }
+
+        function resetTask4() {
+            for (let k in t4Selections) delete t4Selections[k];
+            for (let i = 1; i <= 2; i++) {
+                document.querySelectorAll(`.t4-btn-${i}`).forEach(b => {
+                    b.className = `t4-btn-${i} p-3 rounded-xl border border-slate-200 bg-white hover:bg-purple-50 text-sm font-medium text-slate-700 transition`;
+                });
+            }
+            document.getElementById('feedback-4').classList.add('hidden');
         }
 
 
