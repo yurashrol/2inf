@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приватна й публічна інформація. Безпечна поведінка в мережі — 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Top Header Banner -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-indigo-800 via-slate-800 to-purple-800 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">🎈</span> Інформатика - 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Приватна й публічна інформація. Безпечна поведінка в мережі 🔐
+            </h1>
+            <p class="text-slate-200 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Допоможи Енотикові та Совеняті розібратися з таємницями, навчися захищати свої дані та стань Супергероєм Інтернету! 🦝🦉
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Presentation Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-indigo-100 p-3 rounded-2xl text-indigo-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Корисна презентація до уроку</h2>
+                    <p class="text-slate-500 text-sm">Переглянь слайди перед грою</p>
+                </div>
+            </div>
+
+            <div class="max-w-2xl mx-auto space-y-2">
+                <div class="space-y-2">
+                    <h3 class="font-fredoka text-lg font-semibold text-slate-700 flex items-center justify-center text-center">
+                        <span class="text-indigo-500 mr-2">✦</span> Приватна й публічна інформація. Безпечна поведінка в мережі
+                    </h3>
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-200">
+                        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vT0x72-Z8ivASxHKpJ6zaNVKGsa7Rzh_E5DtX3s5wC15MhhCSBMfN_P9rlQS841rLyuc1gSYytFr0OV/embed?start=false&loop=false&delayms=3000" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen="true">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- TASK 1: Private vs Public Info (Таємниця чи Секрет для Всіх?) -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Таємниця чи Секрет для Всіх? 🔐</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-600 rounded-full">Обери тип інформації</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">
+                Енотик та Совеня розбирають свій багаж. Підкажи їм: яка інформація є <strong>Приватною (таємною)</strong>, а яка — <strong>Публічною (відкритою)</strong>?
+            </p>
+
+            <div class="space-y-4">
+                <!-- Item 1 -->
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-2xl">🏠</span>
+                        <p class="text-slate-700 text-sm md:text-base font-medium">1. Домашня адреса та номер квартири</p>
+                    </div>
+                    <select onchange="setTask1(1, this.value)" class="t1-select border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white font-medium text-slate-700 focus:ring-2 focus:ring-amber-500">
+                        <option value="">-- Яка це інформація? --</option>
+                        <option value="private">🔒 Приватна (Таємна)</option>
+                        <option value="public">🌐 Публічна (Відкрита)</option>
+                    </select>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-2xl">🎨</span>
+                        <p class="text-slate-700 text-sm md:text-base font-medium">2. Твій улюблений колір або мультфільм</p>
+                    </div>
+                    <select onchange="setTask1(2, this.value)" class="t1-select border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white font-medium text-slate-700 focus:ring-2 focus:ring-amber-500">
+                        <option value="">-- Яка це інформація? --</option>
+                        <option value="private">🔒 Приватна (Таємна)</option>
+                        <option value="public">🌐 Публічна (Відкрита)</option>
+                    </select>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-2xl">🔑</span>
+                        <p class="text-slate-700 text-sm md:text-base font-medium">3. Пароль від твого облікового запису чи телефону</p>
+                    </div>
+                    <select onchange="setTask1(3, this.value)" class="t1-select border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white font-medium text-slate-700 focus:ring-2 focus:ring-amber-500">
+                        <option value="">-- Яка це інформація? --</option>
+                        <option value="private">🔒 Приватна (Таємна)</option>
+                        <option value="public">🌐 Публічна (Відкрита)</option>
+                    </select>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="p-4 bg-slate-50 border border-slate-200 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-start space-x-3">
+                        <span class="text-2xl">🐶</span>
+                        <p class="text-slate-700 text-sm md:text-base font-medium">4. Малюнок твого домашнього улюбленця</p>
+                    </div>
+                    <select onchange="setTask1(4, this.value)" class="t1-select border border-slate-300 rounded-xl px-3 py-2 text-sm bg-white font-medium text-slate-700 focus:ring-2 focus:ring-amber-500">
+                        <option value="">-- Яка це інформація? --</option>
+                        <option value="private">🔒 Приватна (Таємна)</option>
+                        <option value="public">🌐 Публічна (Відкрита)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-500/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+
+        <!-- TASK 2: Can we post it? (Чи можна це поширювати в інтернеті?) -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Чи можна це поширювати в інтернеті? 🌐</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-600 rounded-full">Вибери кнопку</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Натисни кнопку: можна це публікувати для всіх чи це небезпечно?</p>
+
+            <div class="space-y-4">
+                <!-- Question 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 t2-item" data-correct="unsafe">
+                    <span class="font-medium text-slate-700 text-base">1. Номер телефону твоїх батьків 📱</span>
+                    <div class="flex space-x-2 shrink-0">
+                        <button onclick="selectT2(1, 'safe', this)" class="t2-btn-1-safe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition">Можна 🟢</button>
+                        <button onclick="selectT2(1, 'unsafe', this)" class="t2-btn-1-unsafe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition">Небезпечно! 🛑</button>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 t2-item" data-correct="safe">
+                    <span class="font-medium text-slate-700 text-base">2. Фотографію вироби з пластиліну, яку ти зробив 🐱</span>
+                    <div class="flex space-x-2 shrink-0">
+                        <button onclick="selectT2(2, 'safe', this)" class="t2-btn-2-safe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition">Можна 🟢</button>
+                        <button onclick="selectT2(2, 'unsafe', this)" class="t2-btn-2-unsafe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition">Небезпечно! 🛑</button>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 t2-item" data-correct="unsafe">
+                    <span class="font-medium text-slate-700 text-base">3. Повідомлення незнайомцю, що вдома нікого немає 🚪</span>
+                    <div class="flex space-x-2 shrink-0">
+                        <button onclick="selectT2(3, 'safe', this)" class="t2-btn-3-safe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition">Можна 🟢</button>
+                        <button onclick="selectT2(3, 'unsafe', this)" class="t2-btn-3-unsafe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition">Небезпечно! 🛑</button>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4 t2-item" data-correct="safe">
+                    <span class="font-medium text-slate-700 text-base">4. Свій рекорд у дитячій грі-головоломці 🎮</span>
+                    <div class="flex space-x-2 shrink-0">
+                        <button onclick="selectT2(4, 'safe', this)" class="t2-btn-4-safe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition">Можна 🟢</button>
+                        <button onclick="selectT2(4, 'unsafe', this)" class="t2-btn-4-unsafe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition">Небезпечно! 🛑</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-emerald-500 hover:bg-emerald-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-emerald-500/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+
+        <!-- TASK 3: Password & Account Rules (Пароль-Захисник та аватар) -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Пароль-Захисник та аватар 🗝️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-blue-50 text-blue-600 rounded-full">Обери дію</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Обери правильне та безпечне рішення для кожної ситуації:</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <!-- Situation 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-3">
+                    <div class="text-center">
+                        <span class="text-4xl block mb-2">🔐</span>
+                        <h3 class="font-fredoka font-bold text-slate-800 text-sm">Кому можна казати свій пароль?</h3>
+                    </div>
+                    <select onchange="setTask3(1, this.value)" class="t3-select border border-slate-300 rounded-xl p-2.5 text-xs font-semibold bg-white text-slate-700">
+                        <option value="">-- Для кого пароль? --</option>
+                        <option value="parents">Тільки батькам (або вчителю)</option>
+                        <option value="friends">Усім друзям у дворі</option>
+                    </select>
+                </div>
+
+                <!-- Situation 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-3">
+                    <div class="text-center">
+                        <span class="text-4xl block mb-2">👾</span>
+                        <h3 class="font-fredoka font-bold text-slate-800 text-sm">Що краще поставити на аватар у грі?</h3>
+                    </div>
+                    <select onchange="setTask3(2, this.value)" class="t3-select border border-slate-300 rounded-xl p-2.5 text-xs font-semibold bg-white text-slate-700">
+                        <option value="">-- Яка картинка безпечна? --</option>
+                        <option value="passport">Фото свідоцтва про народження</option>
+                        <option value="avatar">Казкового героя або малюнок</option>
+                    </select>
+                </div>
+
+                <!-- Situation 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col justify-between space-y-3">
+                    <div class="text-center">
+                        <span class="text-4xl block mb-2">🏷️</span>
+                        <h3 class="font-fredoka font-bold text-slate-800 text-sm">Яке ім'я (нікмейн) обрати для гри?</h3>
+                    </div>
+                    <select onchange="setTask3(3, this.value)" class="t3-select border border-slate-300 rounded-xl p-2.5 text-xs font-semibold bg-white text-slate-700">
+                        <option value="">-- Який нікнейм краще? --</option>
+                        <option value="nickname">Веселий псевдонім (Super_Cat)</option>
+                        <option value="fullname">Повне ім'я, прізвище та рік народження</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-blue-500/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+
+        <!-- TASK 4: Stranger Danger Online (Незнайомець в інтернеті) -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Незнайомець в інтернеті 🤫</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-600 rounded-full">Вибери галочки</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Познач <strong>УСІ</strong> безпечні дії, якщо незнайома людина пише тобі в інтернеті:</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <label class="t4-option flex items-center space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-purple-50 cursor-pointer transition" data-correct="true">
+                    <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-slate-300">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Одразу розповісти про це батькам або вчителю 👨‍👩‍👧</span>
+                </label>
+
+                <label class="t4-option flex items-center space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-purple-50 cursor-pointer transition" data-correct="false">
+                    <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-slate-300">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Надіслати незнайомцю фото свого будинку 📸</span>
+                </label>
+
+                <label class="t4-option flex items-center space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-purple-50 cursor-pointer transition" data-correct="true">
+                    <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-slate-300">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Не відповідати та не виконувати його прохань 🚫</span>
+                </label>
+
+                <label class="t4-option flex items-center space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-purple-50 cursor-pointer transition" data-correct="false">
+                    <input type="checkbox" class="w-5 h-5 text-purple-600 rounded border-slate-300">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Домовитися про зустріч на вулиці без дорослих 🤝</span>
+                </label>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-purple-500 hover:bg-purple-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-500/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+
+        <!-- TASK 5: Superhero Action (Супергерой Безпеки) -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Супергерой Безпеки! 🦸‍♂️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-rose-50 text-rose-600 rounded-full">Вибери кращий вчинок</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">
+                Під час гри на комп'ютері раптово вискочило яскраве віконце: <em>«Ви виграли мільйон іграшок! Натисніть сюди і введіть адресу!»</em>. Як вчинить справжній Супергерой?
+            </p>
+
+            <div class="space-y-3">
+                <label class="t5-option flex items-center space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-rose-50 cursor-pointer transition" data-correct="false">
+                    <input type="radio" name="t5-choice" value="1" class="w-5 h-5 text-rose-500">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Швиденько натисне та напише свій номер телефону 🎁</span>
+                </label>
+
+                <label class="t5-option flex items-center space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-rose-50 cursor-pointer transition" data-correct="true">
+                    <input type="radio" name="t5-choice" value="2" class="w-5 h-5 text-rose-500">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Закриє це вікно і покличе дорослих (батьків чи вчителя) 🛡️</span>
+                </label>
+
+                <label class="t5-option flex items-center space-x-3 p-4 rounded-2xl border border-slate-200 bg-slate-50 hover:bg-rose-50 cursor-pointer transition" data-correct="false">
+                    <input type="radio" name="t5-choice" value="3" class="w-5 h-5 text-rose-500">
+                    <span class="text-slate-700 font-medium text-sm md:text-base">Надішле це посилання усім своїм однокласникам 📩</span>
+                </label>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-rose-500 hover:bg-rose-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-rose-500/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+
+        <!-- Final Result Section -->
+        <section class="bg-gradient-to-br from-indigo-800 via-slate-800 to-purple-800 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-slate-200 max-w-xl mx-auto mb-8 font-medium">Перевірив усі завдання? Тисни швидше кнопку та дізнайся свій результат!</p>
+
+            <button onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-pink-500 to-amber-500 hover:from-pink-600 hover:to-amber-600 text-white font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-pink-500/30 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-amber-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-slate-200"></p>
+                <p id="result-description" class="text-sm md:text-base text-slate-300"></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-500 text-xs md:text-sm">
+        <p>Інтерактивна гра з інформатики для 2 класу 💙💛</p>
+    </footer>
+
+    <!-- Logic JS -->
+    <script>
+        // --- TASK 1 Logic ---
+        const t1State = { 1: '', 2: '', 3: '', 4: '' };
+        function setTask1(step, val) { t1State[step] = val; }
+
+        function checkTask1() {
+            if (!t1State[1] || !t1State[2] || !t1State[3] || !t1State[4]) {
+                showFeedback('feedback-1', '⚠️ Обери відповідь у всіх 4 пунктах!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+            if (t1State[1] === 'private' && t1State[2] === 'public' && t1State[3] === 'private' && t1State[4] === 'public') {
+                showFeedback('feedback-1', '🎉 Супер! Ти відмінно знаєш, де таємниця, а де відкриті дані!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Подумай ще: адреса та пароль мають залишатися в таємниці!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            for (let k in t1State) t1State[k] = '';
+            document.querySelectorAll('.t1-select').forEach(s => s.value = '');
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2 Logic ---
+        const t2State = {};
+        function selectT2(qNum, choice, btn) {
+            t2State[qNum] = choice;
+            const btnSafe = document.querySelector(`.t2-btn-${qNum}-safe`);
+            const btnUnsafe = document.querySelector(`.t2-btn-${qNum}-unsafe`);
+            
+            if (choice === 'safe') {
+                btnSafe.className = `t2-btn-${qNum}-safe px-4 py-2 rounded-xl font-fredoka font-semibold bg-emerald-500 text-white shadow-md transition`;
+                btnUnsafe.className = `t2-btn-${qNum}-unsafe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition`;
+            } else {
+                btnUnsafe.className = `t2-btn-${qNum}-unsafe px-4 py-2 rounded-xl font-fredoka font-semibold bg-rose-500 text-white shadow-md transition`;
+                btnSafe.className = `t2-btn-${qNum}-safe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition`;
+            }
+        }
+
+        function checkTask2() {
+            const items = document.querySelectorAll('.t2-item');
+            if (Object.keys(t2State).length < items.length) {
+                showFeedback('feedback-2', '⚠️ Дай відповідь на всі 4 запитання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            let correct = true;
+            items.forEach((item, idx) => {
+                if (t2State[idx + 1] !== item.getAttribute('data-correct')) correct = false;
+            });
+
+            if (correct) {
+                showFeedback('feedback-2', '🎉 Чудово! Ти бережеш важливу інформацію в безпеці!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Пам\'ятай: телефони та секретні повідомлення не можна поширювати!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            for (let k in t2State) delete t2State[k];
+            for (let i = 1; i <= 4; i++) {
+                const btnS = document.querySelector(`.t2-btn-${i}-safe`);
+                const btnU = document.querySelector(`.t2-btn-${i}-unsafe`);
+                if (btnS) btnS.className = `t2-btn-${i}-safe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition`;
+                if (btnU) btnU.className = `t2-btn-${i}-unsafe px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition`;
+            }
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3 Logic ---
+        const t3State = { 1: '', 2: '', 3: '' };
+        function setTask3(step, val) { t3State[step] = val; }
+
+        function checkTask3() {
+            if (!t3State[1] || !t3State[2] || !t3State[3]) {
+                showFeedback('feedback-3', '⚠️ Вибери варіанти для всіх 3 ситуацій!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+            if (t3State[1] === 'parents' && t3State[2] === 'avatar' && t3State[3] === 'nickname') {
+                showFeedback('feedback-3', '🌟 Молодець! Твій акаунт тепер під надійним захистом!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Спробуй ще: пароль — лише батькам, а на аватар — малюнок!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            t3State[1] = ''; t3State[2] = ''; t3State[3] = '';
+            document.querySelectorAll('.t3-select').forEach(s => s.value = '');
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4 Logic ---
+        function checkTask4() {
+            const options = document.querySelectorAll('.t4-option');
+            let correct = true;
+            let checkedAny = false;
+
+            options.forEach(opt => {
+                const cb = opt.querySelector('input');
+                const isCorrect = opt.getAttribute('data-correct') === 'true';
+                if (cb.checked) checkedAny = true;
+                if (cb.checked !== isCorrect) correct = false;
+            });
+
+            if (!checkedAny) {
+                showFeedback('feedback-4', '⚠️ Познач хоча б один варіант!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (correct) {
+                showFeedback('feedback-4', '🎉 Абсолютно правильно! З незнайомцями треба бути дуже обережними!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Перевірте варіанти: з незнайомцями не можна зустрічатися і надсилати фото!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            document.querySelectorAll('.t4-option input').forEach(cb => cb.checked = false);
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5 Logic ---
+        function checkTask5() {
+            const selected = document.querySelector('input[name="t5-choice"]:checked');
+            if (!selected) {
+                showFeedback('feedback-5', '⚠️ Обери один із варіантів вчинку!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const isCorrect = selected.parentElement.getAttribute('data-correct') === 'true';
+            if (isCorrect) {
+                showFeedback('feedback-5', '🎉 Браво! Справжній Супергерой завжди покличе дорослих!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Помилка! Не вір дивним віконцям в інтернеті.', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            document.querySelectorAll('input[name="t5-choice"]').forEach(r => r.checked = false);
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- GENERAL FEEDBACK HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL EVALUATION ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "👑";
+                titleEl.innerText = "Супер-Герой Інтернету!";
+                descEl.innerText = "Вау! Ти пройшов усі випробування без жодної помилки! Інтернет з тобою в повній безпеці!";
+                confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Захисник Даних!";
+                descEl.innerText = "Чудовий результат! Ти чудово знаєш більшість правил безпеки. Спробуй ще разок до ідеалу!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Учень-Дослідник!";
+                descEl.innerText = "Ти старався (старалася)! Переглянь презентацію зверху та спробуй пройти завдання ще раз!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
