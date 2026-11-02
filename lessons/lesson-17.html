@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Створення та збереження малюнка у Tux Paint — 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner in Rich Blue Gradient -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">🎨</span> Інформатика — 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Створення та збереження малюнка 🎨💾
+            </h1>
+            <p class="text-sky-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Дізнайся, як починати нові шедеври та надійно зберігати свої роботи разом із пінгвіном Туксом у графічному редакторі Tux Paint!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Educational Materials Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-sky-100 p-3 rounded-2xl text-sky-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальні матеріали</h2>
+                    <p class="text-slate-500 text-sm">Переглянь матеріали про те, як розпочати новий малюнок та зберегти його у альбомі</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
+                    <iframe loading="lazy" 
+                            class="absolute inset-0 w-full h-full border-0 m-0 p-0"
+                            src="https://www.canva.com/design/DAHZyiCDDMI/k3xn2e_NTgOH1SPPPQ3HZw/view?embed" 
+                            allowfullscreen="allowfullscreen" 
+                            allow="fullscreen">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Sequence of Steps (Algorithm for creation & saving) -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Правильна послідовність дій 🔢</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-600 rounded-full">Алгоритм створення</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розстави кроки створення та збереження малюнка у правильному порядку (від 1 до 4):</p>
+
+            <div class="space-y-4">
+                <!-- Step A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        📄 Натиснути кнопку «Створити» (New) ліворуч на панелі інструментів
+                    </span>
+                    <select id="t1-step-1" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 text-center focus:ring-2 focus:ring-sky-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        🎨 Обрати колір нового аркуша або готову розмальовку та натиснути «Відкрити»
+                    </span>
+                    <select id="t1-step-2" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 text-center focus:ring-2 focus:ring-sky-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        🖌️ Намалювати свій малюнок за допомогою пензлів, форм та штампів
+                    </span>
+                    <select id="t1-step-3" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 text-center focus:ring-2 focus:ring-sky-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step D -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        💾 Натиснути кнопку «Зберегти» (Save), щоб малюнок потрапив до альбомної галереї
+                    </span>
+                    <select id="t1-step-4" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 text-center focus:ring-2 focus:ring-sky-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: Tool Matching (Connecting Buttons with Actions) -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Інструменти для створення та збереження 🛠️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full">Відповідність дій</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Обери відповідну кнопку у Tux Paint для кожної потрібної дії:</p>
+
+            <div class="space-y-4">
+                <!-- Action 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">📄</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Відкрити новий чистий або кольоровий аркуш</span>
+                    </div>
+                    <select id="t2-match-1" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери кнопку...</option>
+                        <option value="new">Кнопка «Створити» 📄</option>
+                        <option value="paint">Кнопка «Малювати» 🖌️</option>
+                        <option value="save">Кнопка «Зберегти» 💾</option>
+                        <option value="open">Кнопка «Відкрити» 📂</option>
+                    </select>
+                </div>
+
+                <!-- Action 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">💾</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Швидко зберегти роботу в альбом без друку назви</span>
+                    </div>
+                    <select id="t2-match-2" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери кнопку...</option>
+                        <option value="new">Кнопка «Створити» 📄</option>
+                        <option value="paint">Кнопка «Малювати» 🖌️</option>
+                        <option value="save">Кнопка «Зберегти» 💾</option>
+                        <option value="open">Кнопка «Відкрити» 📂</option>
+                    </select>
+                </div>
+
+                <!-- Action 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🖌️</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Основне малювання ліній і контурів пензликом</span>
+                    </div>
+                    <select id="t2-match-3" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери кнопку...</option>
+                        <option value="new">Кнопка «Створити» 📄</option>
+                        <option value="paint">Кнопка «Малювати» 🖌️</option>
+                        <option value="save">Кнопка «Зберегти» 💾</option>
+                        <option value="open">Кнопка «Відкрити» 📂</option>
+                    </select>
+                </div>
+
+                <!-- Action 4 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">📂</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Переглянути раніше збережені малюнки в альбомі</span>
+                    </div>
+                    <select id="t2-match-4" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери кнопку...</option>
+                        <option value="new">Кнопка «Створити» 📄</option>
+                        <option value="paint">Кнопка «Малювати» 🖌️</option>
+                        <option value="save">Кнопка «Зберегти» 💾</option>
+                        <option value="open">Кнопка «Відкрити» 📂</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: True / False (Знавці Tux Paint) -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Знавці Tux Paint: Правда чи Неправда? 🐧</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-teal-50 text-teal-600 rounded-full">Аналіз тверджень</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай твердження про збереження та створення малюнків і дай відповідь:</p>
+
+            <div class="space-y-6">
+                <!-- Statement 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        1. Щоб зберегти малюнок у Tux Paint, обов'язково треба писати довгу назву файлу з клавіатури.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT3(1, true, this)" class="t3-q1-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-teal-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT3(1, false, this)" class="t3-q1-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-teal-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statement 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        2. Натиснувши кнопку «Створити», можна обрати не лише білий аркуш, а й кольорове полотно або готову розмальовку.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT3(2, true, this)" class="t3-q2-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-teal-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT3(2, false, this)" class="t3-q2-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-teal-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statement 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        3. Коли ти тиснеш кнопку «Зберегти» 💾, програма видає кумедний звук, і малюнок зберігається у вигляді маленької картинки.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT3(3, true, this)" class="t3-q3-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-teal-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT3(3, false, this)" class="t3-q3-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-teal-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-teal-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: Artwork & Interface Analysis -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Аналіз готового малюнка «Сонячний день» ☀️🏡</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-700 rounded-full">Підрахунок елементів</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розглянь макет полотна у Tux Paint, на якому учень щойно закінчив свій малюнок і натиснув кнопку збереження:</p>
+
+            <!-- SVG Mockup of Tux Paint Interface with Artwork -->
+            <div class="mb-6 p-4 md:p-6 rounded-2xl bg-slate-900 border-4 border-indigo-500 shadow-xl flex flex-col items-center justify-center">
+                <div class="text-center mb-2 flex items-center gap-2">
+                    <span class="text-xs font-bold text-sky-300 uppercase tracking-widest">Вікно Tux Paint: Малюнок «Сонячний день»</span>
+                </div>
+                <div class="w-full max-w-lg bg-slate-800 p-3 rounded-xl border border-slate-700">
+                    <svg viewBox="0 0 360 220" class="w-full h-auto rounded-lg">
+                        <!-- Canvas Background (Sky & Grass) -->
+                        <rect width="360" height="150" fill="#7dd3fc" />
+                        <rect y="150" width="360" height="70" fill="#86efac" />
+
+                        <!-- Sun in Sky (1 Sun) -->
+                        <circle cx="50" cy="45" r="22" fill="#facc15" />
+                        <!-- Sun Rays -->
+                        <line x1="50" y1="12" x2="50" y2="20" stroke="#facc15" stroke-width="3" stroke-linecap="round" />
+                        <line x1="80" y1="45" x2="88" y2="45" stroke="#facc15" stroke-width="3" stroke-linecap="round" />
+                        <line x1="72" y1="23" x2="78" y2="17" stroke="#facc15" stroke-width="3" stroke-linecap="round" />
+
+                        <!-- House -->
+                        <rect x="140" y="110" width="70" height="55" fill="#f97316" />
+                        <polygon points="130,110 175,70 220,110" fill="#dc2626" />
+                        <rect x="165" y="130" width="20" height="35" fill="#78350f" />
+
+                        <!-- Flowers Stamps on Grass (4 Flowers) -->
+                        <g transform="translate(40, 175)">
+                            <circle cx="0" cy="0" r="6" fill="#f43f5e" />
+                            <circle cx="0" cy="0" r="2.5" fill="#fde047" />
+                        </g>
+                        <g transform="translate(85, 185)">
+                            <circle cx="0" cy="0" r="6" fill="#f43f5e" />
+                            <circle cx="0" cy="0" r="2.5" fill="#fde047" />
+                        </g>
+                        <g transform="translate(260, 175)">
+                            <circle cx="0" cy="0" r="6" fill="#a855f7" />
+                            <circle cx="0" cy="0" r="2.5" fill="#fde047" />
+                        </g>
+                        <g transform="translate(305, 185)">
+                            <circle cx="0" cy="0" r="6" fill="#a855f7" />
+                            <circle cx="0" cy="0" r="2.5" fill="#fde047" />
+                        </g>
+
+                        <!-- Tux Penguin Helper & Saved Alert Overlay -->
+                        <g transform="translate(280, 20)">
+                            <!-- Save confirmation box -->
+                            <rect x="-10" y="0" width="80" height="40" rx="6" fill="#1e293b" opacity="0.9" stroke="#38bdf8" stroke-width="1.5" />
+                            <text x="30" y="18" fill="#ffffff" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">Збережено!</text>
+                            <text x="30" y="30" fill="#38bdf8" font-size="12" text-anchor="middle">💾 ✅</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">1. Скільки ВСЬОГО КВІТОЧОК 🌸 розквітло на зеленій галявині?</span>
+                    <input type="number" id="t4-num-1" min="0" max="10" placeholder="Число..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-800 focus:ring-2 focus:ring-sky-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+
+                <!-- Q2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">2. Яка позначка з'явилася у підказці, що підтверджує успішне збереження малюнка?</span>
+                    <select id="t4-num-2" class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-800 focus:ring-2 focus:ring-sky-500 focus:outline-none w-full md:w-1/4 text-center">
+                        <option value="">Обери...</option>
+                        <option value="check">Зелена галочка / Збережено! ✅</option>
+                        <option value="cross">Червоний хрестик ❌</option>
+                        <option value="question">Увага! ⚠️</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: Category Classification of Tux Paint Buttons -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Сортування кнопок за призначенням 🗂️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Класифікація</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розподіли кожну кнопку Tux Paint до відповідної групи дій:</p>
+
+            <div class="space-y-4">
+                <!-- Item A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        📄 Кнопка «Створити» (New)
+                    </span>
+                    <select id="t5-cat-1" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери категорію...</option>
+                        <option value="start">Початок роботи / Створення</option>
+                        <option value="draw">Творчість / Малювання</option>
+                        <option value="save_open">Збереження та Відкриття</option>
+                    </select>
+                </div>
+
+                <!-- Item B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        🪄 Кнопка «Магія» (Magic) та 🔷 «Форми» (Shapes)
+                    </span>
+                    <select id="t5-cat-2" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери категорію...</option>
+                        <option value="start">Початок роботи / Створення</option>
+                        <option value="draw">Творчість / Малювання</option>
+                        <option value="save_open">Збереження та Відкриття</option>
+                    </select>
+                </div>
+
+                <!-- Item C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        💾 Кнопка «Зберегти» (Save)
+                    </span>
+                    <select id="t5-cat-3" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери категорію...</option>
+                        <option value="start">Початок роботи / Створення</option>
+                        <option value="draw">Творчість / Малювання</option>
+                        <option value="save_open">Збереження та Відкриття</option>
+                    </select>
+                </div>
+
+                <!-- Item D -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        📂 Кнопка «Відкрити» (Open)
+                    </span>
+                    <select id="t5-cat-4" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери категорію...</option>
+                        <option value="start">Початок роботи / Створення</option>
+                        <option value="draw">Творчість / Малювання</option>
+                        <option value="save_open">Збереження та Відкриття</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section in Blue Gradient -->
+        <section class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-sky-100 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 інтерактивних вправ та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-teal-400 to-sky-400 hover:from-teal-500 hover:to-sky-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-teal-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-teal-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-sky-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-sky-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: Creating & Saving Artwork -->
+        <section class="bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-sky-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-amber-400 text-slate-900 p-3 rounded-2xl text-2xl shadow-md">🎨</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">
+                        Творча майстерня: Практична робота «Мій перший збережений малюнок» 🎨💾
+                    </h2>
+                    <p class="text-sky-700 font-medium text-sm md:text-base">
+                        Покрокове завдання для виконання у програмі Tux Paint на комп'ютері
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Left: Preview SVG Sample -->
+                <div class="bg-white p-4 rounded-2xl border-2 border-sky-300 shadow-md space-y-4">
+                    <div class="flex justify-between items-center px-2">
+                        <span class="font-fredoka font-bold text-xs text-sky-600">🖼️ Очікуваний результат</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">Tux Paint</span>
+                    </div>
+
+                    <div class="p-2 rounded-xl bg-slate-100 border border-slate-300">
+                        <div class="w-full rounded-lg overflow-hidden bg-amber-100 border border-slate-400">
+                            <svg viewBox="0 0 300 160" class="w-full h-auto">
+                                <!-- Yellow Background Canvas -->
+                                <rect width="300" height="160" fill="#fef08a" />
+                                
+                                <!-- Rainbow effect using Magic Brush -->
+                                <path d="M 30,160 A 120,120 0 0,1 270,160" fill="none" stroke="#ef4444" stroke-width="10" />
+                                <path d="M 42,160 A 108,108 0 0,1 258,160" fill="none" stroke="#f97316" stroke-width="10" />
+                                <path d="M 54,160 A 96,96 0 0,1 246,160" fill="none" stroke="#eab308" stroke-width="10" />
+                                <path d="M 66,160 A 84,84 0 0,1 234,160" fill="none" stroke="#22c55e" stroke-width="10" />
+                                <path d="M 78,160 A 72,72 0 0,1 222,160" fill="none" stroke="#06b6d4" stroke-width="10" />
+
+                                <!-- Stamp Penguin -->
+                                <circle cx="150" cy="130" r="14" fill="#0f172a" />
+                                <circle cx="150" cy="132" r="10" fill="#ffffff" />
+                                <polygon points="150,132 145,137 155,137" fill="#f97316" />
+
+                                <!-- Save Indicator -->
+                                <rect x="220" y="10" width="70" height="28" rx="6" fill="#0284c7" />
+                                <text x="255" y="28" fill="#ffffff" font-size="11" font-family="sans-serif" font-weight="bold" text-anchor="middle">Збережено!</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Step by Step Instructions -->
+                <div class="space-y-4">
+                    <h3 class="font-fredoka text-xl font-bold text-slate-800">📋 Інструкція для виконання:</h3>
+                    
+                    <ul class="space-y-3 font-medium text-slate-700 text-sm md:text-base">
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">1️⃣</span>
+                            <span>Запусти програму <b>Tux Paint</b> на своєму комп'ютері.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">2️⃣</span>
+                            <span>Натисни кнопку <b>«Створити» 📄</b> та обери яскраве кольорове полотно (наприклад, жовте або блакитне).</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">3️⃣</span>
+                            <span>За допомогою інструментів <b>«Малювати» 🖌️</b> або <b>«Магія» 🪄</b> намалюй веселку чи святковий салют.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">4️⃣</span>
+                            <span>Натисни кнопку <b>«Зберегти» 💾</b> на лівій панелі інструментів. Переконайся, що почув забавний звук!</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">5️⃣</span>
+                            <span>Перевір себе: натисни кнопку <b>«Відкрити» 📂</b> та переконайся, що твій новий малюнок з'явився у альбомі!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-600 text-xs md:text-sm">
+        <p>Інтерактивний робочий аркуш з інформатики для 2 класу • Створення та збереження малюнка 💙💛</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- TASK 1: SEQUENCE OF STEPS ---
+        function checkTask1() {
+            const s1 = document.getElementById('t1-step-1').value;
+            const s2 = document.getElementById('t1-step-2').value;
+            const s3 = document.getElementById('t1-step-3').value;
+            const s4 = document.getElementById('t1-step-4').value;
+
+            if (!s1 || !s2 || !s3 || !s4) {
+                showFeedback('feedback-1', '⚠️ Укажи номер кроку для всіх 4 дій!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (s1 === '1' && s2 === '2' && s3 === '3' && s4 === '4') {
+                showFeedback('feedback-1', '🎉 Молодчина! Послідовність абсолютно правильна: Створити ➡️ Обрати фони ➡️ Намалювати ➡️ Зберегти!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Подумай: спочатку ти тиснеш «Створити», обираєш фон, малюєш і лише в кінці тиснеш «Зберегти»!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            document.getElementById('t1-step-1').value = '';
+            document.getElementById('t1-step-2').value = '';
+            document.getElementById('t1-step-3').value = '';
+            document.getElementById('t1-step-4').value = '';
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: TOOL MATCHING ---
+        function checkTask2() {
+            const m1 = document.getElementById('t2-match-1').value;
+            const m2 = document.getElementById('t2-match-2').value;
+            const m3 = document.getElementById('t2-match-3').value;
+            const m4 = document.getElementById('t2-match-4').value;
+
+            if (!m1 || !m2 || !m3 || !m4) {
+                showFeedback('feedback-2', '⚠️ Обери кнопку для кожної з 4 дій!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (m1 === 'new' && m2 === 'save' && m3 === 'paint' && m4 === 'open') {
+                showFeedback('feedback-2', '🎉 Супер! Ти відмінно знаєш призначення головних кнопок Tux Paint!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Підказка: Новий аркуш — Створити 📄, альбом — Відкрити 📂, збереження — Зберегти 💾!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            document.getElementById('t2-match-1').value = '';
+            document.getElementById('t2-match-2').value = '';
+            document.getElementById('t2-match-3').value = '';
+            document.getElementById('t2-match-4').value = '';
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: TRUE / FALSE ---
+        const t3Answers = {};
+
+        function selectT3(qNum, choice, btn) {
+            t3Answers[qNum] = choice;
+            const parent = btn.parentElement;
+            parent.querySelectorAll('button').forEach(b => {
+                b.classList.remove('bg-teal-600', 'text-white', 'border-teal-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-300');
+            btn.classList.add('bg-teal-600', 'text-white', 'border-teal-600');
+        }
+
+        function checkTask3() {
+            if (Object.keys(t3Answers).length < 3) {
+                showFeedback('feedback-3', '⚠️ Дай відповіді на всі 3 твердження!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (t3Answers[1] === false); // No need to type file name in Tux Paint
+            const ok2 = (t3Answers[2] === true);
+            const ok3 = (t3Answers[3] === true);
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-3', '🎉 Чудово! У Tux Paint справді НЕ потрібно друкувати назву файлу при збереженні!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Пам’ятай: Tux Paint зберігає малюнки автоматично у вигляді мініатюр, назву вводити не треба!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            for (let k in t3Answers) delete t3Answers[k];
+            document.querySelectorAll('.t3-q1-btn, .t3-q2-btn, .t3-q3-btn').forEach(b => {
+                b.classList.remove('bg-teal-600', 'text-white', 'border-teal-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: ARTWORK ANALYSIS ---
+        function checkTask4() {
+            const n1 = document.getElementById('t4-num-1').value.trim();
+            const n2 = document.getElementById('t4-num-2').value;
+
+            if (!n1 || !n2) {
+                showFeedback('feedback-4', '⚠️ Дай відповідь на обидва запитання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (parseInt(n1) === 4);
+            const ok2 = (n2 === 'check');
+
+            if (ok1 && ok2) {
+                showFeedback('feedback-4', '🎉 Молодець! На галявині росте 4 квітки, а зелена галочка підтверджує збереження!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Порахуй квіточки уважніше (їх 4!) та перевір позначку в підказці!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            document.getElementById('t4-num-1').value = '';
+            document.getElementById('t4-num-2').value = '';
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: CATEGORY CLASSIFICATION ---
+        function checkTask5() {
+            const c1 = document.getElementById('t5-cat-1').value;
+            const c2 = document.getElementById('t5-cat-2').value;
+            const c3 = document.getElementById('t5-cat-3').value;
+            const c4 = document.getElementById('t5-cat-4').value;
+
+            if (!c1 || !c2 || !c3 || !c4) {
+                showFeedback('feedback-5', '⚠️ Обери категорію для кожної кнопки!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (c1 === 'start');
+            const ok2 = (c2 === 'draw');
+            const ok3 = (c3 === 'save_open');
+            const ok4 = (c4 === 'save_open');
+
+            if (ok1 && ok2 && ok3 && ok4) {
+                showFeedback('feedback-5', '🎉 Бездоганно! Ти чудово класифікуєш усі інструменти за їхньою допомогою!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Подумай: Створити — це початок, Магія та Форми — малювання, а Зберегти та Відкрити — збереження та перегляд!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            document.getElementById('t5-cat-1').value = '';
+            document.getElementById('t5-cat-2').value = '';
+            document.getElementById('t5-cat-3').value = '';
+            document.getElementById('t5-cat-4').value = '';
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- GENERAL FEEDBACK HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL EVALUATION & CONFETTI ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Майстер Tux Paint!";
+                descEl.innerText = "Вітаємо! Ти справжній знавець створення та збереження малюнків у Tux Paint!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 140, spread: 90, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Вправний Художник!";
+                descEl.innerText = "Чудовий результат! Виправ невеликі помилки, щоб вибити 5 з 5!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний Початківець!";
+                descEl.innerText = "Переглянь відеоматеріал ще раз і спробуй повторити вправи!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
