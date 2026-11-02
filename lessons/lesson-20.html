@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>План дій та послідовність кроків — Інформатика 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e9d5ff 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .drag-item {
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+        }
+        .drag-item:active {
+            cursor: grabbing;
+        }
+        .drag-over {
+            border-color: #8b5cf6 !important;
+            background-color: #f3e8ff !important;
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner in Sophisticated Grey-Purple Gradient -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-slate-800 via-slate-700 to-purple-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-slate-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">💻</span> Інформатика — 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                План дій. Послідовність кроків 📝🤖
+            </h1>
+            <p class="text-purple-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Вчимося складати правильні плани, визначати послідовності у повсякденному житті та керувати виконавцями разом!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Educational Materials Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-sky-100 p-3 rounded-2xl text-sky-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальна презентація</h2>
+                    <p class="text-slate-500 text-sm">Переглянь презентацію перед виконанням завдань</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
+                    <iframe loading="lazy" 
+                            class="absolute inset-0 w-full h-full border-0 m-0 p-0"
+                            src="https://www.canva.com/design/DAHZyvp92s0/v6KKjETm_SECk7o4pcjnlA/view?embed" 
+                            allowfullscreen="allowfullscreen" 
+                            allow="fullscreen">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Drag-and-Drop Sequence (Morning Routine) -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Збираємося до школи вранці 🎒</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-700 rounded-full">Перетягування</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">
+                Перетягни картки із діями у правильні слоти (від 1-го до 4-го кроку), щоб утворився правильний план ранкових зборів:
+            </p>
+
+            <!-- Target Drop Slots -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="drop-slot p-3 min-h-[110px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition" data-slot="1">
+                    <span class="font-fredoka font-bold text-xs text-purple-600 uppercase mb-2">Крок 1</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+
+                <div class="drop-slot p-3 min-h-[110px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition" data-slot="2">
+                    <span class="font-fredoka font-bold text-xs text-purple-600 uppercase mb-2">Крок 2</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+
+                <div class="drop-slot p-3 min-h-[110px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition" data-slot="3">
+                    <span class="font-fredoka font-bold text-xs text-purple-600 uppercase mb-2">Крок 3</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+
+                <div class="drop-slot p-3 min-h-[110px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition" data-slot="4">
+                    <span class="font-fredoka font-bold text-xs text-purple-600 uppercase mb-2">Крок 4</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+            </div>
+
+            <!-- Draggable Pool -->
+            <div class="p-4 rounded-2xl bg-purple-50/60 border border-purple-100 mb-6">
+                <span class="block font-fredoka font-bold text-xs text-purple-800 mb-3 uppercase tracking-wider text-center sm:text-left">
+                    📦 Варіанти дій (перетягуй мишкою або пальцем):
+                </span>
+                <div id="drag-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div draggable="true" id="item-step-breakfast" data-step="3" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">🥣</span>
+                        <span class="font-medium text-xs text-slate-800">Смачно поснідати</span>
+                    </div>
+
+                    <div draggable="true" id="item-step-wash" data-step="1" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">🪥</span>
+                        <span class="font-medium text-xs text-slate-800">Вмитися та почистити зуби</span>
+                    </div>
+
+                    <div draggable="true" id="item-step-pack" data-step="4" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">🎒</span>
+                        <span class="font-medium text-xs text-slate-800">Скласти портфель і вийти</span>
+                    </div>
+
+                    <div draggable="true" id="item-step-dress" data-step="2" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">👕</span>
+                        <span class="font-medium text-xs text-slate-800">Одягнути шкільну форму</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-600/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: Classification (Correct vs Incorrect Plan) -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Правильний чи помилковий план? 🤖</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Аналіз планів</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай описи алгоритмів і визнач, чи правильно складено порядок дій:</p>
+
+            <div class="space-y-4">
+                <!-- Situation 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="font-fredoka font-bold text-slate-800 text-base">🍵 Приготування теплого чаю:</span>
+                        <p class="text-xs md:text-sm text-slate-600">1. Налити окріп у чашку -> 2. Покласти пакетик чаю -> 3. Налити воду в чайник та закип'ятити.</p>
+                    </div>
+                    <select id="t2-select-1" class="w-full md:w-56 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери оцінку...</option>
+                        <option value="correct">✅ Правильний план</option>
+                        <option value="incorrect">❌ Переплутані кроки</option>
+                    </select>
+                </div>
+
+                <!-- Situation 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="font-fredoka font-bold text-slate-800 text-base">🚦 Перехід дороги по світлофору:</span>
+                        <p class="text-xs md:text-sm text-slate-600">1. Підійти до пішохідного переходу -> 2. Дочекатися зеленого світла -> 3. Впевнитися у безпеці та перейти.</p>
+                    </div>
+                    <select id="t2-select-2" class="w-full md:w-56 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери оцінку...</option>
+                        <option value="correct">✅ Правильний план</option>
+                        <option value="incorrect">❌ Переплутані кроки</option>
+                    </select>
+                </div>
+
+                <!-- Situation 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <span class="font-fredoka font-bold text-slate-800 text-base">💻 Вмикання комп'ютера для уроку:</span>
+                        <p class="text-xs md:text-sm text-slate-600">1. Відкрити навчальну програму -> 2. Натиснути кнопку живлення на системному блоці -> 3. Увімкнути монітор.</p>
+                    </div>
+                    <select id="t2-select-3" class="w-full md:w-56 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери оцінку...</option>
+                        <option value="correct">✅ Правильний план</option>
+                        <option value="incorrect">❌ Переплутані кроки</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Illustration Analysis (SVG Canvas) -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Аналіз планів за ілюстрацією 🪴</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-teal-50 text-teal-700 rounded-full">Уважність</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Уважно розглянь малюнок-схему «План посадки квітки у горщик» та дай відповіді:</p>
+
+            <!-- SVG Illustration Container -->
+            <div class="mb-6 p-4 md:p-6 rounded-2xl bg-teal-900 border-4 border-teal-500 shadow-xl flex flex-col items-center justify-center">
+                <div class="text-center mb-2 flex items-center gap-2">
+                    <span class="text-xs font-bold text-teal-200 uppercase tracking-widest">Схема: План посадки рослини</span>
+                </div>
+                <div class="w-full max-w-2xl bg-white p-4 rounded-xl border-2 border-teal-200 shadow-inner overflow-x-auto">
+                    <svg viewBox="0 0 500 160" class="w-full h-auto min-w-[450px]">
+                        <!-- Step 1: Pot and Soil -->
+                        <g transform="translate(10, 10)">
+                            <rect x="0" y="0" width="105" height="140" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+                            <text x="52" y="20" font-family="Fredoka" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">Крок 1</text>
+                            <!-- Pot Orange -->
+                            <path d="M30 110 L35 70 L70 70 L75 110 Z" fill="#f97316" />
+                            <rect x="28" y="65" width="49" height="8" rx="2" fill="#ea580c" />
+                            <!-- Scoop -->
+                            <path d="M70 50 L85 65 L75 75 Z" fill="#94a3b8" />
+                            <text x="52" y="130" font-family="Inter" font-size="9" fill="#334155" text-anchor="middle">Насипати ґрунт</text>
+                        </g>
+
+                        <!-- Arrow 1 -->
+                        <path d="M122 80 L138 80" stroke="#0d9488" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+
+                        <!-- Step 2: Plant Seed -->
+                        <g transform="translate(145, 10)">
+                            <rect x="0" y="0" width="105" height="140" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+                            <text x="52" y="20" font-family="Fredoka" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">Крок 2</text>
+                            <!-- Pot Orange -->
+                            <path d="M30 110 L35 70 L70 70 L75 110 Z" fill="#f97316" />
+                            <rect x="28" y="65" width="49" height="8" rx="2" fill="#ea580c" />
+                            <!-- Seed -->
+                            <circle cx="52" cy="78" r="4" fill="#78350f" />
+                            <text x="52" y="130" font-family="Inter" font-size="9" fill="#334155" text-anchor="middle">Покласти насінину</text>
+                        </g>
+
+                        <!-- Arrow 2 -->
+                        <path d="M257 80 L273 80" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
+
+                        <!-- Step 3: Water with Pitcher -->
+                        <g transform="translate(280, 10)">
+                            <rect x="0" y="0" width="105" height="140" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+                            <text x="52" y="20" font-family="Fredoka" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">Крок 3</text>
+                            <!-- Pot Orange -->
+                            <path d="M30 110 L35 70 L70 70 L75 110 Z" fill="#f97316" />
+                            <rect x="28" y="65" width="49" height="8" rx="2" fill="#ea580c" />
+                            <!-- Watering Can Blue -->
+                            <path d="M65 40 L85 50 L75 60 Z" fill="#0284c7" />
+                            <!-- Water Drops -->
+                            <circle cx="55" cy="62" r="1.5" fill="#38bdf8" />
+                            <circle cx="50" cy="66" r="1.5" fill="#38bdf8" />
+                            <text x="52" y="130" font-family="Inter" font-size="9" fill="#334155" text-anchor="middle">Полити водою</text>
+                        </g>
+
+                        <!-- Arrow 3 -->
+                        <path d="M392 80 L408 80" stroke="#0d9488" stroke-width="3" stroke-linecap="round"/>
+
+                        <!-- Step 4: Sprout -->
+                        <g transform="translate(415, 10)">
+                            <rect x="0" y="0" width="75" height="140" rx="10" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="2"/>
+                            <text x="37" y="20" font-family="Fredoka" font-size="12" font-weight="bold" fill="#166534" text-anchor="middle">Крок 4</text>
+                            <!-- Pot Orange -->
+                            <path d="M18 110 L23 70 L52 70 L57 110 Z" fill="#f97316" />
+                            <rect x="16" y="65" width="43" height="8" rx="2" fill="#ea580c" />
+                            <!-- Sprout -->
+                            <path d="M37 68 Q37 50 28 45 Q37 50 37 35 Q37 50 46 45 Q37 50 37 68" fill="#22c55e" />
+                            <text x="37" y="130" font-family="Inter" font-size="8" fill="#334155" text-anchor="middle">Рослина росте!</text>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Question 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-sm md:text-base md:w-3/4">
+                        1. Скільки всього послідовних кроків зображено у цьому плані?
+                    </span>
+                    <input type="number" id="t3-num-1" min="1" max="10" placeholder="Число..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-800 focus:ring-2 focus:ring-teal-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+
+                <!-- Question 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-sm md:text-base md:w-3/4">
+                        2. Яка дія виконується безпосередньо на Кроці 3?
+                    </span>
+                    <select id="t3-action-2" class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-800 focus:ring-2 focus:ring-teal-500 focus:outline-none w-full md:w-1/4 text-center">
+                        <option value="">Обери дію...</option>
+                        <option value="soil">Насипання ґрунту</option>
+                        <option value="water">Поливання водою 💧</option>
+                        <option value="seed">Посадка насінини</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-teal-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: True / False -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Знавці алгоритмів: Правда чи Ні? ❓</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-700 rounded-full">Правильно / Неправильно</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай твердження про плани дій та обери відповідь:</p>
+
+            <div class="space-y-6">
+                <!-- Statement 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        1. Порядок дій у будь-якому плані можна змінювати як завгодно, і результат від цього не зміниться.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT4(1, true, this)" class="t4-q1-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-purple-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT4(1, false, this)" class="t4-q1-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-purple-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statement 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        2. Робот або комп'ютер виконує команди чітко одна за одною, точно за вказаним планом.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT4(2, true, this)" class="t4-q2-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-purple-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT4(2, false, this)" class="t4-q2-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-purple-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statement 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        3. Алгоритм — це зрозуміла послідовність дій для виконавця, що приводить до бажаного результату.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT4(3, true, this)" class="t4-q3-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-purple-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT4(3, false, this)" class="t4-q3-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-purple-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-600/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: Cause and Effect Matching -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Що буде далі? Дія та результат 🔮</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Відповідність</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">З'єднай початкову дію з її логічним результатом у послідовності:</p>
+
+            <div class="space-y-4">
+                <!-- Pair 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base shrink-0">
+                        💡 Натиснули на вимикач світла в кімнаті
+                    </span>
+                    <select id="t5-match-1" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери результат...</option>
+                        <option value="light">Засвітилася лампочка 💡</option>
+                        <option value="call">Телефон почне телефонувати 📞</option>
+                        <option value="clean">Кімната стане чистою та прибраною 🧹</option>
+                    </select>
+                </div>
+
+                <!-- Pair 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base shrink-0">
+                        📞 Набрали номер мами на смартфоні
+                    </span>
+                    <select id="t5-match-2" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери результат...</option>
+                        <option value="light">Засвітилася лампочка 💡</option>
+                        <option value="call">Телефон почне телефонувати 📞</option>
+                        <option value="clean">Кімната стане чистою та прибраною 🧹</option>
+                    </select>
+                </div>
+
+                <!-- Pair 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base shrink-0">
+                        🧹 Поклали всі іграшки на свої місця
+                    </span>
+                    <select id="t5-match-3" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери результат...</option>
+                        <option value="light">Засвітилася лампочка 💡</option>
+                        <option value="call">Телефон почне телефонувати 📞</option>
+                        <option value="clean">Кімната стане чистою та прибраною 🧹</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section in Grey-Purple Gradient -->
+        <section class="bg-gradient-to-br from-slate-800 via-purple-900 to-slate-800 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-slate-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-purple-200 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 інтерактивних вправ та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-purple-400 to-indigo-400 hover:from-purple-500 hover:to-indigo-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-purple-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-purple-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-purple-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-purple-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: ScratchJr / Scratch Algorithm Execution -->
+        <section class="bg-gradient-to-br from-purple-50 via-slate-50 to-indigo-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-purple-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-purple-600 text-white p-3 rounded-2xl text-2xl shadow-md">🐱</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">
+                        Творча майстерня: Практичне завдання «Склади алгоритм у ScratchJr» 🐱🚀
+                    </h2>
+                    <p class="text-purple-700 font-medium text-sm md:text-base">
+                        Створи свій перший програмований план дій для персонажа Котеняти!
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Left: Scratch Block Scheme Illustration -->
+                <div class="bg-white p-5 rounded-2xl border-2 border-purple-200 shadow-md space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="font-fredoka font-bold text-xs text-purple-700">🧩 Схема блоків у ScratchJr</span>
+                        <span class="text-xs bg-purple-100 text-purple-800 px-2 py-0.5 rounded-full font-semibold">ScratchJr</span>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-700 flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 320 100" class="w-full h-auto">
+                            <!-- Start Block (Yellow) -->
+                            <g transform="translate(10, 20)">
+                                <rect width="65" height="55" rx="12" fill="#facc15" />
+                                <text x="32" y="32" font-family="Fredoka" font-size="20" text-anchor="middle">👾</text>
+                                <text x="32" y="47" font-family="Fredoka" font-size="8" font-weight="bold" fill="#713f12" text-anchor="middle">СТАРТ</text>
+                            </g>
+
+                            <!-- Arrow 1 -->
+                            <path d="M80 47 L90 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Move Right Block (Blue) -->
+                            <g transform="translate(95, 20)">
+                                <rect width="60" height="55" rx="12" fill="#3b82f6" />
+                                <text x="30" y="30" font-family="Fredoka" font-size="18" fill="white" text-anchor="middle">➡️ 3</text>
+                                <text x="30" y="47" font-family="Fredoka" font-size="7" font-weight="bold" fill="white" text-anchor="middle">КРОК ВПРАВО</text>
+                            </g>
+
+                            <!-- Arrow 2 -->
+                            <path d="M160 47 L170 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Jump Block (Green) -->
+                            <g transform="translate(175, 20)">
+                                <rect width="60" height="55" rx="12" fill="#22c55e" />
+                                <text x="30" y="30" font-family="Fredoka" font-size="18" fill="white" text-anchor="middle">🦘</text>
+                                <text x="30" y="47" font-family="Fredoka" font-size="7" font-weight="bold" fill="white" text-anchor="middle">ПІДСТРИБНУТИ</text>
+                            </g>
+
+                            <!-- Arrow 3 -->
+                            <path d="M240 47 L250 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Sound Block (Pink) -->
+                            <g transform="translate(255, 20)">
+                                <rect width="55" height="55" rx="12" fill="#ec4899" />
+                                <text x="27" y="30" font-family="Fredoka" font-size="18" fill="white" text-anchor="middle">🔊</text>
+                                <text x="27" y="47" font-family="Fredoka" font-size="7" font-weight="bold" fill="white" text-anchor="middle">ЗВУК МЯУ</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-slate-500 text-center italic">Послідовність команд: Старт ➔ Рух вправо ➔ Стрибок ➔ Звук «Мяу»</p>
+                </div>
+
+                <!-- Right: Step-by-step Instructions -->
+                <div class="space-y-4">
+                    <h3 class="font-fredoka text-xl font-bold text-slate-800">📋 Покрокова інструкція:</h3>
+                    
+                    <ul class="space-y-3 font-medium text-slate-700 text-sm md:text-base">
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">1️⃣</span>
+                            <span>Відкрий додаток <b>ScratchJr</b> (або Scratch) на планшеті чи комп'ютері.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">2️⃣</span>
+                            <span>Обери персонажа <b>Котеня 🐱</b> та тло (наприклад, парк або кімнату).</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">3️⃣</span>
+                            <span>Перетягни жовту кнопку <b>«Початок при натисканні» 👾</b> у робоче поле.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">4️⃣</span>
+                            <span>Приєднай синій блок <b>«Крок праворуч» (3) ➡️</b>, зелений блок <b>«Стрибок» 🦘</b> та рожевий блок <b>«Звук» 🔊</b>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">5️⃣</span>
+                            <span>Натисни на прапорець і перевір, як Котенко виконує твій план дій! 🎉</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-500 text-xs md:text-sm">
+        <p>Інтерактивний робочий аркуш з інформатики для 2 класу • План дій та алгоритми 💜🇺🇦</p>
+    </footer>
+
+    <!-- JavaScript Implementation -->
+    <script>
+        // --- TASK 1: DRAG AND DROP LOGIC ---
+        const dragItems = document.querySelectorAll('.drag-item');
+        const dropSlots = document.querySelectorAll('.drop-slot');
+        const dragContainer = document.getElementById('drag-container');
+
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', handleDragStart);
+        });
+
+        dropSlots.forEach(slot => {
+            slot.addEventListener('dragover', handleDragOver);
+            slot.addEventListener('dragleave', handleDragLeave);
+            slot.addEventListener('drop', handleDrop);
+        });
+
+        function handleDragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.id);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const slot = e.currentTarget;
+            slot.classList.remove('drag-over');
+            const id = e.dataTransfer.getData('text/plain');
+            const draggedEl = document.getElementById(id);
+
+            if (draggedEl) {
+                const contentContainer = slot.querySelector('.slot-content');
+                // Return previous occupant back to pool if slot already had an item
+                if (contentContainer.children.length > 0) {
+                    dragContainer.appendChild(contentContainer.children[0]);
+                }
+                contentContainer.appendChild(draggedEl);
+            }
+        }
+
+        function checkTask1() {
+            let correctCount = 0;
+            let filledCount = 0;
+
+            dropSlots.forEach(slot => {
+                const slotNum = slot.getAttribute('data-slot');
+                const child = slot.querySelector('.slot-content').firstElementChild;
+                if (child) {
+                    filledCount++;
+                    const stepNum = child.getAttribute('data-step');
+                    if (slotNum === stepNum) {
+                        correctCount++;
+                    }
+                }
+            });
+
+            if (filledCount < 4) {
+                showFeedback('feedback-1', '⚠️ Заповни всі 4 слоти ранкових зборів!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (correctCount === 4) {
+                showFeedback('feedback-1', '🎉 Чудово! Ти відмінно впорядкував(-ла) свій ранок: Вмитися ➔ Одягтися ➔ Сніданок ➔ Портфель!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Подумай ще раз! Спочатку вмиваємося та одягаємося, потім снідаємо і виходимо!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            dropSlots.forEach(slot => {
+                const content = slot.querySelector('.slot-content');
+                if (content.children.length > 0) {
+                    dragContainer.appendChild(content.children[0]);
+                }
+            });
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: CLASSIFICATION LOGIC ---
+        function checkTask2() {
+            const s1 = document.getElementById('t2-select-1').value; // Tea -> incorrect
+            const s2 = document.getElementById('t2-select-2').value; // Traffic light -> correct
+            const s3 = document.getElementById('t2-select-3').value; // Computer -> incorrect
+
+            if (!s1 || !s2 || !s3) {
+                showFeedback('feedback-2', '⚠️ Дай відповідь за кожною ситуацією!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (s1 === 'incorrect');
+            const ok2 = (s2 === 'correct');
+            const ok3 = (s3 === 'incorrect');
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-2', '🎉 Влучно! Для чаю потрібно закип\'ятити воду на початку, а для комп\'ютера — спочатку увімкнути його!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Зверни увагу: чи можна налити окріп ДО того, як закипить чайник?', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            document.getElementById('t2-select-1').value = '';
+            document.getElementById('t2-select-2').value = '';
+            document.getElementById('t2-select-3').value = '';
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: SVG ILLUSTRATION ANALYSIS ---
+        function checkTask3() {
+            const n1 = document.getElementById('t3-num-1').value.trim();
+            const a2 = document.getElementById('t3-action-2').value;
+
+            if (!n1 || !a2) {
+                showFeedback('feedback-3', '⚠️ Заповни обидва питання з вправи!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (parseInt(n1) === 4);
+            const ok2 = (a2 === 'water');
+
+            if (ok1 && ok2) {
+                showFeedback('feedback-3', '🎉 Молодець! У плані 4 кроки, а на 3-му кроці поливаємо рослину водою!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Порахуй картки на малюнку (їх 4) та подивись на синій глечик на Кроці 3!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            document.getElementById('t3-num-1').value = '';
+            document.getElementById('t3-action-2').value = '';
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: TRUE / FALSE LOGIC ---
+        const t4Answers = {};
+
+        function selectT4(qNum, choice, btn) {
+            t4Answers[qNum] = choice;
+            const parent = btn.parentElement;
+            parent.querySelectorAll('button').forEach(b => {
+                b.classList.remove('bg-purple-600', 'text-white', 'border-purple-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-300');
+            btn.classList.add('bg-purple-600', 'text-white', 'border-purple-600');
+        }
+
+        function checkTask4() {
+            if (Object.keys(t4Answers).length < 3) {
+                showFeedback('feedback-4', '⚠️ Дай відповідь на всі 3 твердження!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (t4Answers[1] === false); // Ordering cannot be changed arbitrarily
+            const ok2 = (t4Answers[2] === true);  // Robot follows steps precisely
+            const ok3 = (t4Answers[3] === true);  // Algorithm definition is true
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-4', '🎉 Бездоганно! Порядок кроків дуже важливий, а робот строго виконує алгоритм!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Пам’ятай: Порядок дій у плані міняти НЕ МОЖНА, бо результат зіпсується!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            for (let k in t4Answers) delete t4Answers[k];
+            document.querySelectorAll('.t4-q1-btn, .t4-q2-btn, .t4-q3-btn').forEach(b => {
+                b.classList.remove('bg-purple-600', 'text-white', 'border-purple-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: CAUSE AND EFFECT MATCHING ---
+        function checkTask5() {
+            const m1 = document.getElementById('t5-match-1').value;
+            const m2 = document.getElementById('t5-match-2').value;
+            const m3 = document.getElementById('t5-match-3').value;
+
+            if (!m1 || !m2 || !m3) {
+                showFeedback('feedback-5', '⚠️ Вкажи результат для кожної дії!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (m1 === 'light');
+            const ok2 = (m2 === 'call');
+            const ok3 = (m3 === 'clean');
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-5', '🎉 Супер! Ти чудово розумієш зв’язок між дією та її результатом!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Подумай: що відбувається, коли вмикають світло або наберають телефон?', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            document.getElementById('t5-match-1').value = '';
+            document.getElementById('t5-match-2').value = '';
+            document.getElementById('t5-match-3').value = '';
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- FEEDBACK DISPLAY HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL RESULTS EVALUATION ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Головний командир алгоритмів!";
+                descEl.innerText = "Вітаємо! Ти ідеально складаєш та аналізуєш плани дій!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Вправний планмейстер!";
+                descEl.innerText = "Дуже хороший результат! Перевір підказки та здобудь 5/5!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний дослідник команд!";
+                descEl.innerText = "Спробуй виконати вправи ще раз, щоб закріпити правила складання планів!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
