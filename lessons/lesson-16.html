@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редагування складеного малюнка у Tux Paint — 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner in Rich Blue Gradient -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">🎨</span> Інформатика — 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Виділення, переміщення, копіювання та видалення об’єктів ✂️📋🧹
+            </h1>
+            <p class="text-sky-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Вчися редагувати та удосконалювати свої складені малюнки разом із пінгвіном Туксом у графічному редакторі Tux Paint!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Presentation Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-sky-100 p-3 rounded-2xl text-sky-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальні матеріали</h2>
+                    <p class="text-slate-500 text-sm">Переглянь матеріали про те, як редагувати складений малюнок та виправляти помилки</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
+                    <iframe loading="lazy" 
+                            class="absolute inset-0 w-full h-full border-0 m-0 p-0"
+                            src="https://www.canva.com/design/DAHZyne45i0/cgP5HwhfjEDGg_6xMkxo1A/view?embed" 
+                            allowfullscreen="allowfullscreen" 
+                            allow="fullscreen">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Tool Matching (Matching actions to Tux Paint tools) -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Інструменти та дії 🛠️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-600 rounded-full">Відповідність дій</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Обери для кожної потрібної дії правильний інструмент або кнопку у Tux Paint:</p>
+
+            <div class="space-y-4">
+                <!-- Action 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🧹</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Видалити зайву деталь з малюнка</span>
+                    </div>
+                    <select id="t1-match-1" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери інструмент...</option>
+                        <option value="undo">Кнопка «Відмінити» (Undo) ↩️</option>
+                        <option value="eraser">Інструмент «Гумка» 🧹</option>
+                        <option value="stamp_repeat">Інструмент «Штамп» (багаторазовий клік) 🐧</option>
+                        <option value="shapes">Інструмент «Форми» з новим кольором 🔷</option>
+                    </select>
+                </div>
+
+                <!-- Action 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">↩️</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Миттєво скасувати останній випадковий штрих</span>
+                    </div>
+                    <select id="t1-match-2" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери інструмент...</option>
+                        <option value="undo">Кнопка «Відмінити» (Undo) ↩️</option>
+                        <option value="eraser">Інструмент «Гумка» 🧹</option>
+                        <option value="stamp_repeat">Інструмент «Штамп» (багаторазовий клік) 🐧</option>
+                        <option value="shapes">Інструмент «Форми» з новим кольором 🔷</option>
+                    </select>
+                </div>
+
+                <!-- Action 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">📋</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Швидко розмножити (скопіювати) однакові об'єкти</span>
+                    </div>
+                    <select id="t1-match-3" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери інструмент...</option>
+                        <option value="undo">Кнопка «Відмінити» (Undo) ↩️</option>
+                        <option value="eraser">Інструмент «Гумка» 🧹</option>
+                        <option value="stamp_repeat">Інструмент «Штамп» (багаторазовий клік) 🐧</option>
+                        <option value="shapes">Інструмент «Форми» з новим кольором 🔷</option>
+                    </select>
+                </div>
+
+                <!-- Action 4 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🎨</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Перемалювати фігуру поверх нової для виправлення</span>
+                    </div>
+                    <select id="t1-match-4" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери інструмент...</option>
+                        <option value="undo">Кнопка «Відмінити» (Undo) ↩️</option>
+                        <option value="eraser">Інструмент «Гумка» 🧹</option>
+                        <option value="stamp_repeat">Інструмент «Штамп» (багаторазовий клік) 🐧</option>
+                        <option value="shapes">Інструмент «Форми» з новим кольором 🔷</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: True / False (Editing Detective) -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Детектив помилок: Правда чи Неправда? 🕵️‍♂️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full">Аналіз тверджень</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай твердження про редагування у Tux Paint та визнач, чи вони правильні:</p>
+
+            <div class="space-y-6">
+                <!-- Statement 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        1. Якщо випадково стерти потрібний малюнок Гумкою, його можна повернути кнопкою «Відмінити» (Undo).
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT2(1, true, this)" class="t2-q1-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT2(1, false, this)" class="t2-q1-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statement 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        2. Штамп у Tux Paint можна переміщати по всьому полотну навіть після того, як ти перейшов до іншого інструмента.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT2(2, true, this)" class="t2-q2-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT2(2, false, this)" class="t2-q2-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statement 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        3. Щоб скопіювати той самий штамп кілька разів (наприклад, поставити багато квітів), достатньо клацати мишею у різних місцях полотна.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT2(3, true, this)" class="t2-q3-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT2(3, false, this)" class="t2-q3-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Editing Sequence -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Послідовність виправлення помилки 🔢</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-teal-50 text-teal-600 rounded-full">Алгоритм дій</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Сценарій: На малюнку галявини випадково поставили штамп дерева посеред неба. Розстави кроки (від 1 до 4) для правильного виправлення цієї помилки:</p>
+
+            <div class="space-y-4">
+                <!-- Step A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        👀 Помітити, що дерево знаходиться у неправильному місці (посеред неба)
+                    </span>
+                    <select id="t3-step-1" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-700 text-center focus:ring-2 focus:ring-teal-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        ↩️ Натиснути кнопку «Відмінити» або акуратно витерти дерево «Гумкою»
+                    </span>
+                    <select id="t3-step-2" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-700 text-center focus:ring-2 focus:ring-teal-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        🎯 Перевести курсор миші у правильне місце (на зелену галявину)
+                    </span>
+                    <select id="t3-step-3" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-700 text-center focus:ring-2 focus:ring-teal-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step D -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        🖱️ Натиснути ліву кнопку миші, щоб поставити штамп дерева на галявині
+                    </span>
+                    <select id="t3-step-4" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-700 text-center focus:ring-2 focus:ring-teal-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-teal-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: Artwork Analysis (Underwater World) -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Аналіз малюнка «Підводний світ» 🐠🌊</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-700 rounded-full">Підрахунок об’єктів</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Учень редагував малюнок: додавав рибок, копіював однакових та витирав залишкові плями. Розглянь композицію та дай відповіді:</p>
+
+            <!-- SVG Underwater Mockup -->
+            <div class="mb-6 p-4 md:p-6 rounded-2xl bg-slate-900 border-4 border-cyan-500 shadow-xl flex flex-col items-center justify-center">
+                <div class="text-center mb-2">
+                    <span class="text-xs font-bold text-cyan-300 uppercase tracking-widest">Макет: Підводний світ у Tux Paint</span>
+                </div>
+                <div class="w-full max-w-md bg-slate-800 p-4 rounded-xl border border-slate-700 flex justify-center">
+                    <svg viewBox="0 0 320 220" class="w-full h-auto">
+                        <!-- Ocean Background -->
+                        <rect width="320" height="220" rx="8" fill="#0284c7" />
+                        <!-- Seabed Sand -->
+                        <path d="M 0,180 Q 80,165 160,185 T 320,175 L 320,220 L 0,220 Z" fill="#fde047" />
+
+                        <!-- Seaweed (Green shapes) -->
+                        <path d="M 30,180 Q 20,130 35,90 T 25,30" fill="none" stroke="#15803d" stroke-width="6" stroke-linecap="round" />
+                        <path d="M 50,185 Q 65,140 50,100 T 60,50" fill="none" stroke="#22c55e" stroke-width="5" stroke-linecap="round" />
+                        <path d="M 280,180 Q 295,130 275,80" fill="none" stroke="#15803d" stroke-width="6" stroke-linecap="round" />
+
+                        <!-- Yellow Copied Fish 1 -->
+                        <g transform="translate(90, 60)">
+                            <ellipse cx="20" cy="12" rx="18" ry="10" fill="#facc15" />
+                            <polygon points="35,12 48,4 48,20" fill="#eab308" />
+                            <circle cx="10" cy="9" r="2.5" fill="#000" />
+                        </g>
+
+                        <!-- Yellow Copied Fish 2 (Identical Copy) -->
+                        <g transform="translate(180, 110)">
+                            <ellipse cx="20" cy="12" rx="18" ry="10" fill="#facc15" />
+                            <polygon points="35,12 48,4 48,20" fill="#eab308" />
+                            <circle cx="10" cy="9" r="2.5" fill="#000" />
+                        </g>
+
+                        <!-- Yellow Copied Fish 3 (Identical Copy) -->
+                        <g transform="translate(80, 130)">
+                            <ellipse cx="20" cy="12" rx="18" ry="10" fill="#facc15" />
+                            <polygon points="35,12 48,4 48,20" fill="#eab308" />
+                            <circle cx="10" cy="9" r="2.5" fill="#000" />
+                        </g>
+
+                        <!-- Red Unique Fish -->
+                        <g transform="translate(200, 45)">
+                            <ellipse cx="20" cy="12" rx="20" ry="12" fill="#ef4444" />
+                            <polygon points="38,12 52,2 52,22" fill="#b91c1c" />
+                            <circle cx="9" cy="8" r="3" fill="#fff" />
+                            <circle cx="9" cy="8" r="1.5" fill="#000" />
+                        </g>
+
+                        <!-- Bubbles (4 Circles) -->
+                        <circle cx="115" cy="45" r="4" fill="none" stroke="#e0f2fe" stroke-width="1.5" />
+                        <circle cx="118" cy="32" r="3" fill="none" stroke="#e0f2fe" stroke-width="1.5" />
+                        <circle cx="210" cy="35" r="5" fill="none" stroke="#e0f2fe" stroke-width="1.5" />
+                        <circle cx="212" cy="22" r="3.5" fill="none" stroke="#e0f2fe" stroke-width="1.5" />
+
+                        <!-- Eraser Trace Spot (White blur indicating erased object) -->
+                        <g transform="translate(240, 140)" opacity="0.35">
+                            <circle cx="12" cy="12" r="14" fill="#ffffff" />
+                            <path d="M 0 0 L 24 24 M 24 0 L 0 24" stroke="#e11d48" stroke-width="2" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">1. Скільки ОДНАКОВИХ ЖОВТИХ рибок 🟡 утворилося внаслідок копіювання штампа?</span>
+                    <input type="number" id="t4-num-1" min="0" max="10" placeholder="Число..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-800 focus:ring-2 focus:ring-sky-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+
+                <!-- Q2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">2. Скільки ВСЬОГО БУЛЬБАШОК 🫧 випустили рибки на малюнку?</span>
+                    <input type="number" id="t4-num-2" min="0" max="10" placeholder="Число..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-800 focus:ring-2 focus:ring-sky-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: Sorting Actions by Categories -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Сортування дій редагування 🗂️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Класифікація</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розподіли кожну дію до відповідної категорії редагування:</p>
+
+            <div class="space-y-4">
+                <!-- Action A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        📋 Багаторазове клацання штампом для створення лісу
+                    </span>
+                    <select id="t5-cat-1" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери категорію...</option>
+                        <option value="create_copy">Створення та копіювання</option>
+                        <option value="move_resize">Переміщення та зміна розміру</option>
+                        <option value="delete_fix">Видалення та виправлення помилок</option>
+                    </select>
+                </div>
+
+                <!-- Action B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        🧹 Витирання випадкової плями Гумкою
+                    </span>
+                    <select id="t5-cat-2" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери категорію...</option>
+                        <option value="create_copy">Створення та копіювання</option>
+                        <option value="move_resize">Переміщення та зміна розміру</option>
+                        <option value="delete_fix">Видалення та виправлення помилок</option>
+                    </select>
+                </div>
+
+                <!-- Action C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        📊 Зсув смужки розміру на правій панелі штампа
+                    </span>
+                    <select id="t5-cat-3" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери категорію...</option>
+                        <option value="create_copy">Створення та копіювання</option>
+                        <option value="move_resize">Переміщення та зміна розміру</option>
+                        <option value="delete_fix">Видалення та виправлення помилок</option>
+                    </select>
+                </div>
+
+                <!-- Action D -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        ↩️ Натискання кнопки «Відмінити» для скасування штриха
+                    </span>
+                    <select id="t5-cat-4" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери категорію...</option>
+                        <option value="create_copy">Створення та копіювання</option>
+                        <option value="move_resize">Переміщення та зміна розміру</option>
+                        <option value="delete_fix">Видалення та виправлення помилок</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section in Blue Gradient -->
+        <section class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-sky-100 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 інтерактивних вправ та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-teal-400 to-sky-400 hover:from-teal-500 hover:to-sky-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-teal-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-teal-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-sky-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-sky-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: Editing Composite Artwork -->
+        <section class="bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-sky-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-amber-400 text-slate-900 p-3 rounded-2xl text-2xl shadow-md">🏡</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">
+                        Творча майстерня: Редагування малюнка «Казкова галявина» 🌲🌸
+                    </h2>
+                    <p class="text-sky-700 font-medium text-sm md:text-base">
+                        Практична робота з виправлення помилок та копіювання об’єктів
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Left: Comparison SVG Artwork (Before & After) -->
+                <div class="bg-white p-4 rounded-2xl border-2 border-sky-300 shadow-md space-y-4">
+                    <div class="flex justify-between items-center px-2">
+                        <span class="font-fredoka font-bold text-xs text-sky-600">🖼️ Зразок: До та Після редагування</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">Tux Paint</span>
+                    </div>
+
+                    <!-- Before Artwork -->
+                    <div class="p-2 rounded-xl bg-slate-100 border border-slate-300">
+                        <p class="text-xs font-bold text-rose-600 mb-1 flex items-center gap-1">
+                            <span>❌</span> З помилкою (дерево на хатці, плями):
+                        </p>
+                        <div class="w-full rounded-lg overflow-hidden bg-sky-200 border border-slate-400">
+                            <svg viewBox="0 0 300 130" class="w-full h-auto">
+                                <rect y="70" width="300" height="60" fill="#4ade80" />
+                                <rect x="110" y="55" width="50" height="40" fill="#f97316" />
+                                <polygon points="105,55 135,30 165,55" fill="#ef4444" />
+                                <!-- Mistake: Tree inside the roof -->
+                                <polygon points="135,15 120,45 150,45" fill="#15803d" />
+                                <rect x="132" y="45" width="6" height="15" fill="#78350f" />
+                                <!-- Random blotches -->
+                                <circle cx="50" cy="40" r="12" fill="#ef4444" opacity="0.6" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- After Artwork -->
+                    <div class="p-2 rounded-xl bg-slate-100 border border-slate-300">
+                        <p class="text-xs font-bold text-emerald-600 mb-1 flex items-center gap-1">
+                            <span>✅</span> Відредагований малюнок (дерева збоку, скопійовані квіти):
+                        </p>
+                        <div class="w-full rounded-lg overflow-hidden bg-sky-200 border border-slate-400">
+                            <svg viewBox="0 0 300 130" class="w-full h-auto">
+                                <rect y="70" width="300" height="60" fill="#4ade80" />
+                                <circle cx="250" cy="25" r="16" fill="#facc15" />
+                                <rect x="110" y="55" width="50" height="40" fill="#f97316" />
+                                <polygon points="105,55 135,30 165,55" fill="#ef4444" />
+                                <!-- Tree corrected to side -->
+                                <polygon points="40,35 25,75 55,75" fill="#15803d" />
+                                <rect x="37" y="75" width="6" height="15" fill="#78350f" />
+                                <!-- Copied Flowers -->
+                                <circle cx="180" cy="95" r="5" fill="#ec4899" />
+                                <circle cx="210" cy="95" r="5" fill="#ec4899" />
+                                <circle cx="240" cy="95" r="5" fill="#ec4899" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Step by Step Instructions -->
+                <div class="space-y-4">
+                    <h3 class="font-fredoka text-xl font-bold text-slate-800">📋 Покрокова інструкція виконання:</h3>
+                    
+                    <ul class="space-y-3 font-medium text-slate-700 text-sm md:text-base">
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">1️⃣</span>
+                            <span>Відкрий <b>Tux Paint</b> і побудуй будиночок інструментом <b>«Форми» 🔷</b> (квадрат і трикутник).</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">2️⃣</span>
+                            <span><b>Зроби навмисну помилку:</b> постав штамп дерева прямо поверх даху або зроби випадкову пляму пензлем.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">3️⃣</span>
+                            <span>Виправ помилку: натисни кнопку <b>«Відмінити» ↩️</b> або витри залишку інструментом <b>«Гумка» 🧹</b>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">4️⃣</span>
+                            <span>Постав штамп дерева у правильному місці біля будинку.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">5️⃣</span>
+                            <span><b>Скопіюй квітки:</b> обраним штампом квітки клацни 3-4 рази на галявині, створюючи красивий ряд!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-600 text-xs md:text-sm">
+        <p>Інтерактивний робочий аркуш з інформатики для 2 класу • Редагування складеного малюнка 💙💛</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- TASK 1: TOOL MATCHING ---
+        function checkTask1() {
+            const m1 = document.getElementById('t1-match-1').value;
+            const m2 = document.getElementById('t1-match-2').value;
+            const m3 = document.getElementById('t1-match-3').value;
+            const m4 = document.getElementById('t1-match-4').value;
+
+            if (!m1 || !m2 || !m3 || !m4) {
+                showFeedback('feedback-1', '⚠️ Обери інструмент для кожної з 4 дій!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (m1 === 'eraser' && m2 === 'undo' && m3 === 'stamp_repeat' && m4 === 'shapes') {
+                showFeedback('feedback-1', '🎉 Чудово! Ти бездоганно знаєш призначення інструментів Tux Paint!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Підказка: Видалити деталь — Гумка, скасувати штрих — Відмінити, розмножити — Штамп!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            document.getElementById('t1-match-1').value = '';
+            document.getElementById('t1-match-2').value = '';
+            document.getElementById('t1-match-3').value = '';
+            document.getElementById('t1-match-4').value = '';
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: TRUE / FALSE DETECTIVE ---
+        const t2Answers = {};
+
+        function selectT2(qNum, choice, btn) {
+            t2Answers[qNum] = choice;
+            const parent = btn.parentElement;
+            parent.querySelectorAll('button').forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-300');
+            btn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-600');
+        }
+
+        function checkTask2() {
+            if (Object.keys(t2Answers).length < 3) {
+                showFeedback('feedback-2', '⚠️ Дай відповіді на всі 3 твердження!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (t2Answers[1] === true);
+            const ok2 = (t2Answers[2] === false); // Stamps cannot be moved once fixed in Tux Paint
+            const ok3 = (t2Answers[3] === true);
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-2', '🎉 Видатна детективна робота! Штамп не можна просто так перетягнути після клацання!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Пам’ятай: Помилково витерте повертає Undo, а вже поставлений штамп не можна совати мишею!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            for (let k in t2Answers) delete t2Answers[k];
+            document.querySelectorAll('.t2-q1-btn, .t2-q2-btn, .t2-q3-btn').forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: EDITING SEQUENCE ---
+        function checkTask3() {
+            const s1 = document.getElementById('t3-step-1').value;
+            const s2 = document.getElementById('t3-step-2').value;
+            const s3 = document.getElementById('t3-step-3').value;
+            const s4 = document.getElementById('t3-step-4').value;
+
+            if (!s1 || !s2 || !s3 || !s4) {
+                showFeedback('feedback-3', '⚠️ Укажи номер кроку для всіх 4 дій!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (s1 === '1' && s2 === '2' && s3 === '3' && s4 === '4') {
+                showFeedback('feedback-3', '🎉 Правильно! Спочатку помічаємо помилку, прибираємо її, переводимо курсор і ставимо штамп наново!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Подумай: спочатку треба знайти помилку та видалити її, а потім обрати нове місце для штампа!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            document.getElementById('t3-step-1').value = '';
+            document.getElementById('t3-step-2').value = '';
+            document.getElementById('t3-step-3').value = '';
+            document.getElementById('t3-step-4').value = '';
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: ARTWORK ANALYSIS ---
+        function checkTask4() {
+            const n1 = document.getElementById('t4-num-1').value.trim();
+            const n2 = document.getElementById('t4-num-2').value.trim();
+
+            if (!n1 || !n2) {
+                showFeedback('feedback-4', '⚠️ Введи числа у два поля!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            // 3 Yellow copied fish, 4 Bubbles
+            const ok1 = (parseInt(n1) === 3);
+            const ok2 = (parseInt(n2) === 4);
+
+            if (ok1 && ok2) {
+                showFeedback('feedback-4', '🎉 Молодець! 3 однакові скопійовані жовті рибки та 4 бульбашки у воді!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Порахуй уважніше: на малюнку 3 однакові жовті рибки та 4 круглі бульбашки!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            document.getElementById('t4-num-1').value = '';
+            document.getElementById('t4-num-2').value = '';
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: CATEGORY SORTING ---
+        function checkTask5() {
+            const c1 = document.getElementById('t5-cat-1').value;
+            const c2 = document.getElementById('t5-cat-2').value;
+            const c3 = document.getElementById('t5-cat-3').value;
+            const c4 = document.getElementById('t5-cat-4').value;
+
+            if (!c1 || !c2 || !c3 || !c4) {
+                showFeedback('feedback-5', '⚠️ Обери категорію для кожної дії!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (c1 === 'create_copy');
+            const ok2 = (c2 === 'delete_fix');
+            const ok3 = (c3 === 'move_resize');
+            const ok4 = (c4 === 'delete_fix');
+
+            if (ok1 && ok2 && ok3 && ok4) {
+                showFeedback('feedback-5', '🎉 Бездоганно! Ти чудово розрізняєш види дій редагування!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Підказка: Клацання штампом — копіювання, Гумка та Відмінити — виправлення, смужка — зміна розміру!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            document.getElementById('t5-cat-1').value = '';
+            document.getElementById('t5-cat-2').value = '';
+            document.getElementById('t5-cat-3').value = '';
+            document.getElementById('t5-cat-4').value = '';
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- GENERAL FEEDBACK HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL EVALUATION & CONFETTI ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Майстер Редагування Tux Paint!";
+                descEl.innerText = "Вітаємо! Ти справжній експерт із виділення, копіювання, переміщення та видалення об'єктів!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 140, spread: 90, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Вправний Редактор!";
+                descEl.innerText = "Гарна робота! Перевір свої помилки та спробуй набрати 5 з 5!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний Початківець!";
+                descEl.innerText = "Повтори навчальний матеріал і спробуй виконати вправи ще раз!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
