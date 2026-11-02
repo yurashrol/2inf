@@ -67,9 +67,6 @@
     </div>
 
     <div class="max-w-3xl mx-auto space-y-3">
-        
-        
-       
         <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
             <iframe loading="lazy" 
                     class="absolute inset-0 w-full h-full border-0 m-0 p-0"
@@ -78,8 +75,6 @@
                     allow="fullscreen">
             </iframe>
         </div>
-        
-        
     </div>
 </section>
 
@@ -441,6 +436,116 @@
                 <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-teal-300"></h3>
                 <p id="result-score-text" class="text-lg font-medium text-sky-100"></p>
                 <p id="result-description" class="text-sm md:text-base text-sky-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: Magic Workshop for Kids -->
+        <section id="practical-task" class="bg-gradient-to-br from-amber-50 via-amber-100/50 to-orange-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-amber-200 relative overflow-hidden">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 rounded-2xl bg-amber-400 text-slate-900 flex items-center justify-center font-fredoka font-bold text-2xl shadow-md">
+                        🖥️
+                    </div>
+                    <div>
+                        <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">Магічна майстерня Тукса 🐧🎨</h2>
+                        <p class="text-amber-800 text-sm font-semibold">Твоє перше малювальне завдання в Tux Paint!</p>
+                    </div>
+                </div>
+                <span class="hidden sm:inline-block text-xs font-bold px-3 py-1.5 bg-amber-200 text-amber-900 rounded-full border border-amber-300">Практика на комп'ютері</span>
+            </div>
+
+            <!-- Task Objective Card -->
+            <div class="bg-white rounded-2xl p-5 md:p-6 mb-6 shadow-sm border border-amber-200">
+                <div class="flex items-start gap-4">
+                    <span class="text-4xl shrink-0">🏞️</span>
+                    <div>
+                        <h3 class="font-fredoka text-xl font-bold text-slate-900 mb-1">Завдання: «Казковий гай для Тукса»</h3>
+                        <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                            Відкрий програму <b>Tux Paint</b> на своєму комп’ютері та намалюй веселу галявинку, де любить гуляти наш пінгвінчик! Фігури малювати не потрібно — лише свобода фантазії, пензлик, штампи та трохи магії!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions & Checklist -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <!-- Step by step checklist -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-amber-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-fredoka font-bold text-lg text-amber-900 mb-3 flex items-center gap-2">
+                            <span>📋</span> Крок за кроком (Вказівки):
+                        </h4>
+                        <ul class="space-y-3 text-sm text-slate-700 font-medium">
+                            <li class="flex items-start gap-2">
+                                <input type="checkbox" id="step-1" class="mt-1 w-4 h-4 text-amber-600 rounded focus:ring-amber-500 cursor-pointer">
+                                <label for="step-1" class="cursor-pointer"><b>1. Зелена галявинка:</b> Обери зелений колір і намалюй внизу від руки соковиту траву (або скористайся ефектом «Трава» в інструменті 🪄 <i>Магія</i>).</label>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <input type="checkbox" id="step-2" class="mt-1 w-4 h-4 text-amber-600 rounded focus:ring-amber-500 cursor-pointer">
+                                <label for="step-2" class="cursor-pointer"><b>2. Ясне сонечко:</b> Обери жовтий колір та намалюй у кутку кругле сонечко з промінчиками інструментом 🖌️ <i>Пензель</i>.</label>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <input type="checkbox" id="step-3" class="mt-1 w-4 h-4 text-amber-600 rounded focus:ring-amber-500 cursor-pointer">
+                                <label for="step-3" class="cursor-pointer"><b>3. Друзі Тукса:</b> Натисни на інструмент 🐧 <i>Штамп</i> та постав на галявині 2-3 штампи тваринок чи рослин.</label>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <input type="checkbox" id="step-4" class="mt-1 w-4 h-4 text-amber-600 rounded focus:ring-amber-500 cursor-pointer">
+                                <label for="step-4" class="cursor-pointer"><b>4. Магічні дива:</b> Додай пару дивовижних квітів або веселку інструментом 🪄 <i>Магія</i>.</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-100 text-xs text-amber-800 font-semibold flex items-center gap-1">
+                        💡 Порада: Якщо щось пішло не так, скористайся Гумкою або кнопкою «Закулісся» (Відміна)!
+                    </div>
+                </div>
+
+                <!-- Visual Sample Mockup -->
+                <div class="bg-white rounded-2xl p-5 shadow-sm border border-amber-200 flex flex-col items-center justify-center text-center">
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-3 py-1 rounded-full mb-3">
+                        🖼️ Зразок готового малюнка
+                    </span>
+                    
+                    <!-- Artwork Sample Container -->
+                    <div class="w-full h-48 bg-sky-200 rounded-xl border-4 border-slate-700 relative overflow-hidden flex flex-col justify-between p-3 shadow-inner">
+                        <!-- Sun in corner -->
+                        <div class="absolute top-2 right-2 w-10 h-10 bg-yellow-400 rounded-full border-2 border-yellow-500 shadow-md flex items-center justify-center text-xs">
+                            ☀️
+                        </div>
+                        <!-- Rainbow Magic Effect -->
+                        <div class="absolute top-3 left-4 text-2xl opacity-80">
+                            🌈
+                        </div>
+                        <!-- Canvas center space / Clouds -->
+                        <div class="flex justify-start gap-4 text-white text-lg">
+                            <span>☁️</span>
+                            <span>☁️</span>
+                        </div>
+                        <!-- Grass and Stamps at bottom -->
+                        <div class="relative z-10 flex items-end justify-between pt-6 border-b-8 border-emerald-500 bg-emerald-400/40 rounded-b-lg -mx-3 -mb-3 px-4 pb-1">
+                            <span class="text-2xl" title="Штамп Тваринки">🐸</span>
+                            <span class="text-3xl" title="Головний герой Тукс">🐧</span>
+                            <span class="text-2xl" title="Магічні квіти">🌸</span>
+                            <span class="text-2xl" title="Штамп Грибочка">🍄</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xs text-slate-500 mt-3 font-medium">
+                        Твій малюнок може бути зовсім іншим! Фантазуй та експериментуй з кольорами! ✨
+                    </p>
+                </div>
+            </div>
+
+            <!-- Save Task Instructions -->
+            <div class="p-4 bg-amber-200/60 rounded-2xl border border-amber-300 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-800">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">💾</span>
+                    <span class="text-sm font-semibold">
+                        Не забудь зберегти свій малюнок! Для цього натисни кнопку <b>«Зберегти»</b> 💾 на лівій панелі програми.
+                    </span>
+                </div>
+                <div class="shrink-0 font-fredoka font-bold text-amber-900 bg-white px-4 py-2 rounded-xl text-xs shadow-sm">
+                    Молодець! 🎉
+                </div>
             </div>
         </section>
 
