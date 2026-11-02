@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Об’єкти навколишнього світу. Властивості об’єктів — 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fed7aa 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .pair-card-selected {
+            border-color: #ea580c !important;
+            background-color: #ffedd5 !important;
+            transform: scale(1.02);
+        }
+        .pair-card-matched {
+            border-color: #16a34a !important;
+            background-color: #dcfce7 !important;
+            opacity: 0.85;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-amber-800 via-orange-800 to-amber-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-orange-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-amber-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">🌍</span> Інформатика - 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Об’єкти навколишнього світу. Властивості об’єктів 🔍🌳
+            </h1>
+            <p class="text-orange-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Дізнайся, що таке об'єкти, якими бувають їхні властивості та як ми їх пізнаємо!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Presentation Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-orange-100 p-3 rounded-2xl text-orange-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальна презентація</h2>
+                    <p class="text-slate-500 text-sm">Переглянь слайди для закріплення знань про об'єкти</p>
+                </div>
+            </div>
+
+            <div class="max-w-2xl mx-auto space-y-2">
+                <div class="space-y-2">
+                    <h3 class="font-fredoka text-lg font-semibold text-slate-700 flex items-center justify-center">
+                        <span class="text-orange-500 mr-2">✦</span> Поняття про об'єкти та їх властивості
+                    </h3>
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-200">
+                        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vSeFwTjz4kTGzFpwybLJepuSfIadtNfagsBfuisX5vwXf3veaKxq01VnsbC904XAjLvRcgW8CKhAc1_/embed?start=false&loop=false&delayms=3000" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen="true">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Keyboard Input (Введення з клавіатури) -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Вгадай об’єкт за властивостями ⌨️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-orange-50 text-orange-600 rounded-full">Введи відповідь</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай властивості об’єкта та напиши його назву за допомогою клавіатури:</p>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-2/3">1. Солодке, кругле, червоне або зелене, росте на дереві 🍎:</span>
+                    <input type="text" id="t1-input-1" placeholder="Твоя відповідь..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka text-orange-800 focus:ring-2 focus:ring-orange-500 focus:outline-none w-full md:w-1/3">
+                </div>
+
+                <!-- Q2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-2/3">2. Жовтий, кислий, овальний фрукт 🍋:</span>
+                    <input type="text" id="t1-input-2" placeholder="Твоя відповідь..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka text-orange-800 focus:ring-2 focus:ring-orange-500 focus:outline-none w-full md:w-1/3">
+                </div>
+
+                <!-- Q3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-2/3">3. Пухнастий, муркоче, любить молоко, має 4 лапки 🐱:</span>
+                    <input type="text" id="t1-input-3" placeholder="Твоя відповідь..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka text-orange-800 focus:ring-2 focus:ring-orange-500 focus:outline-none w-full md:w-1/3">
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-orange-500/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: True / False Choice Cards (Правда / Неправда) -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Органи чуття та властивості 🤔</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-600 rounded-full">Обери «Так» чи «Ні»</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Уважно прочитай твердження про те, як ми визначаємо властивості об'єктів:</p>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 t2-item" data-q="1">
+                    <span class="font-medium text-slate-700 text-base">1. Колір та форму об’єкта ми визначаємо за допомогою органів зору (очей) 👁️.</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectT2(1, 'yes', this)" class="t2-btn px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-orange-50 transition text-sm">Так 👍</button>
+                        <button type="button" onclick="selectT2(1, 'no', this)" class="t2-btn px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition text-sm">Ні 👎</button>
+                    </div>
+                </div>
+
+                <!-- Q2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 t2-item" data-q="2">
+                    <span class="font-medium text-slate-700 text-base">2. Температуру об'єкта (гарячий чи холодний) можна почути вухами 👂.</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectT2(2, 'yes', this)" class="t2-btn px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-orange-50 transition text-sm">Так 👍</button>
+                        <button type="button" onclick="selectT2(2, 'no', this)" class="t2-btn px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition text-sm">Ні 👎</button>
+                    </div>
+                </div>
+
+                <!-- Q3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 t2-item" data-q="3">
+                    <span class="font-medium text-slate-700 text-base">3. Запах квітки ми сприймаємо за допомогою носа 👃.</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectT2(3, 'yes', this)" class="t2-btn px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-orange-50 transition text-sm">Так 👍</button>
+                        <button type="button" onclick="selectT2(3, 'no', this)" class="t2-btn px-5 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition text-sm">Ні 👎</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-500/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Click-to-Pair Element Matching (З'єднай об'єкт і властивість) -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">З’єднай об’єкт та його властивість 🧩</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-700 rounded-full">Натисни об’єкт ➔ властивість</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Натисни спочатку на назву об'єкта ліворуч, а потім на його головну властивість праворуч:</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Left Column: Items -->
+                <div class="space-y-3" id="t3-left-col">
+                    <div onclick="selectPairItem('item', 'ice', this)" class="pair-card border-2 border-slate-200 rounded-2xl p-4 bg-slate-50 cursor-pointer font-fredoka font-semibold text-slate-800 hover:border-orange-400 transition flex items-center justify-between">
+                        <span>🧊 Лід</span>
+                        <span class="pair-indicator text-xs bg-slate-200 text-slate-600 px-2 py-1 rounded-lg">Обрати</span>
+                    </div>
+                    <div onclick="selectPairItem('item', 'ball', this)" class="pair-card border-2 border-slate-200 rounded-2xl p-4 bg-slate-50 cursor-pointer font-fredoka font-semibold text-slate-800 hover:border-orange-400 transition flex items-center justify-between">
+                        <span>⚽ М'яч</span>
+                        <span class="pair-indicator text-xs bg-slate-200 text-slate-600 px-2 py-1 rounded-lg">Обрати</span>
+                    </div>
+                    <div onclick="selectPairItem('item', 'sugar', this)" class="pair-card border-2 border-slate-200 rounded-2xl p-4 bg-slate-50 cursor-pointer font-fredoka font-semibold text-slate-800 hover:border-orange-400 transition flex items-center justify-between">
+                        <span>🍬 Цукор</span>
+                        <span class="pair-indicator text-xs bg-slate-200 text-slate-600 px-2 py-1 rounded-lg">Обрати</span>
+                    </div>
+                    <div onclick="selectPairItem('item', 'pillow', this)" class="pair-card border-2 border-slate-200 rounded-2xl p-4 bg-slate-50 cursor-pointer font-fredoka font-semibold text-slate-800 hover:border-orange-400 transition flex items-center justify-between">
+                        <span>🛏️ Подушка</span>
+                        <span class="pair-indicator text-xs bg-slate-200 text-slate-600 px-2 py-1 rounded-lg">Обрати</span>
+                    </div>
+                </div>
+
+                <!-- Right Column: Properties -->
+                <div class="space-y-3" id="t3-right-col">
+                    <div onclick="selectPairItem('desc', 'sugar', this)" class="pair-card border-2 border-slate-200 rounded-2xl p-4 bg-slate-50 cursor-pointer text-sm font-medium text-slate-700 hover:border-orange-400 transition">
+                        Солодкий на смак, білого кольору ⚪
+                    </div>
+                    <div onclick="selectPairItem('desc', 'ice', this)" class="pair-card border-2 border-slate-200 rounded-2xl p-4 bg-slate-50 cursor-pointer text-sm font-medium text-slate-700 hover:border-orange-400 transition">
+                        Холодний, твердий, прозорий ❄️
+                    </div>
+                    <div onclick="selectPairItem('desc', 'pillow', this)" class="pair-card border-2 border-slate-200 rounded-2xl p-4 bg-slate-50 cursor-pointer text-sm font-medium text-slate-700 hover:border-orange-400 transition">
+                        М'яка, легка, зручна для сну ☁️
+                    </div>
+                    <div onclick="selectPairItem('desc', 'ball', this)" class="pair-card border-2 border-slate-200 rounded-2xl p-4 bg-slate-50 cursor-pointer text-sm font-medium text-slate-700 hover:border-orange-400 transition">
+                        Круглої форми, добре стрибає 🔴
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: Dropdowns + Audio Readout (Заповни пропуски + Озвучення) -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Заповни правила та прослухай 🔊</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-orange-50 text-orange-600 rounded-full">Озвучення відповіді</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Вибери пропущені слова. Коли все буде вірно, комп'ютер прочитає правила вголос!</p>
+
+            <div class="space-y-4">
+                <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 font-medium leading-relaxed">
+                    1. Все, що нас оточує (предмети, істоти, явища), називають 
+                    <select id="t4-word-1" class="border border-slate-300 rounded-xl px-3 py-1.5 bg-white font-semibold text-orange-700 focus:ring-2 focus:ring-orange-500 my-1">
+                        <option value="">...</option>
+                        <option value="objects">об'єктами 📦</option>
+                        <option value="numbers">числами 🔢</option>
+                    </select>.
+                </div>
+
+                <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 font-medium leading-relaxed">
+                    2. Кожен об’єкт має свої особливості — це його 
+                    <select id="t4-word-2" class="border border-slate-300 rounded-xl px-3 py-1.5 bg-white font-semibold text-orange-700 focus:ring-2 focus:ring-orange-500 my-1">
+                        <option value="">...</option>
+                        <option value="names">імена 🏷️</option>
+                        <option value="properties">властивості 🎨</option>
+                    </select> (наприклад: колір, форма, розмір).
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-orange-500/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: Classification (Жива / Нежива природа) -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Походження об'єктів 🌿🗿</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-800 rounded-full">Живе чи Неживе?</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Визнач, до якої групи належить кожен об'єкт:</p>
+
+            <div class="space-y-4">
+                <!-- Row 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 t5-row" data-r="1">
+                    <span class="font-medium text-slate-700 text-base">1. Дерево дуб 🌳</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectT5(1, 'alive', this)" class="t5-btn px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-green-50 transition text-sm">Жива природа 🌱</button>
+                        <button type="button" onclick="selectT5(1, 'not_alive', this)" class="t5-btn px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 transition text-sm">Нежива природа 🪨</button>
+                    </div>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 t5-row" data-r="2">
+                    <span class="font-medium text-slate-700 text-base">2. Камінь біля річки 🪨</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectT5(2, 'alive', this)" class="t5-btn px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-green-50 transition text-sm">Жива природа 🌱</button>
+                        <button type="button" onclick="selectT5(2, 'not_alive', this)" class="t5-btn px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 transition text-sm">Нежива природа 🪨</button>
+                    </div>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 t5-row" data-r="3">
+                    <span class="font-medium text-slate-700 text-base">3. Маленька синичка 🐦</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectT5(3, 'alive', this)" class="t5-btn px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-green-50 transition text-sm">Жива природа 🌱</button>
+                        <button type="button" onclick="selectT5(3, 'not_alive', this)" class="t5-btn px-4 py-2 rounded-xl font-fredoka font-semibold bg-white border border-slate-300 text-slate-700 hover:bg-slate-100 transition text-sm">Нежива природа 🪨</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-amber-700 hover:bg-amber-800 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-700/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section -->
+        <section class="bg-gradient-to-br from-amber-800 via-orange-800 to-amber-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-orange-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-amber-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-orange-100 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 завдань та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-amber-400 to-orange-400 hover:from-amber-500 hover:to-orange-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-amber-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-amber-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-orange-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-orange-200"></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-600 text-xs md:text-sm">
+        <p>Інтерактивна гра з інформатики для 2 класу 💙💛</p>
+    </footer>
+
+    <!-- JavaScript Engine -->
+    <script>
+        // --- TASK 1: KEYBOARD INPUT LOGIC ---
+        function checkTask1() {
+            const in1 = document.getElementById('t1-input-1').value.trim().toLowerCase();
+            const in2 = document.getElementById('t1-input-2').value.trim().toLowerCase();
+            const in3 = document.getElementById('t1-input-3').value.trim().toLowerCase();
+
+            if (!in1 || !in2 || !in3) {
+                showFeedback('feedback-1', '⚠️ Впиши відповіді у всі три поля!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (in1 === 'яблуко' || in1 === 'яблучко');
+            const ok2 = (in2 === 'лимон');
+            const ok3 = (in3 === 'кіт' || in3 === 'котик' || in3 === 'кішка');
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-1', '🎉 Супер! Всі об’єкти угадано правильно!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Перевір відповіді: 1 - Яблуко, 2 - Лимон, 3 - Кіт', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            document.getElementById('t1-input-1').value = '';
+            document.getElementById('t1-input-2').value = '';
+            document.getElementById('t1-input-3').value = '';
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: TRUE / FALSE LOGIC ---
+        const t2Answers = {};
+
+        function selectT2(qNum, choice, btn) {
+            t2Answers[qNum] = choice;
+            const row = btn.closest('.t2-item');
+            row.querySelectorAll('.t2-btn').forEach(b => {
+                b.classList.remove('bg-orange-500', 'bg-rose-500', 'text-white', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700');
+            });
+
+            if (choice === 'yes') {
+                btn.classList.remove('bg-white', 'text-slate-700');
+                btn.classList.add('bg-orange-500', 'text-white', 'shadow-md');
+            } else {
+                btn.classList.remove('bg-white', 'text-slate-700');
+                btn.classList.add('bg-rose-500', 'text-white', 'shadow-md');
+            }
+        }
+
+        function checkTask2() {
+            if (Object.keys(t2Answers).length < 3) {
+                showFeedback('feedback-2', '⚠️ Дай відповідь на всі 3 запитання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const isCorrect = (t2Answers[1] === 'yes') && 
+                              (t2Answers[2] === 'no') && 
+                              (t2Answers[3] === 'yes');
+
+            if (isCorrect) {
+                showFeedback('feedback-2', '🎉 Чудово! Ти добре знаєш органи чуття!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Згадай: температуру ми відчуваємо дотиком (шкірою), а не вухами!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            for (let k in t2Answers) delete t2Answers[k];
+            document.querySelectorAll('.t2-btn').forEach(b => {
+                b.classList.remove('bg-orange-500', 'bg-rose-500', 'text-white', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700');
+            });
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: PAIR MATCHING LOGIC ---
+        let selectedItem = null;
+        let selectedDesc = null;
+        const matchedPairs = new Set();
+
+        function selectPairItem(type, id, el) {
+            if (matchedPairs.has(id)) return;
+
+            if (type === 'item') {
+                document.querySelectorAll('#t3-left-col .pair-card').forEach(c => c.classList.remove('pair-card-selected'));
+                selectedItem = { id, el };
+                el.classList.add('pair-card-selected');
+            } else if (type === 'desc') {
+                document.querySelectorAll('#t3-right-col .pair-card').forEach(c => c.classList.remove('pair-card-selected'));
+                selectedDesc = { id, el };
+                el.classList.add('pair-card-selected');
+            }
+
+            if (selectedItem && selectedDesc) {
+                if (selectedItem.id === selectedDesc.id) {
+                    matchedPairs.add(selectedItem.id);
+                    selectedItem.el.className = 'pair-card border-2 rounded-2xl p-4 pair-card-matched flex items-center justify-between';
+                    selectedDesc.el.className = 'pair-card border-2 rounded-2xl p-4 pair-card-matched text-sm font-medium';
+                    selectedItem.el.querySelector('.pair-indicator').innerText = 'З’єднано ✅';
+                    selectedItem = null;
+                    selectedDesc = null;
+                } else {
+                    setTimeout(() => {
+                        if (selectedItem) selectedItem.el.classList.remove('pair-card-selected');
+                        if (selectedDesc) selectedDesc.el.classList.remove('pair-card-selected');
+                        selectedItem = null;
+                        selectedDesc = null;
+                    }, 400);
+                }
+            }
+        }
+
+        function checkTask3() {
+            if (matchedPairs.size === 4) {
+                showFeedback('feedback-3', '🎉 Відмінно! Всі об’єкти з’єднані з їх властивостями!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', `💡 З'єднано ${matchedPairs.size} з 4 пар. Спробуй ще!`, 'bg-amber-100 text-amber-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            matchedPairs.clear();
+            selectedItem = null;
+            selectedDesc = null;
+
+            document.querySelectorAll('.pair-card').forEach(c => {
+                c.className = 'pair-card border-2 border-slate-200 rounded-2xl p-4 bg-slate-50 cursor-pointer hover:border-orange-400 transition';
+            });
+            document.querySelectorAll('#t3-left-col .pair-card').forEach(c => {
+                c.classList.add('font-fredoka', 'font-semibold', 'text-slate-800', 'flex', 'items-center', 'justify-between');
+                const ind = c.querySelector('.pair-indicator');
+                if (ind) ind.innerText = 'Обрати';
+            });
+            document.querySelectorAll('#t3-right-col .pair-card').forEach(c => {
+                c.classList.add('text-sm', 'font-medium', 'text-slate-700');
+            });
+
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: DROPDOWNS & SPEECH SYNTHESIS LOGIC ---
+        function checkTask4() {
+            const w1 = document.getElementById('t4-word-1').value;
+            const w2 = document.getElementById('t4-word-2').value;
+
+            if (!w1 || !w2) {
+                showFeedback('feedback-4', '⚠️ Обери варіанти у двох реченнях!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (w1 === 'objects' && w2 === 'properties') {
+                showFeedback('feedback-4', '🎉 Все вірно! Прослухай правило... 🔊', 'bg-emerald-100 text-emerald-800');
+                
+                // Web Speech API Readout
+                if ('speechSynthesis' in window) {
+                    const textToRead = "Все, що нас оточує, називають об'єктами. Кожен об'єкт має свої особливості — це його властивості.";
+                    const utterance = new SpeechSynthesisUtterance(textToRead);
+                    utterance.lang = 'uk-UA';
+                    utterance.rate = 0.9;
+                    window.speechSynthesis.cancel();
+                    window.speechSynthesis.speak(utterance);
+                }
+
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Подумай ще: все навколо — це об\'єкти, а їхні риси — це властивості!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            document.getElementById('t4-word-1').value = '';
+            document.getElementById('t4-word-2').value = '';
+            document.getElementById('feedback-4').classList.add('hidden');
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        }
+
+
+        // --- TASK 5: CLASSIFICATION LOGIC ---
+        const t5Answers = {};
+
+        function selectT5(rowNum, choice, btn) {
+            t5Answers[rowNum] = choice;
+            const row = btn.closest('.t5-row');
+            row.querySelectorAll('.t5-btn').forEach(b => {
+                b.classList.remove('bg-orange-500', 'bg-amber-700', 'text-white', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700');
+            });
+
+            if (choice === 'alive') {
+                btn.classList.remove('bg-white', 'text-slate-700');
+                btn.classList.add('bg-orange-500', 'text-white', 'shadow-md');
+            } else {
+                btn.classList.remove('bg-white', 'text-slate-700');
+                btn.classList.add('bg-amber-700', 'text-white', 'shadow-md');
+            }
+        }
+
+        function checkTask5() {
+            if (Object.keys(t5Answers).length < 3) {
+                showFeedback('feedback-5', '⚠️ Розподіли всі 3 об\'єкти!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const isCorrect = (t5Answers[1] === 'alive') && 
+                              (t5Answers[2] === 'not_alive') && 
+                              (t5Answers[3] === 'alive');
+
+            if (isCorrect) {
+                showFeedback('feedback-5', '🎉 Молодець! Ти чудово розрізняєш живу та неживу природу!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Подумай ще: дерева та птахи ростуть і дихають — це жива природа!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            for (let k in t5Answers) delete t5Answers[k];
+            document.querySelectorAll('.t5-btn').forEach(b => {
+                b.classList.remove('bg-orange-500', 'bg-amber-700', 'text-white', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700');
+            });
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- GENERAL FEEDBACK HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL EVALUATION ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Майстер Об'єктів та Властивостей!";
+                descEl.innerText = "Неймовірно! Ти ідеально розпізнаєш об'єкти та їхні властивості навколо нас!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Знавець Природи та Об'єктів!";
+                descEl.innerText = "Гарна робота! Перевір підказки до помилок та спробуй набрати 5/5!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний Дослідник!";
+                descEl.innerText = "Ти стараєшся! Переглянь ще раз презентацію та спробуй виконати завдання знову!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
