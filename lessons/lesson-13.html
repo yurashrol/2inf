@@ -144,17 +144,17 @@
             </div>
         </section>
 
-        <!-- TASK 2: Color Palette Sentence Puzzle & Speech Synthesis -->
+        <!-- TASK 2: Color Palette Sentence Puzzle -->
         <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center space-x-3">
                     <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
-                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Палітра кольорів & Озвучення 🌈🔊</h2>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Палітра кольорів 🌈</h2>
                 </div>
                 <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full">Пазл речень</span>
             </div>
 
-            <p class="text-slate-600 mb-6 font-medium">Заповни пропуски про палітру кольорів Tux Paint. Якщо збереш правильно, комп'ютер зачитає правило вголос!</p>
+            <p class="text-slate-600 mb-6 font-medium">Заповни пропуски в реченнях про палітру кольорів у Tux Paint:</p>
 
             <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 font-medium leading-relaxed space-y-4">
                 <p>
@@ -500,7 +500,7 @@
         }
 
 
-        // --- TASK 2: COLOR PALETTE SENTENCE PUZZLE & SPEECH READOUT ---
+        // --- TASK 2: COLOR PALETTE SENTENCE PUZZLE ---
         function checkTask2() {
             const w1 = document.getElementById('t2-word-1').value;
             const w2 = document.getElementById('t2-word-2').value;
@@ -512,17 +512,7 @@
             }
 
             if (w1 === 'bottom' && w2 === 'mouse' && w3 === 'rainbow') {
-                showFeedback('feedback-2', '🎉 Всі відповіді вірні! Прослухай правило вголос... 🔊', 'bg-emerald-100 text-emerald-800');
-
-                if ('speechSynthesis' in window) {
-                    const fullText = "Палітра кольорів розміщена в самому низу екрана Tux Paint. Щоб обрати потрібний колір для малювання, слід натиснути на нього лівою кнопкою миші. Для вибору додаткових відтінків у палітрі є кнопка із зображенням веселки.";
-                    const utterance = new SpeechSynthesisUtterance(fullText);
-                    utterance.lang = 'uk-UA';
-                    utterance.rate = 0.9;
-                    window.speechSynthesis.cancel();
-                    window.speechSynthesis.speak(utterance);
-                }
-
+                showFeedback('feedback-2', '🎉 Молодець! Усі речення складено абсолютно правильно!', 'bg-emerald-100 text-emerald-800');
                 return true;
             } else {
                 showFeedback('feedback-2', '💡 Згадай: палітра внизу, вибираємо мишею, а додаткові кольори за кнопкою з веселкою!', 'bg-rose-100 text-rose-800');
@@ -535,7 +525,6 @@
             document.getElementById('t2-word-2').value = '';
             document.getElementById('t2-word-3').value = '';
             document.getElementById('feedback-2').classList.add('hidden');
-            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
         }
 
 
