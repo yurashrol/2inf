@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Додавання тексту до зображення у Tux Paint — 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner in Rich Blue Gradient -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">💻</span> Інформатика — 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Додавання тексту до зображення 🔤🎨
+            </h1>
+            <p class="text-sky-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Вчимося додавати підписи, обирати шрифти, змінювати кольори та підписувати свої малюнки та листівки у графічному редакторі Tux Paint разом із пінгвіном Туксом!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Educational Materials Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-sky-100 p-3 rounded-2xl text-sky-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальні матеріали</h2>
+                    <p class="text-slate-500 text-sm">Переглянь матеріали про те, як працює інструмент «Текст» у Tux Paint</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
+                    <iframe loading="lazy" 
+                            class="absolute inset-0 w-full h-full border-0 m-0 p-0"
+                            src="https://www.canva.com/design/DAHZyn5LDdA/K1xy7jaCdbOksAJDMjD8tw/view?embed" 
+                            allowfullscreen="allowfullscreen" 
+                            allow="fullscreen">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Ordering Steps to Add Text -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Послідовність дій при додаванні тексту 🔢</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-600 rounded-full">Порядок кроків</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розставий кроки у правильному порядку (від 1 до 4), щоб правильно додати підпис до малюнка у Tux Paint:</p>
+
+            <div class="space-y-4">
+                <!-- Step A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        🔤 Клацнути мишею на малюнку та надрукувати потрібні літери на клавіатурі
+                    </span>
+                    <select id="t1-step-1" class="w-full sm:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 focus:ring-2 focus:ring-sky-500">
+                        <option value="">Крок №...</option>
+                        <option value="1">1-й крок</option>
+                        <option value="2">2-й крок</option>
+                        <option value="3">3-й крок</option>
+                        <option value="4">4-й крок</option>
+                    </select>
+                </div>
+
+                <!-- Step B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        🎨 Обрати яскравий колір для літер на палітрі знизу
+                    </span>
+                    <select id="t1-step-2" class="w-full sm:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 focus:ring-2 focus:ring-sky-500">
+                        <option value="">Крок №...</option>
+                        <option value="1">1-й крок</option>
+                        <option value="2">2-й крок</option>
+                        <option value="3">3-й крок</option>
+                        <option value="4">4-й крок</option>
+                    </select>
+                </div>
+
+                <!-- Step C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        👈 Обрати інструмент «Текст» (ABC) на лівій панелі інструментів
+                    </span>
+                    <select id="t1-step-3" class="w-full sm:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 focus:ring-2 focus:ring-sky-500">
+                        <option value="">Крок №...</option>
+                        <option value="1">1-й крок</option>
+                        <option value="2">2-й крок</option>
+                        <option value="3">3-й крок</option>
+                        <option value="4">4-й крок</option>
+                    </select>
+                </div>
+
+                <!-- Step D -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        👉 Обрати шрифт (вигляд літер) у правому меню підпунктів
+                    </span>
+                    <select id="t1-step-4" class="w-full sm:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 focus:ring-2 focus:ring-sky-500">
+                        <option value="">Крок №...</option>
+                        <option value="1">1-й крок</option>
+                        <option value="2">2-й крок</option>
+                        <option value="3">3-й крок</option>
+                        <option value="4">4-й крок</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: Matching Functions with Text Tool Controls -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Інструменти та налаштування тексту 🔤⚙️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full">Відповідність елементів</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">З'єднай елемент керування у Tux Paint із дією, яку він виконує:</p>
+
+            <div class="space-y-4">
+                <!-- Item 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🔤</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Кнопка «ABC Текст» на лівій панелі</span>
+                    </div>
+                    <select id="t2-match-1" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="tool">Вмикає режим введення слів та літер 🔤</option>
+                        <option value="color">Змінює колір написаних букв 🎨</option>
+                        <option value="size">Змінює розмір та накреслення шрифту 📐</option>
+                        <option value="fix">Фіксує текст та завершує його введення ⌨️</option>
+                    </select>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🎨</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Палітра кольорів у нижній частині екрана</span>
+                    </div>
+                    <select id="t2-match-2" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="tool">Вмикає режим введення слів та літер 🔤</option>
+                        <option value="color">Змінює колір написаних букв 🎨</option>
+                        <option value="size">Змінює розмір та накреслення шрифту 📐</option>
+                        <option value="fix">Фіксує текст та завершує його введення ⌨️</option>
+                    </select>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🔠</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Стрілки та стилі у правому меню</span>
+                    </div>
+                    <select id="t2-match-3" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="tool">Вмикає режим введення слів та літер 🔤</option>
+                        <option value="color">Змінює колір написаних букв 🎨</option>
+                        <option value="size">Змінює розмір та накреслення шрифту 📐</option>
+                        <option value="fix">Фіксує текст та завершує його введення ⌨️</option>
+                    </select>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">⌨️</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Клавіша Enter на клавіатурі</span>
+                    </div>
+                    <select id="t2-match-4" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="tool">Вмикає режим введення слів та літер 🔤</option>
+                        <option value="color">Змінює колір написаних букв 🎨</option>
+                        <option value="size">Змінює розмір та накреслення шрифту 📐</option>
+                        <option value="fix">Фіксує текст та завершує його введення ⌨️</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Text Analysis / Card Inspection -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Аналіз написів на готовому малюнку 🔍🖼️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-teal-50 text-teal-600 rounded-full">Уважність та аналіз</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розглянь створену у Tux Paint вітальну листівку та дай відповіді на запитання:</p>
+
+            <!-- SVG Canvas Image -->
+            <div class="mb-6 p-4 md:p-6 rounded-2xl bg-slate-900 border-4 border-teal-500 shadow-xl flex flex-col items-center justify-center">
+                <div class="text-center mb-2 flex items-center gap-2">
+                    <span class="text-xs font-bold text-teal-300 uppercase tracking-widest">Полотно Tux Paint: Листівка</span>
+                </div>
+                <div class="w-full max-w-lg bg-sky-100 p-4 rounded-xl border-2 border-sky-300 shadow-inner">
+                    <svg viewBox="0 0 360 200" class="w-full h-auto rounded">
+                        <!-- Background Frame -->
+                        <rect width="360" height="200" fill="#e0f2fe" rx="10" />
+                        
+                        <!-- Sun -->
+                        <circle cx="50" cy="45" r="25" fill="#facc15" />
+                        <line x1="50" y1="10" x2="50" y2="20" stroke="#facc15" stroke-width="3" stroke-linecap="round" />
+                        <line x1="15" y1="45" x2="25" y2="45" stroke="#facc15" stroke-width="3" stroke-linecap="round" />
+                        <line x1="75" y1="45" x2="85" y2="45" stroke="#facc15" stroke-width="3" stroke-linecap="round" />
+                        <line x1="25" y1="20" x2="32" y2="27" stroke="#facc15" stroke-width="3" stroke-linecap="round" />
+                        <line x1="75" y1="20" x2="68" y2="27" stroke="#facc15" stroke-width="3" stroke-linecap="round" />
+
+                        <!-- Flowers -->
+                        <g transform="translate(70, 150)">
+                            <path d="M0,0 Q5,-20 0,-40" stroke="#16a34a" stroke-width="4" fill="none" />
+                            <circle cx="0" cy="-40" r="10" fill="#e11d48" />
+                            <circle cx="0" cy="-40" r="4" fill="#facc15" />
+                        </g>
+                        <g transform="translate(110, 160)">
+                            <path d="M0,0 Q-5,-15 0,-30" stroke="#16a34a" stroke-width="4" fill="none" />
+                            <circle cx="0" cy="-30" r="8" fill="#9333ea" />
+                            <circle cx="0" cy="-30" r="3" fill="#facc15" />
+                        </g>
+
+                        <!-- TEXT ELEMENTS -->
+                        <!-- Title Text in Red -->
+                        <text x="180" y="65" font-family="Fredoka, sans-serif" font-weight="bold" font-size="20" fill="#dc2626" text-anchor="middle">
+                            З Днем народження!
+                        </text>
+
+                        <!-- Subtitle Text in Blue -->
+                        <text x="180" y="105" font-family="Fredoka, sans-serif" font-weight="bold" font-size="16" fill="#2563eb" text-anchor="middle">
+                            Бажаю щастя та добра!
+                        </text>
+
+                        <!-- Author Text in Green -->
+                        <text x="330" y="180" font-family="Fredoka, sans-serif" font-weight="semibold" font-size="12" fill="#15803d" text-anchor="end">
+                            Автор: Софійка
+                        </text>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Question 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">1. Скільки окремих слів усього міститься у головному червоному заголовку («З Днем народження!»)?</span>
+                    <input type="number" id="t3-num-1" min="1" max="10" placeholder="Число..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-800 focus:ring-2 focus:ring-teal-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+
+                <!-- Question 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">2. Яким кольором написано текст побажання («Бажаю щастя та добра!»)?</span>
+                    <select id="t3-color-2" class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-800 focus:ring-2 focus:ring-teal-500 focus:outline-none w-full md:w-1/4 text-center">
+                        <option value="">Обери колір...</option>
+                        <option value="red">🔴 Червоним</option>
+                        <option value="blue">🔵 Синім</option>
+                        <option value="green">🟢 Зеленим</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-teal-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: True / False Rules of Text Tool -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Знавці інструмента «Текст»: Правда чи Неправда? ❓</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-700 rounded-full">Перевірка знань</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай твердження про використання інструмента «Текст» у Tux Paint таобери відповідь:</p>
+
+            <div class="space-y-6">
+                <!-- Statement 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        1. Надрукований текст у Tux Paint можна переміщувати мишею по екрану, поки не натиснуто Enter або інший інструмент.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT4(1, true, this)" class="t4-q1-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT4(1, false, this)" class="t4-q1-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statement 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        2. Колір слів не можна змінювати, якщо ви вже почали друкувати літери на малюнку.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT4(2, true, this)" class="t4-q2-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT4(2, false, this)" class="t4-q2-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statement 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        3. Кнопка інструмента «Текст» (ABC) розміщена на лівій панелі інструментів графічного редактора.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT4(3, true, this)" class="t4-q3-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT4(3, false, this)" class="t4-q3-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: Classification / Purpose of Text -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Класифікація та призначення написів 🗂️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Класифікація</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Визнач, для чого найкраще підходить кожен із наведених прикладів тексту:</p>
+
+            <div class="space-y-4">
+                <!-- Item A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        🎉 «Вітаю зі святом! Бажаю щастя та радості!»
+                    </span>
+                    <select id="t5-cat-1" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="card">Вітальна листівка 💌</option>
+                        <option value="author">Підпис автора малюнка ✍️</option>
+                        <option value="label">Назва об'єкта або предмета 🏷️</option>
+                    </select>
+                </div>
+
+                <!-- Item B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        🎨 «Підводний світ. Намалював: Сашко, 2-А клас»
+                    </span>
+                    <select id="t5-cat-2" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="card">Вітальна листівка 💌</option>
+                        <option value="author">Підпис автора малюнка ✍️</option>
+                        <option value="label">Назва об'єкта або предмета 🏷️</option>
+                    </select>
+                </div>
+
+                <!-- Item C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        🚌 «Автобус», «Будинок», «Сонечко»
+                    </span>
+                    <select id="t5-cat-3" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="card">Вітальна листівка 💌</option>
+                        <option value="author">Підпис автора малюнка ✍️</option>
+                        <option value="label">Назва об'єкта або предмета 🏷️</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section in Blue Gradient -->
+        <section class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-sky-100 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 інтерактивних вправ та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-teal-400 to-sky-400 hover:from-teal-500 hover:to-sky-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-teal-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-teal-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-sky-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-sky-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: Creating a Greeting Card with Signature -->
+        <section class="bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-sky-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-amber-400 text-slate-900 p-3 rounded-2xl text-2xl shadow-md">💌</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">
+                        Творча майстерня: Практичне завдання «Вітальна листівка з підписом у Tux Paint» 💌🎨
+                    </h2>
+                    <p class="text-sky-700 font-medium text-sm md:text-base">
+                        Намалюй та підпиши красиву листівку для рідних чи друзів
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Left: Preview SVG Sample -->
+                <div class="bg-white p-4 rounded-2xl border-2 border-sky-300 shadow-md space-y-4">
+                    <div class="flex justify-between items-center px-2">
+                        <span class="font-fredoka font-bold text-xs text-sky-600">🖼️ Зразок виконаної роботи</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">Tux Paint</span>
+                    </div>
+
+                    <div class="p-2 rounded-xl bg-slate-100 border border-slate-300">
+                        <div class="w-full rounded-lg overflow-hidden bg-white border border-slate-300">
+                            <svg viewBox="0 0 300 180" class="w-full h-auto">
+                                <!-- Background Canvas -->
+                                <rect width="300" height="180" fill="#fffbebe8" />
+                                
+                                <!-- Decorative Frame Border -->
+                                <rect x="8" y="8" width="284" height="164" rx="8" fill="none" stroke="#f43f5e" stroke-width="3" stroke-dasharray="8 4" />
+
+                                <!-- Sun and Cloud -->
+                                <circle cx="45" cy="40" r="18" fill="#facc15" />
+                                <path d="M220 35 Q230 25 245 30 Q255 20 270 30 Q280 35 275 45 Q260 55 230 45 Z" fill="#93c5fd" />
+
+                                <!-- Flowers -->
+                                <g transform="translate(60, 140)">
+                                    <circle cx="0" cy="0" r="12" fill="#ec4899" />
+                                    <circle cx="0" cy="0" r="5" fill="#facc15" />
+                                </g>
+                                <g transform="translate(95, 145)">
+                                    <circle cx="0" cy="0" r="10" fill="#a855f7" />
+                                    <circle cx="0" cy="0" r="4" fill="#facc15" />
+                                </g>
+
+                                <!-- Text Header -->
+                                <text x="150" y="75" font-family="Fredoka, sans-serif" font-weight="bold" font-size="16" fill="#e11d48" text-anchor="middle">
+                                    З Днем народження, мамо!
+                                </text>
+
+                                <!-- Text Author Signature -->
+                                <text x="270" y="155" font-family="Fredoka, sans-serif" font-weight="bold" font-size="11" fill="#0284c7" text-anchor="end">
+                                    Автор: [Твоє ім'я]
+                                </text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Step by Step Instructions -->
+                <div class="space-y-4">
+                    <h3 class="font-fredoka text-xl font-bold text-slate-800">📋 Покрокова інструкція:</h3>
+                    
+                    <ul class="space-y-3 font-medium text-slate-700 text-sm md:text-base">
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">1️⃣</span>
+                            <span>Запусти програму <b>Tux Paint</b> та створи новий чистий аркуш світлого кольору.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">2️⃣</span>
+                            <span>За допомогою інструментів <b>«Малювання» 🖌️</b> та <b>«Штамп» 💮</b> намалюй сонечко та квіти.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">3️⃣</span>
+                            <span>Обери інструмент <b>«Текст» 🔤</b>, вибери яскравий колір і напиши привітання: <i>«З Днем народження!»</i>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">4️⃣</span>
+                            <span>У нижньому правому кутку за допомогою інструмента <b>«Текст»</b> додай свій підпис: <i>«Автор: [Твоє ім'я]»</i>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">5️⃣</span>
+                            <span>Натисни кнопку <b>«Зберегти» 💾</b>, щоб зберегти листівку в альбомі!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-600 text-xs md:text-sm">
+        <p>Інтерактивний робочий аркуш з інформатики для 2 класу • Додавання тексту до зображення 💙💛</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- TASK 1: ORDERING STEPS ---
+        function checkTask1() {
+            const s1 = document.getElementById('t1-step-1').value; // Typing text on image -> step 4
+            const s2 = document.getElementById('t1-step-2').value; // Choose color -> step 3
+            const s3 = document.getElementById('t1-step-3').value; // Choose Text tool -> step 1
+            const s4 = document.getElementById('t1-step-4').value; // Choose Font -> step 2
+
+            if (!s1 || !s2 || !s3 || !s4) {
+                showFeedback('feedback-1', '⚠️ Обери номер кроку для всіх 4 дій!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (s3 === '1'); // Select tool ABC
+            const ok2 = (s4 === '2'); // Select Font
+            const ok3 = (s2 === '3'); // Select Color
+            const ok4 = (s1 === '4'); // Click and Type
+
+            if (ok1 && ok2 && ok3 && ok4) {
+                showFeedback('feedback-1', '🎉 Супер! Ти чудово знаєш правильну послідовність додавання тексту у Tux Paint!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Пам’ятай: Спочатку обираємо інструмент «Текст», потім шрифт і колір, а наприкінці — друкуємо слівця!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            document.getElementById('t1-step-1').value = '';
+            document.getElementById('t1-step-2').value = '';
+            document.getElementById('t1-step-3').value = '';
+            document.getElementById('t1-step-4').value = '';
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: TOOL CONTROLS MATCHING ---
+        function checkTask2() {
+            const m1 = document.getElementById('t2-match-1').value;
+            const m2 = document.getElementById('t2-match-2').value;
+            const m3 = document.getElementById('t2-match-3').value;
+            const m4 = document.getElementById('t2-match-4').value;
+
+            if (!m1 || !m2 || !m3 || !m4) {
+                showFeedback('feedback-2', '⚠️ Обери призначення для кожного елемента!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (m1 === 'tool');
+            const ok2 = (m2 === 'color');
+            const ok3 = (m3 === 'size');
+            const ok4 = (m4 === 'fix');
+
+            if (ok1 && ok2 && ok3 && ok4) {
+                showFeedback('feedback-2', '🎉 Бездоганно! Ти відмінно знаєш усі елементи керування текстом!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Підказка: Кнопка «ABC» вмикає текст, Палітра змінює колір, Стрілочки — розмір, а Enter — фіксує напис!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            document.getElementById('t2-match-1').value = '';
+            document.getElementById('t2-match-2').value = '';
+            document.getElementById('t2-match-3').value = '';
+            document.getElementById('t2-match-4').value = '';
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: CARD ANALYSIS ---
+        function checkTask3() {
+            const n1 = document.getElementById('t3-num-1').value.trim();
+            const c2 = document.getElementById('t3-color-2').value;
+
+            if (!n1 || !c2) {
+                showFeedback('feedback-3', '⚠️ Дай відповідь на обидва запитання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (parseInt(n1) === 3); // "З", "Днем", "народження!" -> 3 words
+            const ok2 = (c2 === 'blue'); // Blue text for "Бажаю щастя та добра!"
+
+            if (ok1 && ok2) {
+                showFeedback('feedback-3', '🎉 Молодчина! У заголовку 3 слова («З», «Днем», «народження!»), а текст побажання написаний синім кольором!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Порахуй слова у червоному заголовку (їх 3), а також подивись на колір середнього напису (він синій)!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            document.getElementById('t3-num-1').value = '';
+            document.getElementById('t3-color-2').value = '';
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: TRUE / FALSE ---
+        const t4Answers = {};
+
+        function selectT4(qNum, choice, btn) {
+            t4Answers[qNum] = choice;
+            const parent = btn.parentElement;
+            parent.querySelectorAll('button').forEach(b => {
+                b.classList.remove('bg-sky-600', 'text-white', 'border-sky-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-300');
+            btn.classList.add('bg-sky-600', 'text-white', 'border-sky-600');
+        }
+
+        function checkTask4() {
+            if (Object.keys(t4Answers).length < 3) {
+                showFeedback('feedback-4', '⚠️ Дай відповіді на всі 3 твердження!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (t4Answers[1] === true); // Moveable before Enter
+            const ok2 = (t4Answers[2] === false); // Color can be changed anytime before Enter
+            const ok3 = (t4Answers[3] === true); // Text button is on left toolbar
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-4', '🎉 Правильно! Текст можна рухати та змінювати його колір прямо під час введення, поки не натиснете Enter!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Пам’ятай: колір літер МОЖНА змінювати під час введення просто клацаючи по палітрі!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            for (let k in t4Answers) delete t4Answers[k];
+            document.querySelectorAll('.t4-q1-btn, .t4-q2-btn, .t4-q3-btn').forEach(b => {
+                b.classList.remove('bg-sky-600', 'text-white', 'border-sky-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: CLASSIFICATION ---
+        function checkTask5() {
+            const c1 = document.getElementById('t5-cat-1').value;
+            const c2 = document.getElementById('t5-cat-2').value;
+            const c3 = document.getElementById('t5-cat-3').value;
+
+            if (!c1 || !c2 || !c3) {
+                showFeedback('feedback-5', '⚠️ Обери призначення для кожного випадку!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (c1 === 'card');
+            const ok2 = (c2 === 'author');
+            const ok3 = (c3 === 'label');
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-5', '🎉 Чудово! Ти відмінно розрізняєш привітання, підпис автора та назви об\'єктів!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Згадай: «Вітаю» — це листівка, «Намалював...» — підпис автора, а окремі слова — назви предмета!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            document.getElementById('t5-cat-1').value = '';
+            document.getElementById('t5-cat-2').value = '';
+            document.getElementById('t5-cat-3').value = '';
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- GENERAL FEEDBACK HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL EVALUATION & CONFETTI ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Майстер каліграфії у Tux Paint!";
+                descEl.innerText = "Вітаємо! Ти справжній експерт з додавання та оформлення тексту на малюнках!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Вправний оформлювач!";
+                descEl.innerText = "Дуже гарний результат! Перевір помилки та спробуй здобути найвищий бал!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний редактор!";
+                descEl.innerText = "Переглянь матеріали ще раз і спробуй виконати вправи знову!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
