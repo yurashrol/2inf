@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Орнаменти й візерунки у Tux Paint — 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .pattern-card:hover {
+            transform: translateY(-2px);
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner in Rich Blue Gradient -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">🎨</span> Інформатика — 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Орнаменти й візерунки 🎨🌀
+            </h1>
+            <p class="text-sky-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Повторення елементів у зображенні. Досліджуй ритм, створюй красиві бордюри та чарівні візерунки разом із пінгвіном Туксом у Tux Paint!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+         <!-- Educational Materials Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-sky-100 p-3 rounded-2xl text-sky-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальні матеріали</h2>
+                    <p class="text-slate-500 text-sm">Переглянь матеріали про те, як розпочати новий малюнок та зберегти його у альбомі</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
+                    <iframe loading="lazy" 
+                            class="absolute inset-0 w-full h-full border-0 m-0 p-0"
+                            src="https://www.canva.com/design/DAHZyouYu5E/33wMNOyZg_c2EOT_A1N5wQ/view?embed" 
+                            allowfullscreen="allowfullscreen" 
+                            allow="fullscreen">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Continuation of a Pattern Sequence -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Логічний ланцюжок орнаменту 🧩</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-600 rounded-full">Повторення та ритм</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Продовж орнамент! Обери відповідний елемент, який має бути наступним у кожному візерунку:</p>
+
+            <div class="space-y-6">
+                <!-- Sequence A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <div class="font-semibold text-slate-800 text-sm md:text-base flex items-center gap-2">
+                        <span>1. Стрічковий орнамент з фігур:</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 bg-white p-3 rounded-xl border border-slate-200 text-xl">
+                        <span>🔴</span> <span>🟦</span> <span>🟡</span> <span>🔴</span> <span>🟦</span> <span>🟡</span> <span>🔴</span> <span>🟦</span>
+                        <span class="font-bold text-sky-600">➡️ ?</span>
+                    </div>
+                    <select id="t1-seq-1" class="w-full sm:w-64 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери фігуру...</option>
+                        <option value="red">🔴 Червоний круг</option>
+                        <option value="blue">🟦 Синій квадрат</option>
+                        <option value="yellow">🟡 Жовтий круг</option>
+                    </select>
+                </div>
+
+                <!-- Sequence B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <div class="font-semibold text-slate-800 text-sm md:text-base flex items-center gap-2">
+                        <span>2. Рослинний візерунок зі штампів:</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 bg-white p-3 rounded-xl border border-slate-200 text-xl">
+                        <span>🌸</span> <span>🍃</span> <span>🍃</span> <span>🌸</span> <span>🍃</span> <span>🍃</span> <span>🌸</span>
+                        <span class="font-bold text-sky-600">➡️ ?</span>
+                    </div>
+                    <select id="t1-seq-2" class="w-full sm:w-64 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери елемент...</option>
+                        <option value="flower">🌸 Квітка</option>
+                        <option value="leaf">🍃 Зелений листок</option>
+                        <option value="star">⭐ Зірочка</option>
+                    </select>
+                </div>
+
+                <!-- Sequence C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <div class="font-semibold text-slate-800 text-sm md:text-base flex items-center gap-2">
+                        <span>3. Геометричний орнамент для рамки:</span>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2 bg-white p-3 rounded-xl border border-slate-200 text-xl">
+                        <span>🔺</span> <span>🔹</span> <span>🔺</span> <span>🔹</span> <span>🔺</span> <span>🔹</span>
+                        <span class="font-bold text-sky-600">➡️ ?</span>
+                    </div>
+                    <select id="t1-seq-3" class="w-full sm:w-64 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-700 focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери елемент...</option>
+                        <option value="triangle">🔺 Червоний трикутник</option>
+                        <option value="rhombus">🔹 Блакитний ромб</option>
+                        <option value="circle">⚪ Білий круг</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: Tool Matching for Ornaments -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Інструменти та візерунки 🛠️🎨</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full">Відповідність дій</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Обери інструмент Tux Paint, який найкраще підходить для створення кожного виду візерунка:</p>
+
+            <div class="space-y-4">
+                <!-- Action 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">💮</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Швидке повторення однаковісіньких готових малюнків (квіти, тваринки)</span>
+                    </div>
+                    <select id="t2-match-1" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери інструмент...</option>
+                        <option value="stamp">Інструмент «Штамп» 💮</option>
+                        <option value="magic">Інструмент «Магія» (Калейдоскоп / Розетка) 🪄</option>
+                        <option value="shapes">Інструмент «Форми» 🔷</option>
+                        <option value="brush">Інструмент «Пензель» зі спеціальною формою 🖌️</option>
+                    </select>
+                </div>
+
+                <!-- Action 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🪄</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Автоматичне створення симетричних чарівних узорів та сніжинок</span>
+                    </div>
+                    <select id="t2-match-2" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери інструмент...</option>
+                        <option value="stamp">Інструмент «Штамп» 💮</option>
+                        <option value="magic">Інструмент «Магія» (Калейдоскоп / Розетка) 🪄</option>
+                        <option value="shapes">Інструмент «Форми» 🔷</option>
+                        <option value="brush">Інструмент «Пензель» зі спеціальною формою 🖌️</option>
+                    </select>
+                </div>
+
+                <!-- Action 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🖌️</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Малювання беперервного ланцюжка зі зірочок чи кружечків рухом миші</span>
+                    </div>
+                    <select id="t2-match-3" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери інструмент...</option>
+                        <option value="stamp">Інструмент «Штамп» 💮</option>
+                        <option value="magic">Інструмент «Магія» (Калейдоскоп / Розетка) 🪄</option>
+                        <option value="shapes">Інструмент «Форми» 🔷</option>
+                        <option value="brush">Інструмент «Пензель» зі спеціальною формою 🖌️</option>
+                    </select>
+                </div>
+
+                <!-- Action 4 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🔷</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-base md:text-lg">Створення точних квадратів, ромбів та кілець для строгих геометричних рамок</span>
+                    </div>
+                    <select id="t2-match-4" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери інструмент...</option>
+                        <option value="stamp">Інструмент «Штамп» 💮</option>
+                        <option value="magic">Інструмент «Магія» (Калейдоскоп / Розетка) 🪄</option>
+                        <option value="shapes">Інструмент «Форми» 🔷</option>
+                        <option value="brush">Інструмент «Пензель» зі спеціальною формою 🖌️</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Pattern Analysis / Counting & Rhythm -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Аналіз українського рушника 🌾🧵</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-teal-50 text-teal-600 rounded-full">Підрахунок раппортів</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розглянь орнамент, створений у графічному редакторі Tux Paint за допомогою штампів та форм, і дай відповіді на запитання:</p>
+
+            <!-- SVG Graphic of Embroidered Towel Pattern -->
+            <div class="mb-6 p-4 md:p-6 rounded-2xl bg-slate-900 border-4 border-teal-500 shadow-xl flex flex-col items-center justify-center">
+                <div class="text-center mb-2 flex items-center gap-2">
+                    <span class="text-xs font-bold text-teal-300 uppercase tracking-widest">Полотно Tux Paint: Український орнамент</span>
+                </div>
+                <div class="w-full max-w-lg bg-amber-50 p-4 rounded-xl border-2 border-amber-200 shadow-inner">
+                    <svg viewBox="0 0 360 140" class="w-full h-auto rounded">
+                        <!-- Background Fabric -->
+                        <rect width="360" height="140" fill="#fdfbf7" />
+                        
+                        <!-- Top Red Line -->
+                        <line x1="0" y1="20" x2="360" y2="20" stroke="#dc2626" stroke-width="4" stroke-dasharray="8 4" />
+                        <!-- Bottom Red Line -->
+                        <line x1="0" y1="120" x2="360" y2="120" stroke="#dc2626" stroke-width="4" stroke-dasharray="8 4" />
+
+                        <!-- Repeating Motif (Rapport) x 5 times -->
+                        <!-- Motif 1 (x=36) -->
+                        <g transform="translate(36, 70)">
+                            <rect x="-12" y="-12" width="24" height="24" transform="rotate(45)" fill="#dc2626" />
+                            <circle cx="0" cy="0" r="5" fill="#facc15" />
+                            <circle cx="0" cy="-24" r="4" fill="#0284c7" />
+                            <circle cx="0" cy="24" r="4" fill="#0284c7" />
+                        </g>
+
+                        <!-- Motif 2 (x=108) -->
+                        <g transform="translate(108, 70)">
+                            <rect x="-12" y="-12" width="24" height="24" transform="rotate(45)" fill="#dc2626" />
+                            <circle cx="0" cy="0" r="5" fill="#facc15" />
+                            <circle cx="0" cy="-24" r="4" fill="#0284c7" />
+                            <circle cx="0" cy="24" r="4" fill="#0284c7" />
+                        </g>
+
+                        <!-- Motif 3 (x=180) -->
+                        <g transform="translate(180, 70)">
+                            <rect x="-12" y="-12" width="24" height="24" transform="rotate(45)" fill="#dc2626" />
+                            <circle cx="0" cy="0" r="5" fill="#facc15" />
+                            <circle cx="0" cy="-24" r="4" fill="#0284c7" />
+                            <circle cx="0" cy="24" r="4" fill="#0284c7" />
+                        </g>
+
+                        <!-- Motif 4 (x=252) -->
+                        <g transform="translate(252, 70)">
+                            <rect x="-12" y="-12" width="24" height="24" transform="rotate(45)" fill="#dc2626" />
+                            <circle cx="0" cy="0" r="5" fill="#facc15" />
+                            <circle cx="0" cy="-24" r="4" fill="#0284c7" />
+                            <circle cx="0" cy="24" r="4" fill="#0284c7" />
+                        </g>
+
+                        <!-- Motif 5 (x=324) -->
+                        <g transform="translate(324, 70)">
+                            <rect x="-12" y="-12" width="24" height="24" transform="rotate(45)" fill="#dc2626" />
+                            <circle cx="0" cy="0" r="5" fill="#facc15" />
+                            <circle cx="0" cy="-24" r="4" fill="#0284c7" />
+                            <circle cx="0" cy="24" r="4" fill="#0284c7" />
+                        </g>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Question 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">1. Скільки разів повністю повторюється головна ромбоподібна квітка (раппорт) у цьому рушнику?</span>
+                    <input type="number" id="t3-num-1" min="1" max="10" placeholder="Число..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-800 focus:ring-2 focus:ring-teal-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+
+                <!-- Question 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">2. До якого типу за формою належить цей орнамент?</span>
+                    <select id="t3-type-2" class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-800 focus:ring-2 focus:ring-teal-500 focus:outline-none w-full md:w-1/4 text-center">
+                        <option value="">Обери...</option>
+                        <option value="ribbon">Стрічковий (бордюр/смужка)</option>
+                        <option value="circle">Замкнений (у колі)</option>
+                        <option value="net">Сітчастий (килимок)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-teal-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: True / False Rules of Ornaments -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Знавці орнаментів: Правда чи Неправда? 🌀</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-700 rounded-full">Правила створення</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай твердження про створення візерунків у Tux Paint і дай відповідь:</p>
+
+            <div class="space-y-6">
+                <!-- Statement 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        1. Головне правило гарного орнаменту — це збереження однакової відстані (ритму) між елементами, що повторюються.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT4(1, true, this)" class="t4-q1-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT4(1, false, this)" class="t4-q1-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statement 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        2. У Tux Paint за допомогою інструмента «Штамп» можна ставити лише один єдиний штамп на весь малюнок.
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT4(2, true, this)" class="t4-q2-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT4(2, false, this)" class="t4-q2-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Statement 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        3. Кнопка «Калейдоскоп» у меню «Магія» дозволяє малювати симетричні чарівні узори одразу в чотирьох напрямках!
+                    </p>
+                    <div class="flex gap-3">
+                        <button type="button" onclick="selectT4(3, true, this)" class="t4-q3-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ✅ Правда
+                        </button>
+                        <button type="button" onclick="selectT4(3, false, this)" class="t4-q3-btn flex-1 p-3 rounded-xl border border-slate-300 bg-white hover:border-sky-500 font-fredoka font-bold text-sm text-slate-700 transition">
+                            ❌ Неправда
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: Classification / Sorting -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Сортування видів орнаменту 🗂️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Класифікація</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Визнач, до якого виду належить кожен із наведених описів орнаменту:</p>
+
+            <div class="space-y-4">
+                <!-- Item A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        🎗️ Візерунок, витягнутий уздовж довгої прямої лінії (для прикрашання краю заклідки чи закладки)
+                    </span>
+                    <select id="t5-cat-1" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери вид...</option>
+                        <option value="ribbon">Стрічковий орнамент (бордюр)</option>
+                        <option value="closed">Замкнений орнамент (у колі/квадраті)</option>
+                        <option value="net">Сітчастий орнамент (килимок)</option>
+                    </select>
+                </div>
+
+                <!-- Item B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        🍽️ Візерунок, розміщений по колу (для прикрашання тарілочки, чашки або розетки)
+                    </span>
+                    <select id="t5-cat-2" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери вид...</option>
+                        <option value="ribbon">Стрічковий орнамент (бордюр)</option>
+                        <option value="closed">Замкнений орнамент (у колі/квадраті)</option>
+                        <option value="net">Сітчастий орнамент (килимок)</option>
+                    </select>
+                </div>
+
+                <!-- Item C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        🧱 Візерунок, що повністю вкриває всю поверхню у різних напрямках (як плитка чи килим)
+                    </span>
+                    <select id="t5-cat-3" class="w-full sm:w-1/2 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери вид...</option>
+                        <option value="ribbon">Стрічковий орнамент (бордюр)</option>
+                        <option value="closed">Замкнений орнамент (у колі/квадраті)</option>
+                        <option value="net">Сітчастий орнамент (килимок)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section in Blue Gradient -->
+        <section class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-sky-100 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 інтерактивних вправ та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-teal-400 to-sky-400 hover:from-teal-500 hover:to-sky-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-teal-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-teal-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-sky-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-sky-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: Creating an Ornament in Tux Paint -->
+        <section class="bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-sky-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-amber-400 text-slate-900 p-3 rounded-2xl text-2xl shadow-md">🎨</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">
+                        Творча майстерня: Практичне завдання «Мій орнамент у Tux Paint» 🎨🌀
+                    </h2>
+                    <p class="text-sky-700 font-medium text-sm md:text-base">
+                        Створи власну барвисту тарілочку чи рушник на комп'ютері
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Left: Preview SVG Sample -->
+                <div class="bg-white p-4 rounded-2xl border-2 border-sky-300 shadow-md space-y-4">
+                    <div class="flex justify-between items-center px-2">
+                        <span class="font-fredoka font-bold text-xs text-sky-600">🖼️ Очікуваний результат (Тарілочка / Рушник)</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">Tux Paint</span>
+                    </div>
+
+                    <div class="p-2 rounded-xl bg-slate-100 border border-slate-300">
+                        <div class="w-full rounded-lg overflow-hidden bg-white border border-slate-300">
+                            <svg viewBox="0 0 300 180" class="w-full h-auto">
+                                <!-- Background Canvas -->
+                                <rect width="300" height="180" fill="#f8fafc" />
+                                
+                                <!-- Decorative Plate (Circle Ornament) -->
+                                <circle cx="150" cy="90" r="75" fill="#bae6fd" stroke="#0284c7" stroke-width="4" />
+                                <circle cx="150" cy="90" r="60" fill="#ffffff" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 4" />
+                                
+                                <!-- Center Mandala / Flower Motif -->
+                                <circle cx="150" cy="90" r="16" fill="#facc15" />
+                                <circle cx="150" cy="90" r="8" fill="#e11d48" />
+
+                                <!-- Repeating Stamps in Circle -->
+                                <g transform="translate(150, 45)"><circle cx="0" cy="0" r="6" fill="#ec4899" /></g>
+                                <g transform="translate(150, 135)"><circle cx="0" cy="0" r="6" fill="#ec4899" /></g>
+                                <g transform="translate(105, 90)"><circle cx="0" cy="0" r="6" fill="#ec4899" /></g>
+                                <g transform="translate(195, 90)"><circle cx="0" cy="0" r="6" fill="#ec4899" /></g>
+
+                                <g transform="translate(118, 58)"><circle cx="0" cy="0" r="5" fill="#10b981" /></g>
+                                <g transform="translate(182, 58)"><circle cx="0" cy="0" r="5" fill="#10b981" /></g>
+                                <g transform="translate(118, 122)"><circle cx="0" cy="0" r="5" fill="#10b981" /></g>
+                                <g transform="translate(182, 122)"><circle cx="0" cy="0" r="5" fill="#10b981" /></g>
+
+                                <!-- Top and Bottom Ribbon Borders -->
+                                <line x1="10" y1="12" x2="290" y2="12" stroke="#e11d48" stroke-width="3" stroke-dasharray="8 4" />
+                                <line x1="10" y1="168" x2="290" y2="168" stroke="#e11d48" stroke-width="3" stroke-dasharray="8 4" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Step by Step Instructions -->
+                <div class="space-y-4">
+                    <h3 class="font-fredoka text-xl font-bold text-slate-800">📋 Покрокова інструкція:</h3>
+                    
+                    <ul class="space-y-3 font-medium text-slate-700 text-sm md:text-base">
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">1️⃣</span>
+                            <span>Запусти програму <b>Tux Paint</b> та створи чистий білий або світло-жовтий аркуш.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">2️⃣</span>
+                            <span>Обери інструмент <b>«Форми» 🔷</b> і намалюй великий круг у центрі (це буде наша декоративна тарілочка).</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">3️⃣</span>
+                            <span>Обери інструмент <b>«Штамп» 💮</b> або <b>«Магія» 🪄 (Розетка/Калейдоскоп)</b> та прикрась края круга однаковими візерунками.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">4️⃣</span>
+                            <span>Додай зверху та знизу аркуша <b>стрічковий орнамент</b> за допомогою спеціального пензлика з зірочками.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">5️⃣</span>
+                            <span>Натисни кнопку <b>«Зберегти» 💾</b>, щоб зберегти свій новий орнамент у галереї альбому!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-600 text-xs md:text-sm">
+        <p>Інтерактивний робочий аркуш з інформатики для 2 класу • Орнаменти й візерунки 💙💛</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- TASK 1: PATTERN SEQUENCE ---
+        function checkTask1() {
+            const s1 = document.getElementById('t1-seq-1').value;
+            const s2 = document.getElementById('t1-seq-2').value;
+            const s3 = document.getElementById('t1-seq-3').value;
+
+            if (!s1 || !s2 || !s3) {
+                showFeedback('feedback-1', '⚠️ Обери елемент для всіх 3 орнаментів!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (s1 === 'red');
+            const ok2 = (s2 === 'leaf');
+            const ok3 = (s3 === 'triangle');
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-1', '🎉 Супер! Ти чудово відчув ритм і продовжив усі три орнаменти!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Подивись уважніше на повторення: 1) Красний->Синій->Жовтий, 2) Квітка->Листок->Листок, 3) Трикутник->Ромб!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            document.getElementById('t1-seq-1').value = '';
+            document.getElementById('t1-seq-2').value = '';
+            document.getElementById('t1-seq-3').value = '';
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: TOOL MATCHING ---
+        function checkTask2() {
+            const m1 = document.getElementById('t2-match-1').value;
+            const m2 = document.getElementById('t2-match-2').value;
+            const m3 = document.getElementById('t2-match-3').value;
+            const m4 = document.getElementById('t2-match-4').value;
+
+            if (!m1 || !m2 || !m3 || !m4) {
+                showFeedback('feedback-2', '⚠️ Обери інструмент для кожної з 4 дій!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (m1 === 'stamp');
+            const ok2 = (m2 === 'magic');
+            const ok3 = (m3 === 'brush');
+            const ok4 = (m4 === 'shapes');
+
+            if (ok1 && ok2 && ok3 && ok4) {
+                showFeedback('feedback-2', '🎉 Бездоганно! Ти чудово знаєш, який інструмент Tux Paint обрати для кожного орнаменту!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Підказка: Магія 🪄 створює калейдоскопи, Штамп 💮 ставить малюнки, Пензель 🖌️ веде лінії, а Форми 🔷 малюють фігури!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            document.getElementById('t2-match-1').value = '';
+            document.getElementById('t2-match-2').value = '';
+            document.getElementById('t2-match-3').value = '';
+            document.getElementById('t2-match-4').value = '';
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: PATTERN ANALYSIS ---
+        function checkTask3() {
+            const n1 = document.getElementById('t3-num-1').value.trim();
+            const n2 = document.getElementById('t3-type-2').value;
+
+            if (!n1 || !n2) {
+                showFeedback('feedback-3', '⚠️ Дай відповідь на обидва запитання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (parseInt(n1) === 5);
+            const ok2 = (n2 === 'ribbon');
+
+            if (ok1 && ok2) {
+                showFeedback('feedback-3', '🎉 Молодець! На рушнику ровно 5 раппортів (повторень), і це стрічковий орнамент!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Уважно порахуй червоні ромбики (їх 5!), а оскільки вони витягнуті в лінію — це стрічковий орнамент!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            document.getElementById('t3-num-1').value = '';
+            document.getElementById('t3-type-2').value = '';
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: TRUE / FALSE ---
+        const t4Answers = {};
+
+        function selectT4(qNum, choice, btn) {
+            t4Answers[qNum] = choice;
+            const parent = btn.parentElement;
+            parent.querySelectorAll('button').forEach(b => {
+                b.classList.remove('bg-sky-600', 'text-white', 'border-sky-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-300');
+            btn.classList.add('bg-sky-600', 'text-white', 'border-sky-600');
+        }
+
+        function checkTask4() {
+            if (Object.keys(t4Answers).length < 3) {
+                showFeedback('feedback-4', '⚠️ Дай відповіді на всі 3 твердження!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (t4Answers[1] === true);
+            const ok2 = (t4Answers[2] === false); // Stamps can be placed repeatedly!
+            const ok3 = (t4Answers[3] === true);
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-4', '🎉 Правильно! Штампи у Tux Paint можна ставити багаторазово, а калейдоскоп робить магічні узори!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Пам’ятай: штампи можна ставити скільки завгодно разів для створення гарного узору!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            for (let k in t4Answers) delete t4Answers[k];
+            document.querySelectorAll('.t4-q1-btn, .t4-q2-btn, .t4-q3-btn').forEach(b => {
+                b.classList.remove('bg-sky-600', 'text-white', 'border-sky-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: CLASSIFICATION ---
+        function checkTask5() {
+            const c1 = document.getElementById('t5-cat-1').value;
+            const c2 = document.getElementById('t5-cat-2').value;
+            const c3 = document.getElementById('t5-cat-3').value;
+
+            if (!c1 || !c2 || !c3) {
+                showFeedback('feedback-5', '⚠️ Обери вид для кожної категорії!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (c1 === 'ribbon');
+            const ok2 = (c2 === 'closed');
+            const ok3 = (c3 === 'net');
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-5', '🎉 Чудово! Ти відмінно розрізняєш стрічкові, замкнені та сітчасті орнаменти!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Згадай: Вздовж лінії — Стрічковий, У колі/тарілці — Замкнений, По всьому полю — Сітчастий!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            document.getElementById('t5-cat-1').value = '';
+            document.getElementById('t5-cat-2').value = '';
+            document.getElementById('t5-cat-3').value = '';
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- GENERAL FEEDBACK HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL EVALUATION & CONFETTI ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Майстер орнаментів!";
+                descEl.innerText = "Вітаємо! Ти справжній знавець створення ритмічних візерунків та орнаментів у Tux Paint!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Вправний декоратор!";
+                descEl.innerText = "Дуже гарний результат! Перевір помилки та спробуй здобути найвищий балл!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний митець!";
+                descEl.innerText = "Переглянь матеріали ще раз і спробуй виконати вправи знову!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
