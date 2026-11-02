@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Створення зображень з кількох об’єктів у Tux Paint — 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner in Rich Blue Gradient -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">🎨</span> Інформатика — 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Створення зображень з кількох об’єктів 🎨🤖✨
+            </h1>
+            <p class="text-sky-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Вчися комбінувати фігури, змінювати їхній розмір та колір разом із пінгвіном Туксом у Tux Paint!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Presentation Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-sky-100 p-3 rounded-2xl text-sky-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальна презентація</h2>
+                    <p class="text-slate-500 text-sm">Переглянь матеріали про комбінування та зміну розміру й кольору фігур</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
+                    <iframe loading="lazy" 
+                            class="absolute inset-0 w-full h-full border-0 m-0 p-0"
+                            src="https://www.canva.com/design/DAHZyTsWxGw/xupe1f03hA8V49whQbzkLg/view?embed" 
+                            allowfullscreen="allowfullscreen" 
+                            allow="fullscreen">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Object Constructor (Matching objects to shape combinations) -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Конструктор предметів 🧩</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-600 rounded-full">Аналіз складників</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Для кожного малюнка обери правильний набір фігур, з яких його можна побудувати:</p>
+
+            <div class="space-y-4">
+                <!-- Item 1: Snowman -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">☃️</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-lg">Сніговик</span>
+                    </div>
+                    <select id="t1-match-1" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери комплект фігур...</option>
+                        <option value="rocket">1 трикутник + 1 прямокутник + 2 кола</option>
+                        <option value="snowman">3 кола різних розмірів + 1 трикутник (ніс)</option>
+                        <option value="car">1 прямокутник + 2 кола (колеса) + 1 квадрат</option>
+                        <option value="house">1 квадрат + 1 трикутник + 2 маленьких квадрати</option>
+                    </select>
+                </div>
+
+                <!-- Item 2: Rocket -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🚀</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-lg">Космічна ракета</span>
+                    </div>
+                    <select id="t1-match-2" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери комплект фігур...</option>
+                        <option value="rocket">1 трикутник + 1 прямокутник + 2 кола</option>
+                        <option value="snowman">3 кола різних розмірів + 1 трикутник (ніс)</option>
+                        <option value="car">1 прямокутник + 2 кола (колеса) + 1 квадрат</option>
+                        <option value="house">1 квадрат + 1 трикутник + 2 маленьких квадрати</option>
+                    </select>
+                </div>
+
+                <!-- Item 3: Car -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🚗</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-lg">Машинка</span>
+                    </div>
+                    <select id="t1-match-3" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери комплект фігур...</option>
+                        <option value="rocket">1 трикутник + 1 прямокутник + 2 кола</option>
+                        <option value="snowman">3 кола різних розмірів + 1 трикутник (ніс)</option>
+                        <option value="car">1 прямокутник + 2 кола (колеса) + 1 квадрат</option>
+                        <option value="house">1 квадрат + 1 трикутник + 2 маленьких квадрати</option>
+                    </select>
+                </div>
+
+                <!-- Item 4: House -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🏠</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-lg">Будиночок</span>
+                    </div>
+                    <select id="t1-match-4" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-sky-500">
+                        <option value="">Обери комплект фігур...</option>
+                        <option value="rocket">1 трикутник + 1 прямокутник + 2 кола</option>
+                        <option value="snowman">3 кола різних розмірів + 1 трикутник (ніс)</option>
+                        <option value="car">1 прямокутник + 2 кола (колеса) + 1 квадрат</option>
+                        <option value="house">1 квадрат + 1 трикутник + 2 маленьких квадрати</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: Size & Color Transformation Rules -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Трансформація: Розмір та Колір 📐🎨</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full">Правила дій</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Дай відповіді на запитання про зміну розміру та кольору під час створення малюнків:</p>
+
+            <div class="space-y-6">
+                <!-- Question 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        1. Щоб намалювати більшу або меншу фігуру інструментом «Форми» в Tux Paint, слід:
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button type="button" onclick="selectT2(1, 'drag', this)" class="t2-q1-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 text-left font-medium text-sm text-slate-700 transition">
+                            🖱️ Потягнути мишею далі (розтягнути) або ближче від центра
+                        </button>
+                        <button type="button" onclick="selectT2(1, 'keyboard', this)" class="t2-q1-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 text-left font-medium text-sm text-slate-700 transition">
+                            ⌨️ Натиснути кнопку Пробіл на клавіатурі
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        2. Коли потрібно обирати колір для фігури чи об'єкта?
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button type="button" onclick="selectT2(2, 'before', this)" class="t2-q2-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 text-left font-medium text-sm text-slate-700 transition">
+                            🌈 ДО початку малювання фігури в палітрі внизу або ПІСЛЯ кнопкою «Заповнити»
+                        </button>
+                        <button type="button" onclick="selectT2(2, 'never', this)" class="t2-q2-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 text-left font-medium text-sm text-slate-700 transition">
+                            ❌ Колір змінити взагалі неможливо
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                    <p class="font-semibold text-slate-800 text-sm md:text-base">
+                        3. Як змінити розмір готовій фігурі-штампу (наприклад, пташці чи дереву)?
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <button type="button" onclick="selectT2(3, 'bars', this)" class="t2-q3-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 text-left font-medium text-sm text-slate-700 transition">
+                            📊 За допомогою смужок розміру на правій панелі інструмента «Штамп»
+                        </button>
+                        <button type="button" onclick="selectT2(3, 'eraser', this)" class="t2-q3-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 text-left font-medium text-sm text-slate-700 transition">
+                            🧹 Взяти гумку і стерти половину штампа
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Creation Steps Sequence -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Порядок створення композиції 🔢</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-teal-50 text-teal-600 rounded-full">Послідовність</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розстави правильні кроки (від 1 до 4) для побудови малюнка «Будинок із садом» у Tux Paint:</p>
+
+            <div class="space-y-4">
+                <!-- Step A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        🏠 Намалювати великий прямокутник для стіни будинку та обрати йому колір
+                    </span>
+                    <select id="t3-step-1" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-700 text-center focus:ring-2 focus:ring-teal-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        🔺 Зверху стіни додати трикутник іншого кольору — це буде дах
+                    </span>
+                    <select id="t3-step-2" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-700 text-center focus:ring-2 focus:ring-teal-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        🪟 Додати менші квадрати та кола для вікон і дверей
+                    </span>
+                    <select id="t3-step-3" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-700 text-center focus:ring-2 focus:ring-teal-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step D -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between gap-4">
+                    <span class="text-slate-800 font-medium text-sm md:text-base">
+                        🌳 Доповнити малюнок штампами дерев, сонечка та квітів навколо
+                    </span>
+                    <select id="t3-step-4" class="w-24 p-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-teal-700 text-center focus:ring-2 focus:ring-teal-500">
+                        <option value="">Крок?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-teal-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: Composition Analysis & Counting -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Аналіз композиції Робота 🤖</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-700 rounded-full">Підрахунок об’єктів</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розглянь малюнок Робота, складеного з геометричних фігур, та дай відповіді на запитання:</p>
+
+            <!-- Robot Visual Mockup (SVG) -->
+            <div class="mb-6 p-4 md:p-6 rounded-2xl bg-slate-900 border-4 border-sky-500 shadow-xl flex flex-col items-center justify-center">
+                <div class="text-center mb-2">
+                    <span class="text-xs font-bold text-sky-300 uppercase tracking-widest">Макет малюнка "Робот Роббі"</span>
+                </div>
+                <div class="w-full max-w-sm bg-slate-800 p-4 rounded-xl border border-slate-700 flex justify-center">
+                    <svg viewBox="0 0 240 260" class="w-52 h-auto">
+                        <!-- Background panel -->
+                        <rect width="240" height="260" rx="12" fill="#0f172a" />
+
+                        <!-- Antenna (Triangle on top) -->
+                        <polygon points="120,20 110,45 130,45" fill="#f43f5e" />
+                        <line x1="120" y1="45" x2="120" y2="55" stroke="#94a3b8" stroke-width="4" />
+
+                        <!-- Head (1 Square - Purple) -->
+                        <rect x="85" y="55" width="70" height="50" rx="4" fill="#a855f7" stroke="#7e22ce" stroke-width="3" />
+                        <!-- Eyes (2 Yellow Circles) -->
+                        <circle cx="103" cy="75" r="8" fill="#facc15" />
+                        <circle cx="137" cy="75" r="8" fill="#facc15" />
+                        <!-- Mouth (1 Small Blue Rectangle) -->
+                        <rect x="105" y="90" width="30" height="6" fill="#38bdf8" />
+
+                        <!-- Body (1 Large Blue Rectangle) -->
+                        <rect x="70" y="115" width="100" height="80" rx="6" fill="#0284c7" stroke="#0369a1" stroke-width="3" />
+                        <!-- Chest Buttons (3 Green Circles) -->
+                        <circle cx="95" cy="140" r="7" fill="#22c55e" />
+                        <circle cx="120" cy="140" r="7" fill="#22c55e" />
+                        <circle cx="145" cy="140" r="7" fill="#22c55e" />
+
+                        <!-- Arms (2 Orange Rectangles) -->
+                        <rect x="30" y="125" width="35" height="16" rx="3" fill="#f97316" />
+                        <rect x="175" y="125" width="35" height="16" rx="3" fill="#f97316" />
+
+                        <!-- Legs (2 Grey Rectangles) -->
+                        <rect x="88" y="200" width="20" height="40" fill="#64748b" />
+                        <rect x="132" y="200" width="20" height="40" fill="#64748b" />
+
+                        <!-- Feet (2 Red Triangles) -->
+                        <polygon points="80,250 112,250 98,240" fill="#f43f5e" />
+                        <polygon points="128,250 160,250 144,240" fill="#f43f5e" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">1. Скільки ВСЬОГО КУЛЯСТИХ (круглих 🟡🟢) елементів використано у робота (очі + кнопки)?</span>
+                    <input type="number" id="t4-num-1" min="0" max="20" placeholder="Число..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-800 focus:ring-2 focus:ring-sky-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+
+                <!-- Q2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">2. Скільки ТРИКУТНИКІВ 🔺 використано в цій композиції (верхівка антени + стопи)?</span>
+                    <input type="number" id="t4-num-2" min="0" max="20" placeholder="Число..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-800 focus:ring-2 focus:ring-sky-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: Riddle Quiz from Penguin Tux -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Загадки від пінгвіна Тукса 🐧🧩</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Квіз-комбінації</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай підказки пінгвіна Тукса та здогадайся, який предмет утвориться з цих фігур:</p>
+
+            <div class="space-y-6">
+                <!-- Riddle 1 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 t5-riddle" data-riddle="1">
+                    <p class="font-semibold text-slate-800 text-base">
+                        1. 🐧 <i>«Якщо поєднати один зелений трикутник зверху та один коричневий прямокутник знизу, яке дерево вийде?»</i>
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button type="button" onclick="selectT5(1, 'tree', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🌲</span> Ялинка
+                        </button>
+                        <button type="button" onclick="selectT5(1, 'flower', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🌻</span> Квітка
+                        </button>
+                        <button type="button" onclick="selectT5(1, 'house', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🏠</span> Будинок
+                        </button>
+                        <button type="button" onclick="selectT5(1, 'sun', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>☀️</span> Сонце
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Riddle 2 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 t5-riddle" data-riddle="2">
+                    <p class="font-semibold text-slate-800 text-base">
+                        2. 🐧 <i>«Якщо поставити один рожевий круг на тонку довгу паличку-прямокутник, який солодощ ми намалюємо?»</i>
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button type="button" onclick="selectT5(2, 'cake', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🍰</span> Торт
+                        </button>
+                        <button type="button" onclick="selectT5(2, 'lollipop', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🍭</span> Леденець
+                        </button>
+                        <button type="button" onclick="selectT5(2, 'apple', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🍎</span> Яблуко
+                        </button>
+                        <button type="button" onclick="selectT5(2, 'bread', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🍞</span> Хліб
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Riddle 3 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 t5-riddle" data-riddle="3">
+                    <p class="font-semibold text-slate-800 text-base">
+                        3. 🐧 <i>«Які 2 фігури треба поєднати, щоб утворилося сонечко із промінцями?»</i>
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button type="button" onclick="selectT5(3, 'sun_combo', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🟡</span> Коло + Трикутники
+                        </button>
+                        <button type="button" onclick="selectT5(3, 'square_lines', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🟦</span> Квадрат + Овали
+                        </button>
+                        <button type="button" onclick="selectT5(3, 'rhombus', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🔷</span> Ромб + Прямокутники
+                        </button>
+                        <button type="button" onclick="selectT5(3, 'star', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>⭐</span> Зірка + Квадрат
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section in Blue Gradient -->
+        <section class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-sky-100 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 інтерактивних вправ та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-teal-400 to-sky-400 hover:from-teal-500 hover:to-sky-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-teal-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-teal-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-sky-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-sky-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: Rocket & Robot Construction -->
+        <section class="bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-sky-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-amber-400 text-slate-900 p-3 rounded-2xl text-2xl shadow-md">🚀</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">
+                        Творча майстерня Tux Paint: Космічна ракета та Робот! 🤖🌌
+                    </h2>
+                    <p class="text-sky-700 font-medium text-sm md:text-base">
+                        Практична робота за комп'ютером з комбінування фігур
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Left: Sample Canvas Artwork -->
+                <div class="bg-white p-4 rounded-2xl border-2 border-sky-300 shadow-md">
+                    <div class="flex justify-between items-center mb-2 px-2">
+                        <span class="font-fredoka font-bold text-xs text-sky-600">🖼️ Зразок малюнка з фігур</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">Tux Paint</span>
+                    </div>
+
+                    <!-- SVG Canvas Artwork Sample (Rocket + Robot) -->
+                    <div class="w-full rounded-xl overflow-hidden bg-slate-900 border border-slate-700">
+                        <svg viewBox="0 0 400 260" class="w-full h-auto">
+                            <!-- Space background with stars -->
+                            <rect width="400" height="260" fill="#0b0f19" />
+                            <circle cx="50" cy="30" r="2" fill="#ffffff" opacity="0.8" />
+                            <circle cx="120" cy="70" r="1.5" fill="#ffffff" opacity="0.6" />
+                            <circle cx="280" cy="40" r="2" fill="#ffffff" opacity="0.9" />
+                            <circle cx="360" cy="90" r="1.5" fill="#ffffff" opacity="0.5" />
+                            <circle cx="200" cy="20" r="2.5" fill="#fde047" opacity="0.9" />
+
+                            <!-- Planet (Circle) -->
+                            <circle cx="330" cy="210" r="35" fill="#a855f7" />
+                            <ellipse cx="330" cy="210" rx="45" ry="10" fill="none" stroke="#e9d5ff" stroke-width="3" />
+
+                            <!-- ROCKET (Combined shapes) -->
+                            <!-- Rocket Nose Cone (Triangle - Red) -->
+                            <polygon points="100,40 75,90 125,90" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+                            <!-- Rocket Body (Rectangle - White/Blue) -->
+                            <rect x="75" y="90" width="50" height="80" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" />
+                            <!-- Porthole Window (Circle - Cyan) -->
+                            <circle cx="100" cy="120" r="14" fill="#38bdf8" stroke="#0284c7" stroke-width="2" />
+                            <!-- Rocket Fins (Triangles - Yellow) -->
+                            <polygon points="75,130 50,170 75,170" fill="#eab308" />
+                            <polygon points="125,130 150,170 125,170" fill="#eab308" />
+                            <!-- Rocket Flame (Orange/Yellow Triangles) -->
+                            <polygon points="85,170 100,210 115,170" fill="#f97316" />
+                            <polygon points="90,170 100,195 110,170" fill="#facc15" />
+
+                            <!-- ROBOT (Combined shapes) -->
+                            <!-- Head (Square) -->
+                            <rect x="220" y="80" width="45" height="35" rx="3" fill="#38bdf8" stroke="#0284c7" stroke-width="2" />
+                            <!-- Antenna (Circle) -->
+                            <circle cx="242" cy="70" r="5" fill="#ef4444" />
+                            <line x1="242" y1="75" x2="242" y2="80" stroke="#ffffff" stroke-width="2" />
+                            <!-- Eyes (Circles) -->
+                            <circle cx="232" cy="92" r="4" fill="#facc15" />
+                            <circle cx="252" cy="92" r="4" fill="#facc15" />
+                            <!-- Body (Large Rectangle) -->
+                            <rect x="210" y="120" width="65" height="55" rx="4" fill="#a855f7" stroke="#7e22ce" stroke-width="2" />
+                            <!-- Chest Lights (Circles) -->
+                            <circle cx="230" cy="140" r="4" fill="#22c55e" />
+                            <circle cx="255" cy="140" r="4" fill="#ef4444" />
+                            <!-- Arms (Rectangles) -->
+                            <rect x="188" y="125" width="22" height="10" fill="#64748b" />
+                            <rect x="275" y="125" width="22" height="10" fill="#64748b" />
+                            <!-- Legs (Rectangles) -->
+                            <rect x="222" y="175" width="12" height="30" fill="#64748b" />
+                            <rect x="250" y="175" width="12" height="30" fill="#64748b" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Right: Step by step instructions -->
+                <div class="space-y-4">
+                    <h3 class="font-fredoka text-xl font-bold text-slate-800">📋 Покрокова інструкція для малювання:</h3>
+                    
+                    <ul class="space-y-3 font-medium text-slate-700 text-sm md:text-base">
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">1️⃣</span>
+                            <span>Запусти <b>Tux Paint</b> та обери чорне або темне тло з розділу «Новий».</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">2️⃣</span>
+                            <span>Обери інструмент <b>«Форми» 🔷</b> та обери <b>Прямокутник</b> для корпусу ракети.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">3️⃣</span>
+                            <span>Зверху прямокутника побудуй червоний <b>Трикутник 🔺</b> (верхівку ракети), а посередині — синє <b>Коло ⭕</b> (ілюмінатор).</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">4️⃣</span>
+                            <span>Збоку побудуй Робота з квадратів, прямокутників та круглих очей. Змінюй їхні кольори у нижній палітрі!</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">5️⃣</span>
+                            <span>Додай зірочки за допомогою інструмента <b>«Магія» 🪄</b> або <b>«Штамп» 🐧</b>!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-600 text-xs md:text-sm">
+        <p>Інтерактивний робочий аркуш з інформатики для 2 класу • Створення зображень з кількох об’єктів 💙💛</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- TASK 1: OBJECT CONSTRUCTOR ---
+        function checkTask1() {
+            const m1 = document.getElementById('t1-match-1').value;
+            const m2 = document.getElementById('t1-match-2').value;
+            const m3 = document.getElementById('t1-match-3').value;
+            const m4 = document.getElementById('t1-match-4').value;
+
+            if (!m1 || !m2 || !m3 || !m4) {
+                showFeedback('feedback-1', '⚠️ Обери комплект фігур для кожного малюнка!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (m1 === 'snowman' && m2 === 'rocket' && m3 === 'car' && m4 === 'house') {
+                showFeedback('feedback-1', '🎉 Чудово! Ти правильно визначив складники всіх предметів!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Підказка: Сніговик — 3 кола, Ракета — трикутник+прямокутник+кола, Машинка — прямокутник+2 кола!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            document.getElementById('t1-match-1').value = '';
+            document.getElementById('t1-match-2').value = '';
+            document.getElementById('t1-match-3').value = '';
+            document.getElementById('t1-match-4').value = '';
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: SIZE & COLOR TRANSFORMATION ---
+        const t2Answers = {};
+
+        function selectT2(qNum, choice, btn) {
+            t2Answers[qNum] = choice;
+            const parent = btn.parentElement;
+            parent.querySelectorAll(`button`).forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-300');
+            btn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-600');
+        }
+
+        function checkTask2() {
+            if (Object.keys(t2Answers).length < 3) {
+                showFeedback('feedback-2', '⚠️ Дай відповіді на всі 3 запитання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (t2Answers[1] === 'drag');
+            const ok2 = (t2Answers[2] === 'before');
+            const ok3 = (t2Answers[3] === 'bars');
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-2', '🎉 Супер! Ти чудово знаєш як змінювати розмір та колір об’єктів!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Згадай: розмір розтягується мишею, колір вибираємо в палітрі, а для штампів є смужки розміру!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            for (let k in t2Answers) delete t2Answers[k];
+            document.querySelectorAll('.t2-q1-btn, .t2-q2-btn, .t2-q3-btn').forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: CREATION STEPS SEQUENCE ---
+        function checkTask3() {
+            const s1 = document.getElementById('t3-step-1').value;
+            const s2 = document.getElementById('t3-step-2').value;
+            const s3 = document.getElementById('t3-step-3').value;
+            const s4 = document.getElementById('t3-step-4').value;
+
+            if (!s1 || !s2 || !s3 || !s4) {
+                showFeedback('feedback-3', '⚠️ Заповни порядок для всіх 4 кроків!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (s1 === '1' && s2 === '2' && s3 === '3' && s4 === '4') {
+                showFeedback('feedback-3', '🎉 Абсолютно правильно! Спочатку стіни, потім дах, вікна та прикраси саду!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Подумай: спочатку малюємо великі основоположні фігури (стіна, дах), а потім дрібні деталі!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            document.getElementById('t3-step-1').value = '';
+            document.getElementById('t3-step-2').value = '';
+            document.getElementById('t3-step-3').value = '';
+            document.getElementById('t3-step-4').value = '';
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: ROBOT COMPOSITION ANALYSIS ---
+        function checkTask4() {
+            const n1 = document.getElementById('t4-num-1').value.trim();
+            const n2 = document.getElementById('t4-num-2').value.trim();
+
+            if (!n1 || !n2) {
+                showFeedback('feedback-4', '⚠️ Введи числа у два поля!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            // Eyes: 2 yellow circles, Buttons: 3 green circles -> Total 5
+            // Antenna top: 1 triangle, Feet: 2 red triangles -> Total 3
+            const ok1 = (parseInt(n1) === 5);
+            const ok2 = (parseInt(n2) === 3);
+
+            if (ok1 && ok2) {
+                showFeedback('feedback-4', '🎉 Молодець! 5 круглих елементів (2 очі + 3 кнопки) та 3 трикутники!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Порахуй ще раз: очі (2) + кнопки на грудях (3) = 5. Антена (1) + стопи (2) = 3 трикутники!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            document.getElementById('t4-num-1').value = '';
+            document.getElementById('t4-num-2').value = '';
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: RIDDLES FROM TUX ---
+        const t5Answers = {};
+
+        function selectT5(riddleNum, choice, btn) {
+            t5Answers[riddleNum] = choice;
+            const riddleBox = btn.closest('.t5-riddle');
+            riddleBox.querySelectorAll('.t5-btn').forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+
+            btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-300');
+            btn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-md');
+        }
+
+        function checkTask5() {
+            if (Object.keys(t5Answers).length < 3) {
+                showFeedback('feedback-5', '⚠️ Розгадай усі 3 загадки від Тукса!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (t5Answers[1] === 'tree');
+            const ok2 = (t5Answers[2] === 'lollipop');
+            const ok3 = (t5Answers[3] === 'sun_combo');
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-5', '🎉 Супер! Ти розгадав усі комбінації: Ялинка, Леденець та Сонце!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Подумай ще: трикутник + стовбур = ялинка, круг на паличці = леденець, коло + трикутники = сонце!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            for (let k in t5Answers) delete t5Answers[k];
+            document.querySelectorAll('.t5-btn').forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- GENERAL FEEDBACK HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL EVALUATION & CONFETTI ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Майстер Композицій Tux Paint!";
+                descEl.innerText = "Фантастично! Ти вмієш комбінувати фігури, змінювати їхні розміри та кольори як справжній комп'ютерний художник!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 130, spread: 85, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Конструктор Фігур!";
+                descEl.innerText = "Гарний результат! Виправ невеликі помилочки та вибий 5/5!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний Дизайнер!";
+                descEl.innerText = "Ти лише вчишся! Переглянь презентацію та спробуй виконати завдання знову!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
