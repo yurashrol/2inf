@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Способи подання алгоритмів — Інформатика 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e9d5ff 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .drag-item {
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+        }
+        .drag-item:active {
+            cursor: grabbing;
+        }
+        .drag-over {
+            border-color: #8b5cf6 !important;
+            background-color: #f3e8ff !important;
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner in Slate-800 to Purple-900 Gradient -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-slate-800 via-slate-700 to-purple-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-slate-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">💻</span> Інформатика — 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Способи подання алгоритмів 📢🎨
+            </h1>
+            <p class="text-purple-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Дізнайся, як алгоритми можна описувати словами, малюнками, схемами або звуковими сигналами!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Presentation Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-sky-100 p-3 rounded-2xl text-sky-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальна презентація</h2>
+                    <p class="text-slate-500 text-sm">Переглянь презентацію перед виконанням завдань</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
+                    <iframe loading="lazy" 
+                            class="absolute inset-0 w-full h-full border-0 m-0 p-0"
+                            src="https://www.canva.com/design/DAHZy4hIl6Q/0-_9VA5rT80yqbqujWbyVw/view?embed" 
+                            allowfullscreen="allowfullscreen" 
+                            allow="fullscreen">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Drag-and-Drop Matching -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Визнач спосіб подання 🧩</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-700 rounded-full">З'єднання</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">
+                Перетягни приклади алгоритмів у відповідні блоки залежно від того, як їх подано:
+            </p>
+
+            <!-- Target Drop Slots -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="drop-slot p-3 min-h-[140px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition text-center" data-category="verbal">
+                    <span class="text-3xl mb-1">🗣️</span>
+                    <span class="font-fredoka font-bold text-xs text-purple-700 uppercase mb-2">Словесний</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+
+                <div class="drop-slot p-3 min-h-[140px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition text-center" data-category="graphic">
+                    <span class="text-3xl mb-1">🖼️</span>
+                    <span class="font-fredoka font-bold text-xs text-purple-700 uppercase mb-2">Графічний / Малюнки</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+
+                <div class="drop-slot p-3 min-h-[140px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition text-center" data-category="sound">
+                    <span class="text-3xl mb-1">🔔</span>
+                    <span class="font-fredoka font-bold text-xs text-purple-700 uppercase mb-2">Звуковий / Сигнали</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+
+                <div class="drop-slot p-3 min-h-[140px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition text-center" data-category="text">
+                    <span class="text-3xl mb-1">📝</span>
+                    <span class="font-fredoka font-bold text-xs text-purple-700 uppercase mb-2">Текстовий список</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+            </div>
+
+            <!-- Draggable Pool -->
+            <div class="p-4 rounded-2xl bg-purple-50/60 border border-purple-100 mb-6">
+                <span class="block font-fredoka font-bold text-xs text-purple-800 mb-3 uppercase tracking-wider text-center sm:text-left">
+                    📦 Варіанти алгоритмів (перетягуй мишкою):
+                </span>
+                <div id="drag-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div draggable="true" id="cmd-verbal" data-category="verbal" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">📢</span>
+                        <span class="font-medium text-xs text-slate-800">«Вчителька вголос розказує правила гри»</span>
+                    </div>
+
+                    <div draggable="true" id="cmd-graphic" data-category="graphic" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">🚦</span>
+                        <span class="font-medium text-xs text-slate-800">«Знаки та стрелочки на дорожньому переході»</span>
+                    </div>
+
+                    <div draggable="true" id="cmd-sound" data-category="sound" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">🔔</span>
+                        <span class="font-medium text-xs text-slate-800">«Три шкільні дзвінки під час пожежної тривоги»</span>
+                    </div>
+
+                    <div draggable="true" id="cmd-text" data-category="text" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">📜</span>
+                        <span class="font-medium text-xs text-slate-800">«Пронумерований рецепт випічки у книжці»</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-600/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: Sequencing (Visual Cooking Algorithm) -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Графічний алгоритм «Приготування бутерброда» 🥪</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Послідовність</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Вкажи правильний порядок кроків для створення смачного бутерброда за малюнками (від 1 до 4):</p>
+
+            <div class="space-y-4">
+                <!-- Step A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🍞</span>
+                        <span class="font-medium text-slate-800 text-sm md:text-base">Взяти скибочку свіжого хліба</span>
+                    </div>
+                    <select id="t2-step-a" class="w-full md:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери крок...</option>
+                        <option value="1">Крок 1</option>
+                        <option value="2">Крок 2</option>
+                        <option value="3">Крок 3</option>
+                        <option value="4">Крок 4</option>
+                    </select>
+                </div>
+
+                <!-- Step B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🧈</span>
+                        <span class="font-medium text-slate-800 text-sm md:text-base">Намастити хліб вершковим маслом</span>
+                    </div>
+                    <select id="t2-step-b" class="w-full md:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери крок...</option>
+                        <option value="1">Крок 1</option>
+                        <option value="2">Крок 2</option>
+                        <option value="3">Крок 3</option>
+                        <option value="4">Крок 4</option>
+                    </select>
+                </div>
+
+                <!-- Step C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🧀</span>
+                        <span class="font-medium text-slate-800 text-sm md:text-base">Покласти шматочок сиру та шинки</span>
+                    </div>
+                    <select id="t2-step-c" class="w-full md:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери крок...</option>
+                        <option value="1">Крок 1</option>
+                        <option value="2">Крок 2</option>
+                        <option value="3">Крок 3</option>
+                        <option value="4">Крок 4</option>
+                    </select>
+                </div>
+
+                <!-- Step D -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">😋</span>
+                        <span class="font-medium text-slate-800 text-sm md:text-base">Покласти другу скибочку зверху та смакувати!</span>
+                    </div>
+                    <select id="t2-step-d" class="w-full md:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери крок...</option>
+                        <option value="1">Крок 1</option>
+                        <option value="2">Крок 2</option>
+                        <option value="3">Крок 3</option>
+                        <option value="4">Крок 4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Detective - Find Incorrect Mode -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Детектив помилкового способу 🕵️‍♂️🔍</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-700 rounded-full">Знайди помилку</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Петрик хоче передати алгоритм «Як перейти дорогу на світлофорі» своєму другові, який перебуває <b>на іншій стороні вулиці під час сильного шуму</b>. Який спосіб подання алгоритму НЕ підійде у цій ситуації?</p>
+
+            <div class="p-5 rounded-2xl bg-amber-50/70 border border-amber-200 mb-6 space-y-3 font-medium text-slate-800 text-sm md:text-base">
+                <div class="flex items-center gap-2 text-amber-900 font-bold">
+                    <span>📢</span> <span>Ситуація:</span>
+                </div>
+                <p>На вулиці дуже шумно від автомобілів. Друг стоїть далеко і не чує голосу. Петрик має обрати найкращий спосіб подання команд.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                <label class="block font-fredoka font-bold text-slate-800 text-sm md:text-base">Який спосіб подання НЕ спрацює у цій ситуації?</label>
+                <select id="t3-wrong-mode" class="w-full p-3 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-800 focus:ring-2 focus:ring-amber-500">
+                    <option value="">Обери відповідь...</option>
+                    <option value="wrong1">Показати руками або жест-знаками (Графічний/Жестовий)</option>
+                    <option value="correct">Тихо прошепотіти або вигукнути слова через шумний потік машин (Словесний/Звуковий)</option>
+                    <option value="wrong2">Показати намальований плакат зі світлофором (Малюнковий)</option>
+                </select>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: Fill-in Missing Icon in Algorithm -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Пропущена позначка в графічному алгоритмі 🚸🎨</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-teal-50 text-teal-700 rounded-full">Заповнення пропуску</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Перед тобою графічний алгоритм переходу дороги. Обери відповідну команду-символ для другого кроку:</p>
+
+            <div class="p-5 rounded-2xl bg-teal-50/60 border border-teal-200 mb-6 space-y-3 font-medium text-slate-800">
+                <p>1. 🛑 Зупинитися біля пішохідного переходу.</p>
+                <div class="p-3 bg-white rounded-xl border-2 border-dashed border-teal-400 flex items-center gap-3">
+                    <span class="font-bold text-teal-700">2. [Пропущений знак]:</span>
+                    <select id="t4-missing-icon" class="w-full p-2 border border-slate-300 rounded-lg bg-teal-50 font-fredoka font-bold text-teal-900 focus:ring-2 focus:ring-teal-500">
+                        <option value="">Обери пропущену дію...</option>
+                        <option value="correct">👀 Подивитися ліворуч і праворуч та дочекатися зеленого світла</option>
+                        <option value="wrong1">🙈 Закрити очі та побігти напростець</option>
+                        <option value="wrong2">🎈 Почати грати у м'яч прямо на дорозі</option>
+                    </select>
+                </div>
+                <p>3. 🚶‍♂️ Спокійно перейти дорогу по зебрі.</p>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-teal-600/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: True/False Interactive Quiz Cards -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Правда чи Неправда? 🧠⚡</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-700 rounded-full">Вікторина</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай твердження про способи подання алгоритмів та обери правильно:</p>
+
+            <div class="space-y-4">
+                <!-- Card 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">1. Один і той самий алгоритм можна подати різними способами (наприклад, словами або малюнками).</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectTrueFalse(1, true)" id="tf-1-true" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">✅ Правда</button>
+                        <button type="button" onclick="selectTrueFalse(1, false)" id="tf-1-false" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">❌ Неправда</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">2. Графічний спосіб — це коли алгоритм записують лише звуковими сигналами.</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectTrueFalse(2, true)" id="tf-2-true" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">✅ Правда</button>
+                        <button type="button" onclick="selectTrueFalse(2, false)" id="tf-2-false" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">❌ Неправда</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">3. Схема зі стрілочками та блоками — це приклад графічного подання алгоритму.</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectTrueFalse(3, true)" id="tf-3-true" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">✅ Правда</button>
+                        <button type="button" onclick="selectTrueFalse(3, false)" id="tf-3-false" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">❌ Неправда</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-600/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section -->
+        <section class="bg-gradient-to-br from-slate-800 via-purple-900 to-slate-800 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-slate-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-purple-200 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 інтерактивних вправ та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-purple-400 to-indigo-400 hover:from-purple-500 hover:to-indigo-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-purple-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-purple-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-purple-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-purple-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: ScratchJr Visual Environment -->
+        <section class="bg-gradient-to-br from-purple-50 via-slate-50 to-indigo-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-purple-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-indigo-600 text-white p-3 rounded-2xl text-2xl shadow-md">🐱</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">
+                        Творча майстерня: Практичне завдання у ScratchJr 🚀🐱
+                    </h2>
+                    <p class="text-indigo-700 font-medium text-sm md:text-base">
+                        Склади графічний алгоритм у вигляді блоків-значків, щоб котик зробив веселий танок!
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Left: ScratchJr Visual Block Scheme Illustration (SVG) -->
+                <div class="bg-white p-5 rounded-2xl border-2 border-purple-200 shadow-md space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="font-fredoka font-bold text-xs text-purple-700">🧩 Блоки ScratchJr (Графічне подання)</span>
+                        <span class="text-xs bg-indigo-100 text-indigo-800 px-2.5 py-0.5 rounded-full font-semibold">ScratchJr</span>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-700 flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 340 100" class="w-full h-auto">
+                            <!-- Green Flag Block -->
+                            <g transform="translate(5, 20)">
+                                <rect width="65" height="55" rx="12" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+                                <text x="32" y="32" font-family="Fredoka" font-size="16" text-anchor="middle">🏁</text>
+                                <text x="32" y="47" font-family="Fredoka" font-size="6" font-weight="bold" fill="#78350f" text-anchor="middle">СТАРТ</text>
+                            </g>
+
+                            <!-- Arrow Connector 1 -->
+                            <path d="M72 47 L80 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Move Right Block -->
+                            <g transform="translate(83, 20)">
+                                <rect width="60" height="55" rx="12" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+                                <text x="30" y="32" font-family="Fredoka" font-size="16" text-anchor="middle">➡️</text>
+                                <text x="30" y="47" font-family="Fredoka" font-size="6" font-weight="bold" fill="white" text-anchor="middle">ВПРАВО 2</text>
+                            </g>
+
+                            <!-- Arrow Connector 2 -->
+                            <path d="M145 47 L153 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Hop/Jump Block -->
+                            <g transform="translate(156, 20)">
+                                <rect width="60" height="55" rx="12" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+                                <text x="30" y="32" font-family="Fredoka" font-size="16" text-anchor="middle">🦘</text>
+                                <text x="30" y="47" font-family="Fredoka" font-size="6" font-weight="bold" fill="white" text-anchor="middle">ПРИБЛИЗИТИСЬ</text>
+                            </g>
+
+                            <!-- Arrow Connector 3 -->
+                            <path d="M218 47 L226 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Sound Play Block -->
+                            <g transform="translate(229, 20)">
+                                <rect width="60" height="55" rx="12" fill="#ec4899" stroke="#be185d" stroke-width="2"/>
+                                <text x="30" y="32" font-family="Fredoka" font-size="16" text-anchor="middle">🔊</text>
+                                <text x="30" y="47" font-family="Fredoka" font-size="6" font-weight="bold" fill="white" text-anchor="middle">ПОНЯВКАТИ</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-slate-500 text-center italic">Приклад послідовного графічного алгоритму в ScratchJr</p>
+                </div>
+
+                <!-- Right: Step-by-step Instructions -->
+                <div class="space-y-4">
+                    <h3 class="font-fredoka text-xl font-bold text-slate-800">📋 Покрокова інструкція для виконання:</h3>
+                    
+                    <ul class="space-y-3 font-medium text-slate-700 text-sm md:text-base">
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">1️⃣</span>
+                            <span>Відкрий програму <b>ScratchJr</b> на планшеті або комп'ютері та створи новий проект.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">2️⃣</span>
+                            <span>Обери жовту вкладку команд та перетягни блок <b>«Зелений прапорець» 🏁</b>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">3️⃣</span>
+                            <span>Додай синій блок <b>«Рух праворуч» ➡️</b> та встановіть цифру 2 під ним.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">4️⃣</span>
+                            <span>Додай блок <b>«Підстрибнути» 🦘</b> та рожевий блок <b>«Звук Няв» 🔊</b>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">5️⃣</span>
+                            <span>Натисни на зелений прапорець у верхній частині екрана та перевір, як котик виконує графічний алгоритм!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-500 text-xs md:text-sm">
+        <p>Інтерактивний робочий аркуш з інформатики для 2 класу • Способи подання алгоритмів 💜🇺🇦</p>
+    </footer>
+
+    <!-- JavaScript Implementation -->
+    <script>
+        // --- TASK 1: DRAG AND DROP MATCHING ---
+        const dragItems = document.querySelectorAll('.drag-item');
+        const dropSlots = document.querySelectorAll('.drop-slot');
+        const dragContainer = document.getElementById('drag-container');
+
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', handleDragStart);
+        });
+
+        dropSlots.forEach(slot => {
+            slot.addEventListener('dragover', handleDragOver);
+            slot.addEventListener('dragleave', handleDragLeave);
+            slot.addEventListener('drop', handleDrop);
+        });
+
+        function handleDragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.id);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const slot = e.currentTarget;
+            slot.classList.remove('drag-over');
+            const id = e.dataTransfer.getData('text/plain');
+            const draggedEl = document.getElementById(id);
+
+            if (draggedEl) {
+                const contentContainer = slot.querySelector('.slot-content');
+                if (contentContainer.children.length > 0) {
+                    dragContainer.appendChild(contentContainer.children[0]);
+                }
+                contentContainer.appendChild(draggedEl);
+            }
+        }
+
+        function checkTask1() {
+            let correctCount = 0;
+            let filledCount = 0;
+
+            dropSlots.forEach(slot => {
+                const targetCat = slot.getAttribute('data-category');
+                const child = slot.querySelector('.slot-content').firstElementChild;
+                if (child) {
+                    filledCount++;
+                    const childCat = child.getAttribute('data-category');
+                    if (targetCat === childCat) {
+                        correctCount++;
+                    }
+                }
+            });
+
+            if (filledCount < 4) {
+                showFeedback('feedback-1', '⚠️ Перетягни всі чотири приклади алгоритмів у відповідні блоки!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (correctCount === 4) {
+                showFeedback('feedback-1', '🎉 Чудово! Ти правильно визначив усі способи подання алгоритмів!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Подумай ще раз! Зверни увагу, де алгоритм передається словами, де малюнками, а де звуком.', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            dropSlots.forEach(slot => {
+                const content = slot.querySelector('.slot-content');
+                if (content.children.length > 0) {
+                    dragContainer.appendChild(content.children[0]);
+                }
+            });
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: SEQUENCING ---
+        function checkTask2() {
+            const sa = document.getElementById('t2-step-a').value; // Bread -> 1
+            const sb = document.getElementById('t2-step-b').value; // Butter -> 2
+            const sc = document.getElementById('t2-step-c').value; // Cheese/Ham -> 3
+            const sd = document.getElementById('t2-step-d').value; // Top bread -> 4
+
+            if (!sa || !sb || !sc || !sd) {
+                showFeedback('feedback-2', '⚠️ Вкажи кроки для всіх чотирьох дій!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const isCorrect = (sa === '1' && sb === '2' && sc === '3' && sd === '4');
+
+            if (isCorrect) {
+                showFeedback('feedback-2', '🎉 Влучно! Порядок: 1. Хліб ➔ 2. Масло ➔ 3. Сир/Шинка ➔ 4. Друга скибочка!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Зверни увагу: спочатку беруть скибочку хліба, намащують маслом, додають начинку і закривають другим хлібчиком!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            document.getElementById('t2-step-a').value = '';
+            document.getElementById('t2-step-b').value = '';
+            document.getElementById('t2-step-c').value = '';
+            document.getElementById('t2-step-d').value = '';
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: DETECTIVE (INCCORECT MODE) ---
+        function checkTask3() {
+            const val = document.getElementById('t3-wrong-mode').value;
+
+            if (!val) {
+                showFeedback('feedback-3', '⚠️ Обери відповідь зі списку!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (val === 'correct') {
+                showFeedback('feedback-3', '🎉 Правильно! Голос та шепіт не чутно через сильний шум машин, тому словесний/звуковий спосіб тут не спрацює!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Подумай ще! Через шум автомобілів другу важко щось почути.', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            document.getElementById('t3-wrong-mode').value = '';
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: MISSING ICON ---
+        function checkTask4() {
+            const val = document.getElementById('t4-missing-icon').value;
+
+            if (!val) {
+                showFeedback('feedback-4', '⚠️ Обери пропущену дію зі списку!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (val === 'correct') {
+                showFeedback('feedback-4', '🎉 Молодець! Перед переходом дороги обов`язково треба подивитися по сторонах та дочекатися зеленого світла!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Небезпечно! Обери правильну та безпечну дію для пішохода.', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            document.getElementById('t4-missing-icon').value = '';
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: TRUE/FALSE QUIZ ---
+        let tfAnswers = { 1: null, 2: null, 3: null };
+
+        function selectTrueFalse(questionNum, isTrue) {
+            tfAnswers[questionNum] = isTrue;
+            const btnTrue = document.getElementById(`tf-${questionNum}-true`);
+            const btnFalse = document.getElementById(`tf-${questionNum}-false`);
+
+            if (isTrue) {
+                btnTrue.className = "px-4 py-2 bg-purple-600 text-white rounded-xl font-bold text-xs shadow transition";
+                btnFalse.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+            } else {
+                btnFalse.className = "px-4 py-2 bg-purple-600 text-white rounded-xl font-bold text-xs shadow transition";
+                btnTrue.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+            }
+        }
+
+        function checkTask5() {
+            if (tfAnswers[1] === null || tfAnswers[2] === null || tfAnswers[3] === null) {
+                showFeedback('feedback-5', '⚠️ Дай відповідь на всі три запитання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const isCorrect = (tfAnswers[1] === true && tfAnswers[2] === false && tfAnswers[3] === true);
+
+            if (isCorrect) {
+                showFeedback('feedback-5', '🎉 Бездоганно! Один алгоритм можна подавати різними способами, а графічний спосіб включає схеми, малюнки та блоки!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Подумай ще! Пам`ятай, що графічний спосіб — це малюнки та схеми, а не лише звуки!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            tfAnswers = { 1: null, 2: null, 3: null };
+            [1, 2, 3].forEach(n => {
+                const bt = document.getElementById(`tf-${n}-true`);
+                const bf = document.getElementById(`tf-${n}-false`);
+                if (bt) bt.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+                if (bf) bf.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+            });
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- FEEDBACK DISPLAY HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL RESULTS EVALUATION ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Знавець способів подання алгоритмів!";
+                descEl.innerText = "Вітаємо! Ти легко розрізняєш словесний, графічний, текстовий та звуковий способи подання!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Уважний алгоритміст!";
+                descEl.innerText = "Чудовий результат! Перевір підказки у завданнях та отримай 5/5!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний дослідник!";
+                descEl.innerText = "Спробуй виконати вправи ще раз, щоб краще запам'ятати способи подання!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
