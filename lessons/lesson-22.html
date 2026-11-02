@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лінійний алгоритм. Послідовність команд — Інформатика 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e9d5ff 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .drag-item {
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+        }
+        .drag-item:active {
+            cursor: grabbing;
+        }
+        .drag-over {
+            border-color: #8b5cf6 !important;
+            background-color: #f3e8ff !important;
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner in Sophisticated Grey-Purple Gradient -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-slate-800 via-slate-700 to-purple-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-slate-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">💻</span> Інформатика — 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Лінійний алгоритм. Послідовність команд 🎯
+            </h1>
+            <p class="text-purple-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Дізнайся, як правильно складати та виконувати послідовні команди крок за кроком!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Educational Materials Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-sky-100 p-3 rounded-2xl text-sky-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальна презентація</h2>
+                    <p class="text-slate-500 text-sm">Переглянь матеріали перед виконанням завдань</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
+                    <iframe loading="lazy" 
+                            class="absolute inset-0 w-full h-full border-0 m-0 p-0"
+                            src="https://www.canva.com/design/DAHZyx74t04/vjVSSuZRJW1TPrAeDPm-RQ/view?embed" 
+                            allowfullscreen="allowfullscreen" 
+                            allow="fullscreen">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Drag-and-Drop Matching -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Хто виконає алгоритм? 🤖🐱</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-700 rounded-full">З'єднання</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">
+                Перетягни команду до відповідного виконаця, який спроможний її виконати:
+            </p>
+
+            <!-- Target Drop Slots -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="drop-slot p-3 min-h-[140px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition text-center" data-executor="cat">
+                    <span class="text-3xl mb-1">🐱</span>
+                    <span class="font-fredoka font-bold text-xs text-purple-700 uppercase mb-2">Котик</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+
+                <div class="drop-slot p-3 min-h-[140px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition text-center" data-executor="printer">
+                    <span class="text-3xl mb-1">🖨️</span>
+                    <span class="font-fredoka font-bold text-xs text-purple-700 uppercase mb-2">Принтер</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+
+                <div class="drop-slot p-3 min-h-[140px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition text-center" data-executor="robot">
+                    <span class="text-3xl mb-1">🤖</span>
+                    <span class="font-fredoka font-bold text-xs text-purple-700 uppercase mb-2">Робот-пилосос</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+
+                <div class="drop-slot p-3 min-h-[140px] rounded-2xl bg-slate-50 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center transition text-center" data-executor="chef">
+                    <span class="text-3xl mb-1">👩‍🍳</span>
+                    <span class="font-fredoka font-bold text-xs text-purple-700 uppercase mb-2">Кухар</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+            </div>
+
+            <!-- Draggable Pool -->
+            <div class="p-4 rounded-2xl bg-purple-50/60 border border-purple-100 mb-6">
+                <span class="block font-fredoka font-bold text-xs text-purple-800 mb-3 uppercase tracking-wider text-center sm:text-left">
+                    📦 Варіанти команд (перетягуй мишкою):
+                </span>
+                <div id="drag-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div draggable="true" id="cmd-cat" data-executor="cat" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">🥛</span>
+                        <span class="font-medium text-xs text-slate-800">«Понявкай та випий молоко»</span>
+                    </div>
+
+                    <div draggable="true" id="cmd-printer" data-executor="printer" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">📄</span>
+                        <span class="font-medium text-xs text-slate-800">«Роздрукуй 2 аркуші документу»</span>
+                    </div>
+
+                    <div draggable="true" id="cmd-robot" data-executor="robot" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">🧹</span>
+                        <span class="font-medium text-xs text-slate-800">«Прибери пил у кімнаті»</span>
+                    </div>
+
+                    <div draggable="true" id="cmd-chef" data-executor="chef" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">🍕</span>
+                        <span class="font-medium text-xs text-slate-800">«Спечи смачну піцу з сиром»</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-600/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: Ordering (Planting a Flower) -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Алгоритм «Посадка квітки» 🌻</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Послідовність</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Вкажи правильний порядок дій для посадки квітки у вазон (від 1 до 4):</p>
+
+            <div class="space-y-4">
+                <!-- Step A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🪴</span>
+                        <span class="font-medium text-slate-800 text-sm md:text-base">Насипати ґрунт у горщик</span>
+                    </div>
+                    <select id="t2-step-a" class="w-full md:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери крок...</option>
+                        <option value="1">Крок 1</option>
+                        <option value="2">Крок 2</option>
+                        <option value="3">Крок 3</option>
+                        <option value="4">Крок 4</option>
+                    </select>
+                </div>
+
+                <!-- Step B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🌱</span>
+                        <span class="font-medium text-slate-800 text-sm md:text-base">Покласти насінину в заглиблення</span>
+                    </div>
+                    <select id="t2-step-b" class="w-full md:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери крок...</option>
+                        <option value="1">Крок 1</option>
+                        <option value="2">Крок 2</option>
+                        <option value="3">Крок 3</option>
+                        <option value="4">Крок 4</option>
+                    </select>
+                </div>
+
+                <!-- Step C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">🟤</span>
+                        <span class="font-medium text-slate-800 text-sm md:text-base">Присипати насінину землею</span>
+                    </div>
+                    <select id="t2-step-c" class="w-full md:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери крок...</option>
+                        <option value="1">Крок 1</option>
+                        <option value="2">Крок 2</option>
+                        <option value="3">Крок 3</option>
+                        <option value="4">Крок 4</option>
+                    </select>
+                </div>
+
+                <!-- Step D -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl">💧</span>
+                        <span class="font-medium text-slate-800 text-sm md:text-base">Полити землю водою з лійки</span>
+                    </div>
+                    <select id="t2-step-d" class="w-full md:w-48 p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-700 focus:ring-2 focus:ring-indigo-500">
+                        <option value="">Обери крок...</option>
+                        <option value="1">Крок 1</option>
+                        <option value="2">Крок 2</option>
+                        <option value="3">Крок 3</option>
+                        <option value="4">Крок 4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Find Error in Algorithm -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Знайди помилкову команду 🎒🕵️‍♂️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-700 rounded-full">Детектив помилок</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Учні склали алгоритм «Ранкові збори до школи». Одна з команд у ньому помилкова та недоречна! Знайди її та обери правильний замінник:</p>
+
+            <div class="p-5 rounded-2xl bg-amber-50/70 border border-amber-200 mb-6 space-y-3 font-medium text-slate-800 text-sm md:text-base">
+                <div class="flex items-center gap-2 text-amber-900 font-bold">
+                    <span>🎒</span> <span>Алгоритм «Збори до школи»:</span>
+                </div>
+                <ol class="list-decimal list-inside space-y-2 pl-2">
+                    <li>Прокинутися та застелити ліжко.</li>
+                    <li>Вмитися та почистити зуби.</li>
+                    <li class="p-2 bg-rose-100 rounded-xl border border-rose-300 font-semibold text-rose-900">
+                        Крок 3: Вдягнути піжаму та лягти спати. ❌
+                    </li>
+                    <li>Вдягнути шкільну форму та поснідати.</li>
+                    <li>Взяти портфель та вийти до школи.</li>
+                </ol>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                <label class="block font-fredoka font-bold text-slate-800 text-sm md:text-base">Якою правильною командою треба замінити Крок 3?</label>
+                <select id="t3-correct-fix" class="w-full p-3 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-800 focus:ring-2 focus:ring-amber-500">
+                    <option value="">Обери правильну команду...</option>
+                    <option value="wrong1">Увімкнути телевізор та дивитися мультики цілий день</option>
+                    <option value="correct">Зложити підручники та зошити у портфель</option>
+                    <option value="wrong2">Піти гратися у пісочниці на вулиці</option>
+                </select>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: Fill-in-the-blank for Missing Command -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Пропущена команда ☀️🎨</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-teal-50 text-teal-700 rounded-full">Заповнення пропуску</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Художник складав алгоритм «Як намалювати Сонечко», але пропустив важливий крок. Обери пропущену команду із списку:</p>
+
+            <div class="p-5 rounded-2xl bg-teal-50/60 border border-teal-200 mb-6 space-y-3 font-medium text-slate-800">
+                <p>1. Взяти аркуш паперу та жовтий олівець.</p>
+                <p>2. Намалювати жовте коло посередині аркуша.</p>
+                <div class="p-3 bg-white rounded-xl border-2 border-dashed border-teal-400 flex items-center gap-3">
+                    <span class="font-bold text-teal-700">3. [Пропущений крок]:</span>
+                    <select id="t4-missing-cmd" class="w-full p-2 border border-slate-300 rounded-lg bg-teal-50 font-fredoka font-bold text-teal-900 focus:ring-2 focus:ring-teal-500">
+                        <option value="">Обери пропущену команду...</option>
+                        <option value="correct">Намалювати промінчики навколо кола ☀️</option>
+                        <option value="wrong1">Скласти папір у паперовий літачок ✈️</option>
+                        <option value="wrong2">Зафарбувати увесь аркуш чорним кольором ⬛</option>
+                    </select>
+                </div>
+                <p>4. Підписати малюнок та поставити у рамку.</p>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-teal-600/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: True/False Interactive Quiz Cards -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Правда чи Неправда? 🧠⚡</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-700 rounded-full">Вікторина</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай твердження про лінійні алгоритми та познач, чи правдиві вони:</p>
+
+            <div class="space-y-4">
+                <!-- Card 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">1. У лінійному алгоритмі всі команди виконуються строго одна за одною.</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectTrueFalse(1, true)" id="tf-1-true" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">✅ Правда</button>
+                        <button type="button" onclick="selectTrueFalse(1, false)" id="tf-1-false" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">❌ Неправда</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">2. Порядок команд у лінійному алгоритмі можна легко міняти як завгодно.</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectTrueFalse(2, true)" id="tf-2-true" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">✅ Правда</button>
+                        <button type="button" onclick="selectTrueFalse(2, false)" id="tf-2-false" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">❌ Неправда</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">3. Виконавцем алгоритму може бути тільки людина, комп'ютери не вміють виконувати алгоритми.</span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectTrueFalse(3, true)" id="tf-3-true" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">✅ Правда</button>
+                        <button type="button" onclick="selectTrueFalse(3, false)" id="tf-3-false" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">❌ Неправда</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-600/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section -->
+        <section class="bg-gradient-to-br from-slate-800 via-purple-900 to-slate-800 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-slate-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-purple-200 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 інтерактивних вправ та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-purple-400 to-indigo-400 hover:from-purple-500 hover:to-indigo-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-purple-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-purple-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-purple-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-purple-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: Blockly Games Maze -->
+        <section class="bg-gradient-to-br from-purple-50 via-slate-50 to-indigo-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-purple-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-emerald-600 text-white p-3 rounded-2xl text-2xl shadow-md">🎮</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">
+                        Творча майстерня: Практичне завдання у «Blockly Games: Лабіринт» 🎯🧩
+                    </h2>
+                    <p class="text-emerald-700 font-medium text-sm md:text-base">
+                        Склади лінійний алгоритм для чоловічка, щоб він дійшов до червоного прапорця!
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Left: Blockly Games Block Scheme Illustration -->
+                <div class="bg-white p-5 rounded-2xl border-2 border-purple-200 shadow-md space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="font-fredoka font-bold text-xs text-purple-700">🧩 Схема алгоритму в Blockly Games</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full font-semibold">Blockly</span>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-700 flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 320 100" class="w-full h-auto">
+                            <!-- Move Forward Block (Green) -->
+                            <g transform="translate(10, 20)">
+                                <rect width="80" height="55" rx="10" fill="#10b981" />
+                                <text x="40" y="32" font-family="Fredoka" font-size="16" fill="white" text-anchor="middle">➡️</text>
+                                <text x="40" y="47" font-family="Fredoka" font-size="7" font-weight="bold" fill="white" text-anchor="middle">РУХ ВПЕРЕД</text>
+                            </g>
+
+                            <!-- Arrow 1 -->
+                            <path d="M95 47 L105 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Turn Left Block (Blue) -->
+                            <g transform="translate(110, 20)">
+                                <rect width="90" height="55" rx="10" fill="#2563eb" />
+                                <text x="45" y="32" font-family="Fredoka" font-size="16" fill="white" text-anchor="middle">↩️</text>
+                                <text x="45" y="47" font-family="Fredoka" font-size="7" font-weight="bold" fill="white" text-anchor="middle">ПОВЕРНУТИ ЛІВОРУЧ</text>
+                            </g>
+
+                            <!-- Arrow 2 -->
+                            <path d="M205 47 L215 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Move Forward Block 2 -->
+                            <g transform="translate(220, 20)">
+                                <rect width="80" height="55" rx="10" fill="#10b981" />
+                                <text x="40" y="32" font-family="Fredoka" font-size="16" fill="white" text-anchor="middle">➡️</text>
+                                <text x="40" y="47" font-family="Fredoka" font-size="7" font-weight="bold" fill="white" text-anchor="middle">РУХ ВПЕРЕД</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-slate-500 text-center italic">Послідовне з'єднання команд лінійного алгоритму</p>
+                </div>
+
+                <!-- Right: Step-by-step Instructions -->
+                <div class="space-y-4">
+                    <h3 class="font-fredoka text-xl font-bold text-slate-800">📋 Покрокова інструкція:</h3>
+                    
+                    <ul class="space-y-3 font-medium text-slate-700 text-sm md:text-base">
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">1️⃣</span>
+                            <span>Відкрий сайт <b>blockly.games/maze</b> (Blockly Games: Лабіринт) у своєму браузері.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">2️⃣</span>
+                            <span>Подивися на чоловічка та шлях до червоного прапорця.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">3️⃣</span>
+                            <span>Приєднай необхідні блоки <b>«Рух вперед» ➡️</b> один за одним під запускний блок.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">4️⃣</span>
+                            <span>Якщо стежка повертає, додай блок <b>«Повернути ліворуч» ↩️</b> або <b>«Повернути праворуч» ↪️</b>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">5️⃣</span>
+                            <span>Натисни червону кнопку <b>«Запустити програму» ▶️</b> та перевір роботу свого алгоритму!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-500 text-xs md:text-sm">
+        <p>Інтерактивний робочий аркуш з інформатики для 2 класу • Лінійні алгоритми 💜🇺🇦</p>
+    </footer>
+
+    <!-- JavaScript Implementation (No SpeechSynthesis / Sound) -->
+    <script>
+        // --- TASK 1: DRAG AND DROP MATCHING ---
+        const dragItems = document.querySelectorAll('.drag-item');
+        const dropSlots = document.querySelectorAll('.drop-slot');
+        const dragContainer = document.getElementById('drag-container');
+
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', handleDragStart);
+        });
+
+        dropSlots.forEach(slot => {
+            slot.addEventListener('dragover', handleDragOver);
+            slot.addEventListener('dragleave', handleDragLeave);
+            slot.addEventListener('drop', handleDrop);
+        });
+
+        function handleDragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.id);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const slot = e.currentTarget;
+            slot.classList.remove('drag-over');
+            const id = e.dataTransfer.getData('text/plain');
+            const draggedEl = document.getElementById(id);
+
+            if (draggedEl) {
+                const contentContainer = slot.querySelector('.slot-content');
+                if (contentContainer.children.length > 0) {
+                    dragContainer.appendChild(contentContainer.children[0]);
+                }
+                contentContainer.appendChild(draggedEl);
+            }
+        }
+
+        function checkTask1() {
+            let correctCount = 0;
+            let filledCount = 0;
+
+            dropSlots.forEach(slot => {
+                const targetExec = slot.getAttribute('data-executor');
+                const child = slot.querySelector('.slot-content').firstElementChild;
+                if (child) {
+                    filledCount++;
+                    const childExec = child.getAttribute('data-executor');
+                    if (targetExec === childExec) {
+                        correctCount++;
+                    }
+                }
+            });
+
+            if (filledCount < 4) {
+                showFeedback('feedback-1', '⚠️ Перетягни команди до всіх чотирьох виконавців!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (correctCount === 4) {
+                showFeedback('feedback-1', '🎉 Чудово! Ти правильно добираєш виконавців для всіх команд!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Подумай ще раз! Перевірте, хто саме може виконувати кожну дію.', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            dropSlots.forEach(slot => {
+                const content = slot.querySelector('.slot-content');
+                if (content.children.length > 0) {
+                    dragContainer.appendChild(content.children[0]);
+                }
+            });
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: PLANTING FLOWER SEQUENCING ---
+        function checkTask2() {
+            const sa = document.getElementById('t2-step-a').value; // Soil -> 1
+            const sb = document.getElementById('t2-step-b').value; // Seed -> 2
+            const sc = document.getElementById('t2-step-c').value; // Cover -> 3
+            const sd = document.getElementById('t2-step-d').value; // Water -> 4
+
+            if (!sa || !sb || !sc || !sd) {
+                showFeedback('feedback-2', '⚠️ Вкажи кроки для всіх чотирьох дій!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const isCorrect = (sa === '1' && sb === '2' && sc === '3' && sd === '4');
+
+            if (isCorrect) {
+                showFeedback('feedback-2', '🎉 Молодець! Правильний порядок дій: 1. Ґрунт ➔ 2. Насінина ➔ 3. Присипати землею ➔ 4. Полити водою!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Зверни увагу: спочатку насипають ґрунт у горщик, а поливають водою в самому кінці!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            document.getElementById('t2-step-a').value = '';
+            document.getElementById('t2-step-b').value = '';
+            document.getElementById('t2-step-c').value = '';
+            document.getElementById('t2-step-d').value = '';
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: FIND MISTAKE IN ALGORITHM ---
+        function checkTask3() {
+            const val = document.getElementById('t3-correct-fix').value;
+
+            if (!val) {
+                showFeedback('feedback-3', '⚠️ Обери команду для виправлення Кроку 3!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (val === 'correct') {
+                showFeedback('feedback-3', '🎉 Чудова робота! Зранку перед школою потрібно зложити підручники та зошити у портфель!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Неправильно. Подумай, яка дія потрібна для зборів до школи?', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            document.getElementById('t3-correct-fix').value = '';
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: MISSING COMMAND FILL-IN ---
+        function checkTask4() {
+            const val = document.getElementById('t4-missing-cmd').value;
+
+            if (!val) {
+                showFeedback('feedback-4', '⚠️ Обери пропущену команду зі списку!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (val === 'correct') {
+                showFeedback('feedback-4', '🎉 Правильно! Щоб сонечко було схожим на справжнє, треба намалювати промінчики навколо кола!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Подумай, чого саме бракує намальованому сонечку?', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            document.getElementById('t4-missing-cmd').value = '';
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: TRUE/FALSE QUIZ CARDS ---
+        let tfAnswers = { 1: null, 2: null, 3: null };
+
+        function selectTrueFalse(questionNum, isTrue) {
+            tfAnswers[questionNum] = isTrue;
+            const btnTrue = document.getElementById(`tf-${questionNum}-true`);
+            const btnFalse = document.getElementById(`tf-${questionNum}-false`);
+
+            if (isTrue) {
+                btnTrue.className = "px-4 py-2 bg-purple-600 text-white rounded-xl font-bold text-xs shadow transition";
+                btnFalse.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+            } else {
+                btnFalse.className = "px-4 py-2 bg-purple-600 text-white rounded-xl font-bold text-xs shadow transition";
+                btnTrue.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+            }
+        }
+
+        function checkTask5() {
+            if (tfAnswers[1] === null || tfAnswers[2] === null || tfAnswers[3] === null) {
+                showFeedback('feedback-5', '⚠️ Дай відповідь на всі три запитання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const isCorrect = (tfAnswers[1] === true && tfAnswers[2] === false && tfAnswers[3] === false);
+
+            if (isCorrect) {
+                showFeedback('feedback-5', '🎉 Супер! У лінійному алгоритмі всі команди виконуються строго за порядком, а виконати алгоритм може і комп`ютер, і робот!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Подумай ще! Пам`ятай, що порядок команд у лінійному алгоритмі змінювати не можна!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            tfAnswers = { 1: null, 2: null, 3: null };
+            [1, 2, 3].forEach(n => {
+                const bt = document.getElementById(`tf-${n}-true`);
+                const bf = document.getElementById(`tf-${n}-false`);
+                if (bt) bt.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+                if (bf) bf.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+            });
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- FEEDBACK DISPLAY HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL RESULTS EVALUATION ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Головний командир алгоритмів!";
+                descEl.innerText = "Вітаємо! Ти ідеально розумієш команди та лінійні алгоритми!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Вправний алгоритміст!";
+                descEl.innerText = "Дуже хороший результат! Перевір підказки та здобудь 5/5!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний дослідник команд!";
+                descEl.innerText = "Спробуй виконати вправи ще раз, щоб закріпити поняття алгоритму!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
