@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Геометричні фігури в Tux Paint — 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner in Rich Blue Gradient -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">🎨</span> Інформатика — 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Геометричні фігури в Tux Paint 🔷⭕✨
+            </h1>
+            <p class="text-sky-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Досліджуй магічні інструменти, малюй геометричні фігури та допомагай пінгвіну Туксу створювати дивовижні малюнки!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Presentation Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-sky-100 p-3 rounded-2xl text-sky-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальна презентація</h2>
+                    <p class="text-slate-500 text-sm">Переглянь навчальні матеріали перед виконанням завдань</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
+                    <iframe loading="lazy" 
+                            class="absolute inset-0 w-full h-full border-0 m-0 p-0"
+                            src="https://www.canva.com/design/DAHZyaQ_Arg/JX35N8bdHqZp2DM9BVdgYQ/view?embed" 
+                            allowfullscreen="allowfullscreen" 
+                            allow="fullscreen">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Find and Select Tux Paint Tools -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Знайди та Обери 🎨</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-600 rounded-full">Вибір інструментів</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Обери серед усіх кнопок ТІЛЬКИ ТІ, які є інструментами малювання в графічному редакторі <b>Tux Paint</b> (потрібно обрати 4 правильні кнопки):</p>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4" id="t1-grid">
+                <!-- Tool buttons -->
+                <button type="button" onclick="toggleT1('brush', this)" class="t1-btn p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-sky-400 font-medium text-slate-700 transition flex flex-col items-center gap-2">
+                    <span class="text-4xl">🖌️</span>
+                    <span class="font-fredoka font-bold text-sm">Пензель</span>
+                </button>
+                <button type="button" onclick="toggleT1('calc', this)" class="t1-btn p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-sky-400 font-medium text-slate-700 transition flex flex-col items-center gap-2">
+                    <span class="text-4xl">🧮</span>
+                    <span class="font-fredoka font-bold text-sm">Калькулятор</span>
+                </button>
+                <button type="button" onclick="toggleT1('stamp', this)" class="t1-btn p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-sky-400 font-medium text-slate-700 transition flex flex-col items-center gap-2">
+                    <span class="text-4xl">🐧</span>
+                    <span class="font-fredoka font-bold text-sm">Штамп</span>
+                </button>
+                <button type="button" onclick="toggleT1('scissors', this)" class="t1-btn p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-sky-400 font-medium text-slate-700 transition flex flex-col items-center gap-2">
+                    <span class="text-4xl">✂️</span>
+                    <span class="font-fredoka font-bold text-sm">Ножиці</span>
+                </button>
+                <button type="button" onclick="toggleT1('magic', this)" class="t1-btn p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-sky-400 font-medium text-slate-700 transition flex flex-col items-center gap-2">
+                    <span class="text-4xl">🪄</span>
+                    <span class="font-fredoka font-bold text-sm">Магія</span>
+                </button>
+                <button type="button" onclick="toggleT1('hammer', this)" class="t1-btn p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-sky-400 font-medium text-slate-700 transition flex flex-col items-center gap-2">
+                    <span class="text-4xl">🔨</span>
+                    <span class="font-fredoka font-bold text-sm">Молоток</span>
+                </button>
+                <button type="button" onclick="toggleT1('shapes', this)" class="t1-btn p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-sky-400 font-medium text-slate-700 transition flex flex-col items-center gap-2">
+                    <span class="text-4xl">🔷</span>
+                    <span class="font-fredoka font-bold text-sm">Форми</span>
+                </button>
+                <button type="button" onclick="toggleT1('car', this)" class="t1-btn p-4 rounded-2xl border-2 border-slate-200 bg-slate-50 hover:border-sky-400 font-medium text-slate-700 transition flex flex-col items-center gap-2">
+                    <span class="text-4xl">🚗</span>
+                    <span class="font-fredoka font-bold text-sm">Машинка</span>
+                </button>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: Color Palette Sentence Puzzle -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Палітра кольорів 🌈</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full">Пазл речень</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Заповни пропуски в реченнях про палітру кольорів у Tux Paint:</p>
+
+            <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 font-medium leading-relaxed space-y-4">
+                <p>
+                    1. Палітра кольорів розміщена в самому 
+                    <select id="t2-word-1" class="border border-slate-300 rounded-xl px-3 py-1.5 bg-white font-semibold text-indigo-600 focus:ring-2 focus:ring-indigo-500 mx-1">
+                        <option value="">...</option>
+                        <option value="bottom">низу ⬇️</option>
+                        <option value="wrong1">верху ⬆️</option>
+                    </select>
+                    екрана Tux Paint.
+                </p>
+                <p>
+                    2. Щоб обрати потрібний колір для малювання, слід натиснути на нього лівою кнопкою 
+                    <select id="t2-word-2" class="border border-slate-300 rounded-xl px-3 py-1.5 bg-white font-semibold text-indigo-600 focus:ring-2 focus:ring-indigo-500 mx-1">
+                        <option value="">...</option>
+                        <option value="wrong2">клавіатури ⌨️</option>
+                        <option value="mouse">миші 🖱️</option>
+                    </select>.
+                </p>
+                <p>
+                    3. Для вибору додаткових відтінків у палітрі є кнопка із зображенням 
+                    <select id="t2-word-3" class="border border-slate-300 rounded-xl px-3 py-1.5 bg-white font-semibold text-indigo-600 focus:ring-2 focus:ring-indigo-500 mx-1">
+                        <option value="">...</option>
+                        <option value="rainbow">веселки 🌈</option>
+                        <option value="wrong3">сніжинки ❄️</option>
+                    </select>.
+                </p>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Match Tool with Function -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-600 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">З’єднай інструмент та його дію 🔗</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-teal-50 text-teal-600 rounded-full">Відповідність</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Для кожного інструмента Tux Paint обери з списку його правильне призначення:</p>
+
+            <div class="space-y-4">
+                <!-- Match 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🪄</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-lg">Інструмент "Магія"</span>
+                    </div>
+                    <select id="t3-match-1" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-teal-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="stamp">Малювання готових штампів та малюнків</option>
+                        <option value="magic">Створення спецефектів (веселка, трава, цегла)</option>
+                        <option value="eraser">Стирання непотрібних ліній та помилок</option>
+                        <option value="brush">Малювання довільних ліній різними пензлями</option>
+                    </select>
+                </div>
+
+                <!-- Match 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🧹</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-lg">Інструмент "Гумка"</span>
+                    </div>
+                    <select id="t3-match-2" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-teal-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="stamp">Малювання готових штампів та малюнків</option>
+                        <option value="magic">Створення спецефектів (веселка, трава, цегла)</option>
+                        <option value="eraser">Стирання непотрібних ліній та помилок</option>
+                        <option value="brush">Малювання довільних ліній різними пензлями</option>
+                    </select>
+                </div>
+
+                <!-- Match 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🐧</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-lg">Інструмент "Штамп"</span>
+                    </div>
+                    <select id="t3-match-3" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-teal-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="stamp">Малювання готових штампів та малюнків</option>
+                        <option value="magic">Створення спецефектів (веселка, трава, цегла)</option>
+                        <option value="eraser">Стирання непотрібних ліній та помилок</option>
+                        <option value="brush">Малювання довільних ліній різними пензлями</option>
+                    </select>
+                </div>
+
+                <!-- Match 4 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <span class="text-3xl">🖌️</span>
+                        <span class="font-fredoka font-bold text-slate-800 text-lg">Інструмент "Пензель"</span>
+                    </div>
+                    <select id="t3-match-4" class="w-full sm:w-2/3 p-2.5 border border-slate-300 rounded-xl bg-white font-medium text-slate-700 text-sm focus:ring-2 focus:ring-teal-500">
+                        <option value="">Обери призначення...</option>
+                        <option value="stamp">Малювання готових штампів та малюнків</option>
+                        <option value="magic">Створення спецефектів (веселка, трава, цегла)</option>
+                        <option value="eraser">Стирання непотрібних ліній та помилок</option>
+                        <option value="brush">Малювання довільних ліній різними пензлями</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-teal-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: Math-Graphical Counting with Interactive Mockup -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Порахуй елементи Tux Paint 🔢🖱️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-sky-50 text-sky-700 rounded-full">Введення чисел</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Подивись на імітацію палітри та лівої панелі Tux Paint нижче. Порахуй та введи відповідні числа:</p>
+
+            <!-- Tux Paint Interface Mockup -->
+            <div class="mb-6 p-4 md:p-6 rounded-2xl bg-slate-800 border-4 border-sky-600 shadow-xl space-y-4">
+                <div class="flex justify-between items-center bg-slate-900 px-4 py-2 rounded-xl border border-slate-700 text-white font-fredoka text-sm">
+                    <span class="flex items-center gap-2">🐧 Tux Paint — Мій малюнок</span>
+                    <span class="text-sky-400">Панелі інструментів</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <!-- Left Toolbar Mockup -->
+                    <div class="bg-slate-700 p-3 rounded-xl border border-slate-600 space-y-2">
+                        <span class="text-xs font-bold text-sky-300 uppercase block text-center">Ліва панель</span>
+                        <div class="grid grid-cols-2 gap-2 text-center text-xl">
+                            <div class="bg-slate-100 p-2 rounded-lg" title="Пензель">🖌️</div>
+                            <div class="bg-slate-100 p-2 rounded-lg" title="Штамп">🐧</div>
+                            <div class="bg-slate-100 p-2 rounded-lg" title="Лінії">📏</div>
+                            <div class="bg-slate-100 p-2 rounded-lg" title="Форми">🔷</div>
+                            <div class="bg-slate-100 p-2 rounded-lg" title="Текст">🔤</div>
+                            <div class="bg-slate-100 p-2 rounded-lg" title="Магія">🪄</div>
+                        </div>
+                    </div>
+
+                    <!-- Canvas Area Mockup -->
+                    <div class="md:col-span-3 bg-white p-4 rounded-xl border-2 border-dashed border-slate-300 flex items-center justify-center min-h-[140px] text-center">
+                        <div class="text-slate-400 font-fredoka">
+                            <span class="text-3xl block mb-1">🖼️</span>
+                            Аркуш для малювання
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Palette Mockup -->
+                <div class="bg-slate-700 p-3 rounded-xl border border-slate-600 space-y-2">
+                    <span class="text-xs font-bold text-sky-300 uppercase block text-center">Нижня палітра кольорів</span>
+                    <div class="flex flex-wrap justify-center gap-2">
+                        <div class="w-8 h-8 rounded-lg bg-red-500 border-2 border-white shadow"></div>
+                        <div class="w-8 h-8 rounded-lg bg-orange-500 border-2 border-white shadow"></div>
+                        <div class="w-8 h-8 rounded-lg bg-yellow-400 border-2 border-white shadow"></div>
+                        <div class="w-8 h-8 rounded-lg bg-green-500 border-2 border-white shadow"></div>
+                        <div class="w-8 h-8 rounded-lg bg-cyan-400 border-2 border-white shadow"></div>
+                        <div class="w-8 h-8 rounded-lg bg-blue-600 border-2 border-white shadow"></div>
+                        <div class="w-8 h-8 rounded-lg bg-purple-600 border-2 border-white shadow"></div>
+                        <div class="w-8 h-8 rounded-lg bg-pink-400 border-2 border-white shadow"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">1. Скільки інструментів малювання видно на лівій панелі зауваженого макету? (🖌️ 🐧 📏 🔷 🔤 🪄)</span>
+                    <input type="number" id="t4-num-1" min="0" max="20" placeholder="Число..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-800 focus:ring-2 focus:ring-sky-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+
+                <!-- Q2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">2. Скільки кольорових квадратиків відображено у нижній палітрі макету?</span>
+                    <input type="number" id="t4-num-2" min="0" max="20" placeholder="Число..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sky-800 focus:ring-2 focus:ring-sky-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-sky-600/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: Quiz Riddle from Penguin Tux -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Загадки від пінгвіна Тукса 🐧🧩</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Квіз-загадки</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай підказки пінгвіна Тукса та здогадайся, про яку фігуру йде мова в кожній загадці:</p>
+
+            <div class="space-y-6">
+                <!-- Riddle 1 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 t5-riddle" data-riddle="1">
+                    <p class="font-semibold text-slate-800 text-base">
+                        1. 🐧 <i>«Я не маю жодного кута, плавна й кругла, як сонечко чи монета! Яка я фігура?»</i>
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button type="button" onclick="selectT5(1, 'square', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🟦</span> Квадрат
+                        </button>
+                        <button type="button" onclick="selectT5(1, 'circle', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🔴</span> Коло
+                        </button>
+                        <button type="button" onclick="selectT5(1, 'triangle', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🔺</span> Трикутник
+                        </button>
+                        <button type="button" onclick="selectT5(1, 'star', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>⭐</span> Зірка
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Riddle 2 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 t5-riddle" data-riddle="2">
+                    <p class="font-semibold text-slate-800 text-base">
+                        2. 🐧 <i>«У мене рівно 3 кути та 3 рівні сторони, як у гострого даху будинку! Хто я?»</i>
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button type="button" onclick="selectT5(2, 'circle', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>⭕</span> Коло
+                        </button>
+                        <button type="button" onclick="selectT5(2, 'square', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🟦</span> Квадрат
+                        </button>
+                        <button type="button" onclick="selectT5(2, 'triangle', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🔺</span> Трикутник
+                        </button>
+                        <button type="button" onclick="selectT5(2, 'oval', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🥚</span> Овал
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Riddle 3 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 space-y-3 t5-riddle" data-riddle="3">
+                    <p class="font-semibold text-slate-800 text-base">
+                        3. 🐧 <i>«У мене 4 кути та 4 абсолютно однакові рівні сторони! Здогадався?»</i>
+                    </p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button type="button" onclick="selectT5(3, 'square', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🟦</span> Квадрат
+                        </button>
+                        <button type="button" onclick="selectT5(3, 'triangle', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🔺</span> Трикутник
+                        </button>
+                        <button type="button" onclick="selectT5(3, 'circle', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>🔴</span> Коло
+                        </button>
+                        <button type="button" onclick="selectT5(3, 'pentagon', this)" class="t5-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-indigo-500 font-fredoka font-bold text-sm text-slate-700 transition flex items-center justify-center gap-2">
+                            <span>⬟</span> П'ятикутник
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section in Blue Gradient -->
+        <section class="bg-gradient-to-br from-sky-800 via-indigo-900 to-blue-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-sky-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-indigo-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-sky-100 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 інтерактивних вправ та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-teal-400 to-sky-400 hover:from-teal-500 hover:to-sky-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-teal-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-teal-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-sky-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-sky-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: Child-friendly design -->
+        <section class="bg-gradient-to-br from-amber-50 via-sky-50 to-indigo-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-sky-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-amber-400 text-slate-900 p-3 rounded-2xl text-2xl shadow-md">🎨</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">
+                        Творча лабораторія пінгвіна Тукса: Будуємо місто Фігур! 🏰✨
+                    </h2>
+                    <p class="text-sky-700 font-medium text-sm md:text-base">
+                        Практична робота за комп'ютером у програмі Tux Paint
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Left: Sample Illustration Mockup -->
+                <div class="bg-white p-4 rounded-2xl border-2 border-sky-300 shadow-md">
+                    <div class="flex justify-between items-center mb-2 px-2">
+                        <span class="font-fredoka font-bold text-xs text-sky-600">🖼️ Зразок малюнка "Місто з Геометрії"</span>
+                        <span class="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full font-semibold">Tux Paint</span>
+                    </div>
+
+                    <!-- SVG Canvas Artwork Sample -->
+                    <div class="w-full rounded-xl overflow-hidden bg-sky-100 border border-slate-200">
+                        <svg viewBox="0 0 400 260" class="w-full h-auto">
+                            <!-- Sky background -->
+                            <rect width="400" height="260" fill="#e0f2fe" />
+
+                            <!-- Sun (Circle) -->
+                            <circle cx="60" cy="50" r="28" fill="#facc15" />
+                            <!-- Sun rays -->
+                            <line x1="60" y1="12" x2="60" y2="2" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
+                            <line x1="98" y1="50" x2="108" y2="50" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
+                            <line x1="87" y1="23" x2="94" y2="16" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
+                            <line x1="87" y1="77" x2="95" y2="84" stroke="#f59e0b" stroke-width="3" stroke-linecap="round" />
+
+                            <!-- Cloud (Circles) -->
+                            <circle cx="310" cy="45" r="16" fill="#ffffff" />
+                            <circle cx="330" cy="40" r="20" fill="#ffffff" />
+                            <circle cx="350" cy="45" r="16" fill="#ffffff" />
+
+                            <!-- Green Grass (Rectangle) -->
+                            <rect x="0" y="190" width="400" height="70" fill="#4ade80" />
+
+                            <!-- House 1 (Square + Triangle + Windows) -->
+                            <rect x="70" y="130" width="80" height="70" fill="#f87171" stroke="#dc2626" stroke-width="2" />
+                            <polygon points="70,130 110,80 150,130" fill="#38bdf8" stroke="#0284c7" stroke-width="2" />
+                            <rect x="85" y="145" width="22" height="22" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+                            <rect x="115" y="145" width="22" height="22" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+                            <rect x="100" y="170" width="20" height="30" fill="#a16207" />
+
+                            <!-- House 2 (Tall Rectangle + Triangle) -->
+                            <rect x="180" y="110" width="65" height="90" fill="#fbbf24" stroke="#d97706" stroke-width="2" />
+                            <polygon points="180,110 212,65 245,110" fill="#c084fc" stroke="#9333ea" stroke-width="2" />
+                            <circle cx="212" cy="135" r="12" fill="#bae6fd" stroke="#0284c7" stroke-width="2" />
+                            <rect x="200" y="165" width="24" height="35" fill="#475569" />
+
+                            <!-- Tree 1 (Triangles) -->
+                            <rect x="295" y="170" width="12" height="30" fill="#78350f" />
+                            <polygon points="270,175 301,135 332,175" fill="#15803d" />
+                            <polygon points="275,145 301,110 327,145" fill="#16a34a" />
+
+                            <!-- Tree 2 (Circle) -->
+                            <rect x="355" y="165" width="10" height="35" fill="#78350f" />
+                            <circle cx="360" cy="150" r="22" fill="#22c55e" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Right: Step by step instructions -->
+                <div class="space-y-4">
+                    <h3 class="font-fredoka text-xl font-bold text-slate-800">📋 Покрокові підказки від Тукса:</h3>
+                    
+                    <ul class="space-y-3 font-medium text-slate-700 text-sm md:text-base">
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">1️⃣</span>
+                            <span>Відкрий програму <b>Tux Paint</b> та створи новий білий аркуш.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">2️⃣</span>
+                            <span>Обери інструмент <b>«Форми» (Shapes) 🔷</b> на лівій панелі.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">3️⃣</span>
+                            <span>Побудуй <b>будинок</b>: квадрати 🟦 або прямокутники для стін + трикутники 🔺 для даху!</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">4️⃣</span>
+                            <span>Додай <b>сонечко 🔴</b> з кола та <b>ялинку 🌲</b> з кількох трикутників.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">5️⃣</span>
+                            <span>Розфарбуй свій малюнок за допомогою кнопкою <b>«Магія -> Заповнення» 🪄</b> або кольорів!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-600 text-xs md:text-sm">
+        <p>Інтерактивний робочий аркуш з інформатики для 2 класу • Геометричні фігури в Tux Paint 💙💛</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- TASK 1: FIND TUX PAINT TOOLS ---
+        const t1Selected = new Set();
+        const correctT1Tools = new Set(['brush', 'stamp', 'magic', 'shapes']);
+
+        function toggleT1(toolKey, btn) {
+            if (t1Selected.has(toolKey)) {
+                t1Selected.delete(toolKey);
+                btn.classList.remove('bg-sky-600', 'text-white', 'border-sky-600', 'shadow-md');
+                btn.classList.add('bg-slate-50', 'text-slate-700', 'border-slate-200');
+            } else {
+                t1Selected.add(toolKey);
+                btn.classList.remove('bg-slate-50', 'text-slate-700', 'border-slate-200');
+                btn.classList.add('bg-sky-600', 'text-white', 'border-sky-600', 'shadow-md');
+            }
+        }
+
+        function checkTask1() {
+            if (t1Selected.size === 0) {
+                showFeedback('feedback-1', '⚠️ Обери хоча б один інструмент малювання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            let isCorrect = (t1Selected.size === correctT1Tools.size);
+            if (isCorrect) {
+                t1Selected.forEach(tool => {
+                    if (!correctT1Tools.has(tool)) isCorrect = false;
+                });
+            }
+
+            if (isCorrect) {
+                showFeedback('feedback-1', '🎉 Супер! Пензель, Штамп, Магія та Форми — це інструменти Tux Paint!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Підказка: Обери лише 4 інструменти для малювання (Пензель, Штамп, Магія, Форми)!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            t1Selected.clear();
+            document.querySelectorAll('.t1-btn').forEach(btn => {
+                btn.classList.remove('bg-sky-600', 'text-white', 'border-sky-600', 'shadow-md');
+                btn.classList.add('bg-slate-50', 'text-slate-700', 'border-slate-200');
+            });
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: COLOR PALETTE SENTENCE PUZZLE ---
+        function checkTask2() {
+            const w1 = document.getElementById('t2-word-1').value;
+            const w2 = document.getElementById('t2-word-2').value;
+            const w3 = document.getElementById('t2-word-3').value;
+
+            if (!w1 || !w2 || !w3) {
+                showFeedback('feedback-2', '⚠️ Заповни всі 3 пропуски про палітру!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (w1 === 'bottom' && w2 === 'mouse' && w3 === 'rainbow') {
+                showFeedback('feedback-2', '🎉 Молодець! Усі речення складено абсолютно правильно!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Згадай: палітра внизу, вибираємо мишею, а додаткові кольори за кнопкою з веселкою!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            document.getElementById('t2-word-1').value = '';
+            document.getElementById('t2-word-2').value = '';
+            document.getElementById('t2-word-3').value = '';
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: MATCH TOOL WITH FUNCTION ---
+        function checkTask3() {
+            const m1 = document.getElementById('t3-match-1').value;
+            const m2 = document.getElementById('t3-match-2').value;
+            const m3 = document.getElementById('t3-match-3').value;
+            const m4 = document.getElementById('t3-match-4').value;
+
+            if (!m1 || !m2 || !m3 || !m4) {
+                showFeedback('feedback-3', '⚠️ Обери призначення для кожного з 4 інструментів!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (m1 === 'magic' && m2 === 'eraser' && m3 === 'stamp' && m4 === 'brush') {
+                showFeedback('feedback-3', '🎉 Чудово! Ти чудово знаєш для чого потрібен кожен інструмент!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Підказка: Магія — це спецефекти, Гумка — стирання, Штамп — готовий малюнок, Пензель — довільні лінії!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            document.getElementById('t3-match-1').value = '';
+            document.getElementById('t3-match-2').value = '';
+            document.getElementById('t3-match-3').value = '';
+            document.getElementById('t3-match-4').value = '';
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: COUNTING ELEMENTS IN MOCKUP ---
+        function checkTask4() {
+            const n1 = document.getElementById('t4-num-1').value.trim();
+            const n2 = document.getElementById('t4-num-2').value.trim();
+
+            if (!n1 || !n2) {
+                showFeedback('feedback-4', '⚠️ Введи відповіді у два поля!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (parseInt(n1) === 6); // 6 tools shown on left panel
+            const ok2 = (parseInt(n2) === 8); // 8 colors shown in palette
+
+            if (ok1 && ok2) {
+                showFeedback('feedback-4', '🎉 Абсолютно точно! 6 інструментів та 8 кольорів!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Уважно перелічи: на лівій панелі 6 значків, а внизу 8 кольорових квадратиків!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            document.getElementById('t4-num-1').value = '';
+            document.getElementById('t4-num-2').value = '';
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: RIDDLE QUIZ FROM TUX ---
+        const t5Answers = {};
+
+        function selectT5(riddleNum, choice, btn) {
+            t5Answers[riddleNum] = choice;
+            const riddleBox = btn.closest('.t5-riddle');
+            riddleBox.querySelectorAll('.t5-btn').forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+
+            btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-300');
+            btn.classList.add('bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-md');
+        }
+
+        function checkTask5() {
+            if (Object.keys(t5Answers).length < 3) {
+                showFeedback('feedback-5', '⚠️ Розгадай усі 3 загадки пінгвіна Тукса!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (t5Answers[1] === 'circle');   // No corners, round -> Circle
+            const ok2 = (t5Answers[2] === 'triangle'); // 3 corners, 3 sides -> Triangle
+            const ok3 = (t5Answers[3] === 'square');   // 4 equal sides -> Square
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-5', '🎉 Супер! Ти розгадав усе правильно: Коло, Трикутник та Квадрат!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Подумай ще: без кутів — це Коло, 3 кути — Трикутник, 4 однакові сторони — Квадрат!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            for (let k in t5Answers) delete t5Answers[k];
+            document.querySelectorAll('.t5-btn').forEach(b => {
+                b.classList.remove('bg-indigo-600', 'text-white', 'border-indigo-600', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700', 'border-slate-300');
+            });
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- GENERAL FEEDBACK DISPLAY HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL EVALUATION & CONFETTI ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Майстер Геометричних Фігур!";
+                descEl.innerText = "Неймовірно! Ти бездоганно орієнтуєшся у геометричних фігурах, їх видах та інструментах у Tux Paint!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 130, spread: 85, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Знавець Фігур!";
+                descEl.innerText = "Чудова робота! Подивись підказки до помилок та спробуй отримати найвищий бал 5/5!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний Художник!";
+                descEl.innerText = "Ти на правильному шляху! Переглянь презентацію та спробуй виконати завдання ще раз!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
