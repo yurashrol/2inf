@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Робочий стіл та Вікна програм — 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Confetti JS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 50%, #fed7aa 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.08);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-amber-800 via-orange-800 to-amber-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-orange-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-amber-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">💻</span> Інформатика - 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Робочий стіл. Вікна, меню та інструменти 🖥️🪟
+            </h1>
+            <p class="text-orange-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Досліджуй екран комп'ютера, шукай лишні об'єкти, рахуй інструменти та впорядковуй кроки!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Presentation Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-orange-100 p-3 rounded-2xl text-orange-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальна презентація</h2>
+                    <p class="text-slate-500 text-sm">Переглянь матеріали про елементи Робочого столу та будову вікна програми</p>
+                </div>
+            </div>
+
+            <div class="max-w-2xl mx-auto space-y-2">
+                <div class="space-y-2">
+                    <h3 class="font-fredoka text-lg font-semibold text-slate-700 flex items-center justify-center">
+                        <span class="text-orange-500 mr-2">✦</span> Елементи керування вікном, інструменти та меню
+                    </h3>
+                    <div class="relative w-full aspect-video rounded-2xl overflow-hidden bg-slate-900 shadow-inner border border-slate-200">
+                        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTaJpb3MyB3Ca_quWCcepCERTpZ_DcchXh3ZnHYoFZYyMjufQZIBvyWDmzNHAYZh1BcDRqgdMYbljWV/embed?start=false&loop=false&delayms=3000" 
+                                class="w-full h-full border-0" 
+                                allowfullscreen="true">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Find the Odd Object (Знайди зайвий об'єкт за властивістю) -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Знайди зайвий об'єкт 🔍</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-orange-50 text-orange-600 rounded-full">Класифікація</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">У кожній групі об'єктів обери той, який НЕ НАЛЕЖИТЬ до екрана комп'ютера або вікна програми:</p>
+
+            <div class="space-y-6">
+                <!-- Group 1 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 t1-group" data-g="1">
+                    <p class="font-bold text-slate-800 mb-3">1. Елементи Робочого столу комп'ютера:</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button type="button" onclick="selectT1(1, 'folder', this)" class="t1-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-orange-500 font-medium text-slate-700 transition flex flex-col items-center gap-1">
+                            <span class="text-3xl">📁</span>
+                            <span class="text-sm">Папка</span>
+                        </button>
+                        <button type="button" onclick="selectT1(1, 'recycle', this)" class="t1-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-orange-500 font-medium text-slate-700 transition flex flex-col items-center gap-1">
+                            <span class="text-3xl">🗑️</span>
+                            <span class="text-sm">Кошик</span>
+                        </button>
+                        <button type="button" onclick="selectT1(1, 'apple', this)" class="t1-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-orange-500 font-medium text-slate-700 transition flex flex-col items-center gap-1">
+                            <span class="text-3xl">🍎</span>
+                            <span class="text-sm">Яблуко</span>
+                        </button>
+                        <button type="button" onclick="selectT1(1, 'shortcut', this)" class="t1-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-orange-500 font-medium text-slate-700 transition flex flex-col items-center gap-1">
+                            <span class="text-3xl">📄</span>
+                            <span class="text-sm">Файл</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Group 2 -->
+                <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 t1-group" data-g="2">
+                    <p class="font-bold text-slate-800 mb-3">2. Елементи керування вікном програми:</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <button type="button" onclick="selectT1(2, 'close', this)" class="t1-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-orange-500 font-medium text-slate-700 transition flex flex-col items-center gap-1">
+                            <span class="text-3xl">❌</span>
+                            <span class="text-sm">Закрити</span>
+                        </button>
+                        <button type="button" onclick="selectT1(2, 'minimize', this)" class="t1-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-orange-500 font-medium text-slate-700 transition flex flex-col items-center gap-1">
+                            <span class="text-3xl">➖</span>
+                            <span class="text-sm">Згорнути</span>
+                        </button>
+                        <button type="button" onclick="selectT1(2, 'spoon', this)" class="t1-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-orange-500 font-medium text-slate-700 transition flex flex-col items-center gap-1">
+                            <span class="text-3xl">🥄</span>
+                            <span class="text-sm">Ложка</span>
+                        </button>
+                        <button type="button" onclick="selectT1(2, 'expand', this)" class="t1-btn p-3 rounded-xl border border-slate-300 bg-white hover:border-orange-500 font-medium text-slate-700 transition flex flex-col items-center gap-1">
+                            <span class="text-3xl">🔲</span>
+                            <span class="text-sm">Розгорнути</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-orange-500/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: Count Elements & Input Number (Введення чисел з клавіатури) -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Порахуй та введи число ⌨️🔢</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-600 rounded-full">Введення з клавіатури</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Подивись на макет вікна графічного редактора та порахуй його елементи:</p>
+
+            <!-- Window Mockup Card -->
+            <div class="mb-6 p-4 rounded-2xl bg-slate-100 border-2 border-slate-300 shadow-inner">
+                <!-- Title Bar -->
+                <div class="bg-slate-800 text-white p-3 rounded-xl flex items-center justify-between mb-3">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-xl">🎨</span>
+                        <span class="font-fredoka font-semibold text-sm">Програма "Малювання" — [Вікно 1]</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-slate-600 px-2 py-0.5 rounded text-xs">➖</span>
+                        <span class="bg-slate-600 px-2 py-0.5 rounded text-xs">🔲</span>
+                        <span class="bg-red-500 px-2 py-0.5 rounded text-xs">❌</span>
+                    </div>
+                </div>
+                <!-- Tools Bar -->
+                <div class="bg-white p-3 rounded-xl border border-slate-200 flex flex-wrap gap-2 items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <span class="p-2 bg-amber-100 rounded-lg text-lg">✏️</span>
+                        <span class="p-2 bg-amber-100 rounded-lg text-lg">🖌️</span>
+                        <span class="p-2 bg-amber-100 rounded-lg text-lg">🧹</span>
+                        <span class="p-2 bg-amber-100 rounded-lg text-lg">🪣</span>
+                        <span class="p-2 bg-amber-100 rounded-lg text-lg">📏</span>
+                    </div>
+                    <span class="text-xs font-bold text-slate-400 bg-slate-100 px-3 py-1 rounded-full">Панель інструментів</span>
+                </div>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">1. Скільки кнопок керування вікном розташовано у правому верхньому кутку? (➖ 🔲 ❌)</span>
+                    <input type="number" id="t2-num-1" min="0" max="10" placeholder="Введи цифру..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-amber-800 focus:ring-2 focus:ring-amber-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+
+                <!-- Q2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-700 text-base md:w-3/4">2. Скільки значків інструментів малювання видно на панелі інструментів? (✏️ 🖌️ 🧹 🪣 📏)</span>
+                    <input type="number" id="t2-num-2" min="0" max="10" placeholder="Введи цифру..." class="px-4 py-2 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-amber-800 focus:ring-2 focus:ring-amber-500 focus:outline-none w-full md:w-1/4 text-center">
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-amber-500 hover:bg-amber-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-500/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Sentence Completion & Speech Readout (Пазл речень + Озвучення) -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Збери правило та прослухай 🔊</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-700 rounded-full">Пазл речень</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Обери правильні слова у списку. Якщо правило буде зібрано вірно, комп'ютер зачитає його вголос!</p>
+
+            <div class="p-5 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 font-medium leading-relaxed space-y-4">
+                <p>
+                    1. Усі значки та файли розміщуються на Робочому 
+                    <select id="t3-word-1" class="border border-slate-300 rounded-xl px-3 py-1.5 bg-white font-semibold text-orange-700 focus:ring-2 focus:ring-orange-500 mx-1">
+                        <option value="">...</option>
+                        <option value="table">столі 🖥️</option>
+                        <option value="wrong1">стільці 🪑</option>
+                    </select>.
+                </p>
+                <p>
+                    2. Щоб вибрати команду, ми відкриваємо 
+                    <select id="t3-word-2" class="border border-slate-300 rounded-xl px-3 py-1.5 bg-white font-semibold text-orange-700 focus:ring-2 focus:ring-orange-500 mx-1">
+                        <option value="">...</option>
+                        <option value="wrong2">пенал ✏️</option>
+                        <option value="menu">меню 📜</option>
+                    </select>
+                    програми.
+                </p>
+                <p>
+                    3. Для малювання чи письма використовують різні 
+                    <select id="t3-word-3" class="border border-slate-300 rounded-xl px-3 py-1.5 bg-white font-semibold text-orange-700 focus:ring-2 focus:ring-orange-500 mx-1">
+                        <option value="">...</option>
+                        <option value="tools">інструменти 🛠️</option>
+                        <option value="wrong3">іграшки 🧸</option>
+                    </select>.
+                </p>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: Ordering Action Steps (Послідовність дій) -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Впорядкуй кроки за порядком 🔢🔁</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-orange-50 text-orange-600 rounded-full">Послідовність (1, 2, 3, 4)</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Розстави цифри від 1 до 4, щоб утворився правильний порядок дій для закриття програми після роботи:</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Step A -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center space-y-3">
+                    <span class="text-4xl">💾</span>
+                    <span class="font-bold text-slate-800 font-fredoka text-sm">Зберегти свій малюнок чи файл</span>
+                    <select id="t4-step-save" class="w-full py-2 px-3 border border-slate-300 rounded-xl bg-white font-fredoka font-semibold text-orange-800 text-center focus:ring-2 focus:ring-orange-500">
+                        <option value="">Крок ?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step B -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center space-y-3">
+                    <span class="text-4xl">❌</span>
+                    <span class="font-bold text-slate-800 font-fredoka text-sm">Натиснути червоний хрестик "Закрити"</span>
+                    <select id="t4-step-close" class="w-full py-2 px-3 border border-slate-300 rounded-xl bg-white font-fredoka font-semibold text-orange-800 text-center focus:ring-2 focus:ring-orange-500">
+                        <option value="">Крок ?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step C -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center space-y-3">
+                    <span class="text-4xl">🎨</span>
+                    <span class="font-bold text-slate-800 font-fredoka text-sm">Завершити малювання інструментом</span>
+                    <select id="t4-step-finish" class="w-full py-2 px-3 border border-slate-300 rounded-xl bg-white font-fredoka font-semibold text-orange-800 text-center focus:ring-2 focus:ring-orange-500">
+                        <option value="">Крок ?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+
+                <!-- Step D -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col items-center text-center space-y-3">
+                    <span class="text-4xl">👋</span>
+                    <span class="font-bold text-slate-800 font-fredoka text-sm">Повернутися до Робочого столу</span>
+                    <select id="t4-step-desktop" class="w-full py-2 px-3 border border-slate-300 rounded-xl bg-white font-fredoka font-semibold text-orange-800 text-center focus:ring-2 focus:ring-orange-500">
+                        <option value="">Крок ?</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-orange-500/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: True or False Quiz (Гра-Вікторина: Властивості вікон) -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Вікторина: ТАК чи НІ? ❓</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-800 rounded-full">Властивості об'єктів</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Прочитай твердження про властивості вікна програми та дай відповідь ТАК чи НІ:</p>
+
+            <div class="space-y-4">
+                <!-- Statement 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 t5-item" data-q="1">
+                    <span class="font-medium text-slate-700 text-base">1. Розмір вікна програми можна змінювати (робити більшим або меншим)? 📐</span>
+                    <div class="flex gap-3 shrink-0">
+                        <button type="button" onclick="selectT5(1, 'YES', this)" class="t5-btn px-6 py-2 rounded-xl font-fredoka font-bold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition">ТАК 👍</button>
+                        <button type="button" onclick="selectT5(1, 'NO', this)" class="t5-btn px-6 py-2 rounded-xl font-fredoka font-bold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition">НІ 👎</button>
+                    </div>
+                </div>
+
+                <!-- Statement 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 t5-item" data-q="2">
+                    <span class="font-medium text-slate-700 text-base">2. Вікно комп'ютера зроблене зі справжнього скла, як у кімнаті? 🪟</span>
+                    <div class="flex gap-3 shrink-0">
+                        <button type="button" onclick="selectT5(2, 'YES', this)" class="t5-btn px-6 py-2 rounded-xl font-fredoka font-bold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition">ТАК 👍</button>
+                        <button type="button" onclick="selectT5(2, 'NO', this)" class="t5-btn px-6 py-2 rounded-xl font-fredoka font-bold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition">НІ 👎</button>
+                    </div>
+                </div>
+
+                <!-- Statement 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4 t5-item" data-q="3">
+                    <span class="font-medium text-slate-700 text-base">3. Одночасно на Робочому столі можна відкрити декілька вікон? 🖥️</span>
+                    <div class="flex gap-3 shrink-0">
+                        <button type="button" onclick="selectT5(3, 'YES', this)" class="t5-btn px-6 py-2 rounded-xl font-fredoka font-bold bg-white border border-slate-300 text-slate-700 hover:bg-emerald-50 transition">ТАК 👍</button>
+                        <button type="button" onclick="selectT5(3, 'NO', this)" class="t5-btn px-6 py-2 rounded-xl font-fredoka font-bold bg-white border border-slate-300 text-slate-700 hover:bg-rose-50 transition">НІ 👎</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-amber-700 hover:bg-amber-800 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-700/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section -->
+        <section class="bg-gradient-to-br from-amber-800 via-orange-800 to-amber-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-orange-400/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-amber-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-orange-100 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 нових завдань та натисни кнопку нижче!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-amber-400 to-orange-400 hover:from-amber-500 hover:to-orange-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-amber-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-amber-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-orange-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-orange-200"></p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-600 text-xs md:text-sm">
+        <p>Інтерактивна гра з інформатики для 2 класу 💙💛</p>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- TASK 1: ODD OBJECT LOGIC ---
+        const t1Answers = {};
+
+        function selectT1(groupNum, choice, btn) {
+            t1Answers[groupNum] = choice;
+            const group = btn.closest('.t1-group');
+            group.querySelectorAll('.t1-btn').forEach(b => {
+                b.classList.remove('bg-orange-500', 'text-white', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700');
+            });
+
+            btn.classList.remove('bg-white', 'text-slate-700');
+            btn.classList.add('bg-orange-500', 'text-white', 'shadow-md');
+        }
+
+        function checkTask1() {
+            if (Object.keys(t1Answers).length < 2) {
+                showFeedback('feedback-1', '⚠️ Знайди зайвий об\'єкт у кожній із 2 груп!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (t1Answers[1] === 'apple'); // Apple is odd
+            const ok2 = (t1Answers[2] === 'spoon'); // Spoon is odd
+
+            if (ok1 && ok2) {
+                showFeedback('feedback-1', '🎉 Молодець! Яблуко та ложка — це не елементи комп\'ютера!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-1', '💡 Подумай ще: який об\'єкт є їжею чи посудом, а не частиною вікна?', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            for (let k in t1Answers) delete t1Answers[k];
+            document.querySelectorAll('.t1-btn').forEach(b => {
+                b.classList.remove('bg-orange-500', 'text-white', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700');
+            });
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: COUNT ELEMENTS LOGIC ---
+        function checkTask2() {
+            const n1 = document.getElementById('t2-num-1').value.trim();
+            const n2 = document.getElementById('t2-num-2').value.trim();
+
+            if (!n1 || !n2) {
+                showFeedback('feedback-2', '⚠️ Впиши числа у два поля!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (parseInt(n1) === 3); // 3 control buttons: minimize, maximize, close
+            const ok2 = (parseInt(n2) === 5); // 5 tool icons: pencil, brush, eraser, bucket, ruler
+
+            if (ok1 && ok2) {
+                showFeedback('feedback-2', '🎉 Бездоганно! 3 кнопки керування та 5 інструментів!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-2', '💡 Підказка: у правому кутку 3 кнопки (➖🔲❌), а на панелі — 5 інструментів!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            document.getElementById('t2-num-1').value = '';
+            document.getElementById('t2-num-2').value = '';
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: SENTENCE PUZZLE & SPEECH LOGIC ---
+        function checkTask3() {
+            const w1 = document.getElementById('t3-word-1').value;
+            const w2 = document.getElementById('t3-word-2').value;
+            const w3 = document.getElementById('t3-word-3').value;
+
+            if (!w1 || !w2 || !w3) {
+                showFeedback('feedback-3', '⚠️ Заповни всі 3 пропуски у правилі!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            if (w1 === 'table' && w2 === 'menu' && w3 === 'tools') {
+                showFeedback('feedback-3', '🎉 Правильно! Слухай повністю зібране правило... 🔊', 'bg-emerald-100 text-emerald-800');
+
+                if ('speechSynthesis' in window) {
+                    const fullText = "Усі значки та файли розміщуються на Робочому столі. Щоб вибрати команду, ми відкриваємо меню програми. Для малювання чи письма використовують різні інструменти.";
+                    const utterance = new SpeechSynthesisUtterance(fullText);
+                    utterance.lang = 'uk-UA';
+                    utterance.rate = 0.9;
+                    window.speechSynthesis.cancel();
+                    window.speechSynthesis.speak(utterance);
+                }
+
+                return true;
+            } else {
+                showFeedback('feedback-3', '💡 Подумай ще: значки на Робочому столі, команди в меню, а малюємо інструментами!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            document.getElementById('t3-word-1').value = '';
+            document.getElementById('t3-word-2').value = '';
+            document.getElementById('t3-word-3').value = '';
+            document.getElementById('feedback-3').classList.add('hidden');
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        }
+
+
+        // --- TASK 4: STEPS ORDERING LOGIC ---
+        function checkTask4() {
+            const finish = document.getElementById('t4-step-finish').value;
+            const save = document.getElementById('t4-step-save').value;
+            const close = document.getElementById('t4-step-close').value;
+            const desktop = document.getElementById('t4-step-desktop').value;
+
+            if (!finish || !save || !close || !desktop) {
+                showFeedback('feedback-4', '⚠️ Обери кроки від 1 до 4 для всіх дій!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            // Correct order: 
+            // 1. Завершити малювання (finish)
+            // 2. Зберегти файл (save)
+            // 3. Натиснути хрестик "Закрити" (close)
+            // 4. Повернутися до Робочого столу (desktop)
+            if (finish === '1' && save === '2' && close === '3' && desktop === '4') {
+                showFeedback('feedback-4', '🎉 Чудово! Послідовність закриття програми правильна!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-4', '💡 Згадай: спочатку домальовуємо (1), зберігаємо файл (2), закриваємо вікно (3) і бачимо Робочий стіл (4)!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            document.getElementById('t4-step-finish').value = '';
+            document.getElementById('t4-step-save').value = '';
+            document.getElementById('t4-step-close').value = '';
+            document.getElementById('t4-step-desktop').value = '';
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: TRUE OR FALSE QUIZ LOGIC ---
+        const t5Answers = {};
+
+        function selectT5(qNum, choice, btn) {
+            t5Answers[qNum] = choice;
+            const row = btn.closest('.t5-item');
+            row.querySelectorAll('.t5-btn').forEach(b => {
+                b.classList.remove('bg-amber-600', 'text-white', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700');
+            });
+
+            btn.classList.remove('bg-white', 'text-slate-700');
+            btn.classList.add('bg-amber-600', 'text-white', 'shadow-md');
+        }
+
+        function checkTask5() {
+            if (Object.keys(t5Answers).length < 3) {
+                showFeedback('feedback-5', '⚠️ Дай відповіді ТАК чи НІ на всі 3 питання!', 'bg-amber-100 text-amber-800');
+                return false;
+            }
+
+            const ok1 = (t5Answers[1] === 'YES'); // Size can be changed
+            const ok2 = (t5Answers[2] === 'NO');  // Computer window is not real glass
+            const ok3 = (t5Answers[3] === 'YES'); // Multiple windows can be opened
+
+            if (ok1 && ok2 && ok3) {
+                showFeedback('feedback-5', '🎉 Супер! Ти відмінно знаєш властивості комп\'ютерних вікон!', 'bg-emerald-100 text-emerald-800');
+                return true;
+            } else {
+                showFeedback('feedback-5', '💡 Подумай: вікно можна змінювати і їх може бути декілька, але воно не зі справжнього скла!', 'bg-rose-100 text-rose-800');
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            for (let k in t5Answers) delete t5Answers[k];
+            document.querySelectorAll('.t5-btn').forEach(b => {
+                b.classList.remove('bg-amber-600', 'text-white', 'shadow-md');
+                b.classList.add('bg-white', 'text-slate-700');
+            });
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- GENERAL FEEDBACK HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL EVALUATION ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Гранд-майстер Комп'ютерних Вікон!";
+                descEl.innerText = "Неймовірно! Ти бездоганно орієнтуєшся у всіх елементах Робочого столу, вмієш рахувати інструменти та знаєш порядок дій!";
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 130, spread: 85, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Дослідник Програм!";
+                descEl.innerText = "Чудовий результат! Переглянь підказки до помилок і спробуй вибити 5/5!";
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний Учень!";
+                descEl.innerText = "Ти на правильному шляху! Подивись презентацію ще раз та спробуй пройти завдання спочатку!";
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
