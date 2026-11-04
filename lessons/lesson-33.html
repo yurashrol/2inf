@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Презентація програмного проєкту. Взаємооцінювання — Інформатика 2 клас</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e9d5ff 100%);
+            min-height: 100vh;
+        }
+        .font-fredoka {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        .pulse-btn {
+            animation: pulse-soft 2s infinite;
+        }
+        @keyframes pulse-soft {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .drag-item {
+            cursor: grab;
+            user-select: none;
+            touch-action: none;
+        }
+        .drag-item:active {
+            cursor: grabbing;
+        }
+        .drag-over {
+            border-color: #8b5cf6 !important;
+            background-color: #f3e8ff !important;
+        }
+        .grid-cell {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="text-slate-800 pb-16">
+
+    <!-- Header Banner in Slate-800 to Purple-900 Gradient -->
+    <header class="max-w-4xl mx-auto px-4 mt-8 mb-10">
+        <div class="bg-gradient-to-br from-slate-800 via-slate-700 to-purple-900 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-slate-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="inline-flex items-center justify-center bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-semibold mb-3 border border-white/20">
+                <span class="mr-2">💻</span> Інформатика — 2 клас
+            </div>
+            <h1 class="font-fredoka text-3xl md:text-5xl font-bold tracking-wide drop-shadow-md mb-3">
+                Презентація проєкту. Взаємооцінювання 🎤🌟🤝
+            </h1>
+            <p class="text-purple-100 text-base md:text-lg max-w-2xl mx-auto font-medium">
+                Дізнайся, як правильно та ввічливо показувати свій проєкт друзям і як давати дружні поради щодо поліпшення робіт!
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 space-y-10">
+
+        <!-- Educational Materials Section -->
+        <section class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-sky-100 p-3 rounded-2xl text-sky-600 text-2xl">📽️</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl font-bold text-slate-900">Навчальні матеріали</h2>
+                    <p class="text-slate-500 text-sm">Переглянь матеріали про те, як презентувати свій проєкт та оцінювати роботи друзів</p>
+                </div>
+            </div>
+
+            <div class="max-w-3xl mx-auto space-y-3">
+                <div class="relative w-full rounded-2xl overflow-hidden bg-white shadow-md border border-slate-200" style="padding-top: 62.5%;">
+                    <iframe loading="lazy" 
+                            class="absolute inset-0 w-full h-full border-0 m-0 p-0"
+                            src="https://www.canva.com/design/DAHZy-VwM_Q/xS3CpUdnUP3a88WCpa7jDw/view?embed" 
+                            allowfullscreen="allowfullscreen" 
+                            allow="fullscreen">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- TASK 1: Drag-and-Drop (Order of Project Presentation Steps) -->
+        <section id="task-1" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-fredoka font-bold text-lg">1</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Складаємо план презентації 🎤✨</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-700 rounded-full">Перетягування</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">
+                Під час показу свого проєкту важливо дотримуватися правильного порядку! Перетягни пропущену картку на її місце у виступі:
+            </p>
+
+            <!-- Sequence Flow -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mb-6">
+                <!-- Step 1 -->
+                <div class="p-4 rounded-2xl bg-purple-50/50 border border-purple-200 flex flex-col items-center text-center justify-center">
+                    <span class="text-xs font-bold text-purple-600 mb-1">КРОК 1</span>
+                    <span class="text-3xl mb-2">🏷️</span>
+                    <span class="text-xs font-medium text-slate-700">Назва проєкту та привітання</span>
+                </div>
+
+                <!-- Step 2: TARGET DROP SLOT -->
+                <div class="drop-slot p-3 min-h-[120px] rounded-2xl bg-amber-50 border-2 border-dashed border-amber-400 flex flex-col items-center justify-center transition text-center relative" data-step="explain">
+                    <span class="text-xs font-bold text-amber-600 mb-1">КРОК 2 (ПРОПУЩЕНО ❓)</span>
+                    <div class="slot-content w-full flex items-center justify-center"></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="p-4 rounded-2xl bg-purple-50/50 border border-purple-200 flex flex-col items-center text-center justify-center">
+                    <span class="text-xs font-bold text-purple-600 mb-1">КРОК 3</span>
+                    <span class="text-3xl mb-2">▶️</span>
+                    <span class="text-xs font-medium text-slate-700">Показ роботи та команд</span>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="p-4 rounded-2xl bg-purple-50/50 border border-purple-200 flex flex-col items-center text-center justify-center">
+                    <span class="text-xs font-bold text-purple-600 mb-1">КРОК 4</span>
+                    <span class="text-3xl mb-2">🙏</span>
+                    <span class="text-xs font-medium text-slate-700">Подяка глядачам та запитання</span>
+                </div>
+            </div>
+
+            <!-- Draggable Pool -->
+            <div class="p-4 rounded-2xl bg-purple-50/60 border border-purple-100 mb-6">
+                <span class="block font-fredoka font-bold text-xs text-purple-800 mb-3 uppercase tracking-wider text-center sm:text-left">
+                    📦 Перетягни сюди правильну картку для Другого кроку:
+                </span>
+                <div id="drag-container-1" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <div draggable="true" id="cmd-hide" data-step="hide" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">🙈</span>
+                        <span class="font-medium text-xs text-slate-800">«Сховати екран від усіх»</span>
+                    </div>
+
+                    <div draggable="true" id="cmd-explain" data-step="explain" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">💡</span>
+                        <span class="font-medium text-xs text-slate-800">«Розповідь про тему та персонажів»</span>
+                    </div>
+
+                    <div draggable="true" id="cmd-run" data-step="run" class="drag-item p-3 bg-white border border-purple-200 rounded-xl shadow-sm text-center flex flex-col items-center justify-center gap-1 hover:border-purple-400 transition">
+                        <span class="text-2xl">🏃</span>
+                        <span class="font-medium text-xs text-slate-800">«Убегти з класу без слів»</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask1()" class="w-full sm:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-600/30 transition transform active:scale-95">
+                        Перевірити завдання 1 🔍
+                    </button>
+                    <button type="button" onclick="resetTask1()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-1" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 2: Interactive Choice (Best Practice for Peer Evaluation) -->
+        <section id="task-2" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-indigo-100 text-indigo-700 flex items-center justify-center font-fredoka font-bold text-lg">2</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Секрет дружньої оцінки 🤝💬</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full">Вибір відповіді</span>
+            </div>
+
+            <p class="text-slate-600 mb-4 font-medium">
+                Під час **взаємооцінювання** (коли ми оцінюємо проєкт однокласника), важливо говорити ввічливо. Обери найкращий спосіб висловити свою думку:
+            </p>
+
+            <div class="p-4 rounded-2xl bg-indigo-50/60 border border-indigo-100 space-y-3 mb-6">
+                <label class="block font-fredoka font-bold text-indigo-900 text-sm md:text-base">
+                    Твій друг створив проєкт, але котик переміщується надто швидко. Що краще сказати?
+                </label>
+                <select id="t2-correct-cmd" class="w-full p-3 border border-indigo-200 rounded-xl bg-white font-fredoka font-bold text-slate-800 focus:ring-2 focus:ring-indigo-500 text-sm md:text-base">
+                    <option value="">Обери ввічливу пораду...</option>
+                    <option value="bad1">1. «Твій проєкт поганий, мені взагалі не подобається!»</option>
+                    <option value="correct">2. «Мені сподобалася анімація! Пропоную трохи зменшити швидкість, щоб краще роздивитися.»</option>
+                    <option value="bad2">3. «Нічого не кажи і просто посмійся з його роботи.»</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask2()" class="w-full sm:w-auto px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-indigo-600/30 transition transform active:scale-95">
+                        Перевірити завдання 2 🔍
+                    </button>
+                    <button type="button" onclick="resetTask2()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-2" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 3: Polite Advice vs Rude Comment Recognition -->
+        <section id="task-3" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-fredoka font-bold text-lg">3</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Ввічлива порада чи ображання? 🌸🗯️</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-amber-50 text-amber-700 rounded-full">Розпізнавання</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">
+                Визнач, які з висловлювань є **ввічливою порадою**, а які — **неввічливим коментарем**:
+            </p>
+
+            <div class="space-y-4">
+                <!-- Question 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">1. «Чудова ідея з мелодією! Можна додати ще яскраве тло!»</span>
+                    <select id="t3-q1" class="p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sm">
+                        <option value="">Обери...</option>
+                        <option value="polite">💚 Ввічлива порада</option>
+                        <option value="rude">💔 Неввічливий коментар</option>
+                    </select>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">2. «Це найгірший малюнок, який я коли-небудь бачив!»</span>
+                    <select id="t3-q2" class="p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sm">
+                        <option value="">Обери...</option>
+                        <option value="polite">💚 Ввічлива порада</option>
+                        <option value="rude">💔 Неввічливий коментар</option>
+                    </select>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">3. «Мені дуже сподобався персонаж! Можливо, варто навчити його стрибати?»</span>
+                    <select id="t3-q3" class="p-2.5 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-sm">
+                        <option value="">Обери...</option>
+                        <option value="polite">💚 Ввічлива порада</option>
+                        <option value="rude">💔 Неввічливий коментар</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask3()" class="w-full sm:w-auto px-8 py-3 bg-amber-600 hover:bg-amber-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-amber-600/30 transition transform active:scale-95">
+                        Перевірити завдання 3 🔍
+                    </button>
+                    <button type="button" onclick="resetTask3()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-3" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 4: Sequential Ordering of Peer Review Sandwich Method -->
+        <section id="task-4" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center font-fredoka font-bold text-lg">4</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Формула «Похвала + Порада» 🥪🌟</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-teal-50 text-teal-700 rounded-full">Впорядкування</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">
+                Під час взаємооцінювання ми використовуємо правило **«Сендвіча оцінювання»**. Обери пропущену 2-гу дію:
+            </p>
+
+            <div class="p-5 rounded-2xl bg-teal-50/70 border border-teal-200 mb-6 space-y-3 font-medium text-slate-800 text-sm md:text-base">
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-teal-100 shadow-sm">
+                    <span class="text-2xl">1️⃣</span>
+                    <span>Уважно подивитися проєкт друга 👁️.</span>
+                </div>
+                <div class="flex items-center gap-3 bg-teal-100/80 p-3 rounded-xl border-2 border-dashed border-teal-400 font-bold text-teal-900">
+                    <span class="text-2xl">2️⃣</span>
+                    <span>❓ (ПРОПУЩЕНА ДІЯ)</span>
+                </div>
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-teal-100 shadow-sm">
+                    <span class="text-2xl">3️⃣</span>
+                    <span>Дати ввічливу пораду, що можна покращити 💡.</span>
+                </div>
+                <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-teal-100 shadow-sm">
+                    <span class="text-2xl">4️⃣</span>
+                    <span>Подякувати за чудовий проєкт! 🙏</span>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-3">
+                <label class="block font-fredoka font-bold text-slate-800 text-sm md:text-base">
+                    Що ми робимо спочатку на Кроці 2, перш ніж давати поради?
+                </label>
+                <select id="t4-cmd-select" class="w-full p-3 border border-slate-300 rounded-xl bg-white font-fredoka font-bold text-slate-800 focus:ring-2 focus:ring-teal-500">
+                    <option value="">Обери дію для Кроку 2...</option>
+                    <option value="wrong1">❌ Крикувати та шуміти в класі</option>
+                    <option value="correct">⭐ Похвалити те, що вийшло найкраще (знайти плюси)</option>
+                    <option value="wrong2">❌ Одразу виключити комп'ютер</option>
+                </select>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask4()" class="w-full sm:w-auto px-8 py-3 bg-teal-600 hover:bg-teal-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-teal-600/30 transition transform active:scale-95">
+                        Перевірити завдання 4 🔍
+                    </button>
+                    <button type="button" onclick="resetTask4()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-4" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- TASK 5: True/False Quiz Cards -->
+        <section id="task-5" class="bg-white rounded-3xl p-6 md:p-8 custom-shadow border border-slate-100">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-fredoka font-bold text-lg">5</div>
+                    <h2 class="font-fredoka text-xl md:text-2xl font-bold text-slate-900">Правда чи Неправда? 🧠⚡</h2>
+                </div>
+                <span class="text-xs font-semibold px-3 py-1 bg-purple-50 text-purple-700 rounded-full">Вікторина</span>
+            </div>
+
+            <p class="text-slate-600 mb-6 font-medium">Перевір свої знання про виступи та взаємооцінювання:</p>
+
+            <div class="space-y-4">
+                <!-- Card 1 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        1. Презентація проєкту — це показ своєї роботи та розповідь про те, як вона влаштована.
+                    </span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectTrueFalse(1, true)" id="tf-1-true" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">✅ Правда</button>
+                        <button type="button" onclick="selectTrueFalse(1, false)" id="tf-1-false" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">❌ Неправда</button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        2. Головна мета взаємооцінювання — знайти помилки і висміяти автора проєкту.
+                    </span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectTrueFalse(2, true)" id="tf-2-true" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">✅ Правда</button>
+                        <button type="button" onclick="selectTrueFalse(2, false)" id="tf-2-false" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">❌ Неправда</button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <span class="font-medium text-slate-800 text-sm md:text-base">
+                        3. Поради друзів допомагають зробити проєкт ще кращим та цікавішим.
+                    </span>
+                    <div class="flex gap-2 shrink-0">
+                        <button type="button" onclick="selectTrueFalse(3, true)" id="tf-3-true" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">✅ Правда</button>
+                        <button type="button" onclick="selectTrueFalse(3, false)" id="tf-3-false" class="px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition">❌ Неправда</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <button type="button" onclick="checkTask5()" class="w-full sm:w-auto px-8 py-3 bg-purple-600 hover:bg-purple-700 text-white font-fredoka font-bold rounded-2xl shadow-lg shadow-purple-600/30 transition transform active:scale-95">
+                        Перевірити завдання 5 🔍
+                    </button>
+                    <button type="button" onclick="resetTask5()" class="px-5 py-3 bg-slate-200 hover:bg-slate-300 text-slate-700 font-fredoka font-bold rounded-2xl transition">
+                        Спочатку 🔄
+                    </button>
+                </div>
+                <div id="feedback-5" class="hidden text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center"></div>
+            </div>
+        </section>
+
+        <!-- Final Result Section -->
+        <section class="bg-gradient-to-br from-slate-800 via-purple-900 to-slate-800 text-white rounded-3xl p-8 md:p-12 text-center custom-shadow relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-slate-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="font-fredoka text-3xl md:text-4xl font-bold mb-4">Твій підсумковий значок 🏅</h2>
+            <p class="text-purple-200 max-w-xl mx-auto mb-8 font-medium">Виконай усі 5 вправ та натисни кнопку нижче, щоб дізнатися результат!</p>
+
+            <button type="button" onclick="calculateFinalResult()" class="pulse-btn px-10 py-4 bg-gradient-to-r from-purple-400 to-indigo-400 hover:from-purple-500 hover:to-indigo-500 text-slate-900 font-fredoka text-xl font-bold rounded-2xl shadow-xl shadow-purple-500/20 transition transform active:scale-95">
+                🌟 Отримати свій значок! 🌟
+            </button>
+
+            <!-- Result Display Box -->
+            <div id="result-display" class="hidden mt-8 p-6 md:p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 max-w-xl mx-auto text-center space-y-4">
+                <div id="result-emoji" class="text-5xl">🏆</div>
+                <h3 id="result-level-title" class="font-fredoka text-2xl md:text-3xl font-bold text-purple-300"></h3>
+                <p id="result-score-text" class="text-lg font-medium text-purple-100"></p>
+                <p id="result-description" class="text-sm md:text-base text-purple-200"></p>
+            </div>
+        </section>
+
+        <!-- PRACTICAL TASK SECTION: ScratchJr Visual Environment & Presentation -->
+        <section class="bg-gradient-to-br from-purple-50 via-slate-50 to-indigo-50 rounded-3xl p-6 md:p-8 custom-shadow border-2 border-purple-200">
+            <div class="flex items-center space-x-3 mb-6">
+                <div class="bg-indigo-600 text-white p-3 rounded-2xl text-2xl shadow-md">🎤</div>
+                <div>
+                    <h2 class="font-fredoka text-2xl md:text-3xl font-bold text-slate-900">
+                        Практичне завдання: Презентація та взаємооцінювання у ScratchJr 🚀🐱
+                    </h2>
+                    <p class="text-indigo-700 font-medium text-sm md:text-base">
+                        Продемонструй свій проєкт сусіду по парті та оцініть роботи один одного!
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                <!-- Left: ScratchJr Visual Block Scheme Illustration (SVG) -->
+                <div class="bg-white p-5 rounded-2xl border-2 border-purple-200 shadow-md space-y-4">
+                    <div class="flex justify-between items-center">
+                        <span class="font-fredoka font-bold text-xs text-purple-700">🧩 Алгоритм презентації в ScratchJr</span>
+                        <span class="text-xs bg-indigo-100 text-indigo-800 px-2.5 py-0.5 rounded-full font-semibold">ScratchJr</span>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-slate-900 border border-slate-700 flex flex-col items-center justify-center">
+                        <svg viewBox="0 0 340 100" class="w-full h-auto">
+                            <!-- Green Flag Start Block -->
+                            <g transform="translate(5, 20)">
+                                <rect width="65" height="55" rx="12" fill="#fbbf24" stroke="#d97706" stroke-width="2"/>
+                                <text x="32" y="32" font-family="Fredoka" font-size="16" text-anchor="middle">🏁</text>
+                                <text x="32" y="47" font-family="Fredoka" font-size="6" font-weight="bold" fill="#78350f" text-anchor="middle">ПОКАЗ</text>
+                            </g>
+
+                            <!-- Arrow Connector 1 -->
+                            <path d="M72 47 L80 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Speech Block -->
+                            <g transform="translate(83, 20)">
+                                <rect width="60" height="55" rx="12" fill="#ec4899" stroke="#be185d" stroke-width="2"/>
+                                <text x="30" y="32" font-family="Fredoka" font-size="16" text-anchor="middle">💬</text>
+                                <text x="30" y="47" font-family="Fredoka" font-size="6" font-weight="bold" fill="white" text-anchor="middle">ПРИВІТ</text>
+                            </g>
+
+                            <!-- Arrow Connector 2 -->
+                            <path d="M145 47 L153 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Move / Action Block -->
+                            <g transform="translate(156, 20)">
+                                <rect width="60" height="55" rx="12" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+                                <text x="30" y="32" font-family="Fredoka" font-size="16" text-anchor="middle">💃</text>
+                                <text x="30" y="47" font-family="Fredoka" font-size="6" font-weight="bold" fill="white" text-anchor="middle">ТАНОК</text>
+                            </g>
+
+                            <!-- Arrow Connector 3 -->
+                            <path d="M218 47 L226 47" stroke="#a855f7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Star Feedback Block -->
+                            <g transform="translate(229, 20)">
+                                <rect width="60" height="55" rx="12" fill="#10b981" stroke="#047857" stroke-width="2"/>
+                                <text x="30" y="32" font-family="Fredoka" font-size="16" text-anchor="middle">⭐</text>
+                                <text x="30" y="47" font-family="Fredoka" font-size="6" font-weight="bold" fill="white" text-anchor="middle">ОЦІНКА</text>
+                            </g>
+                        </svg>
+                    </div>
+                    <p class="text-xs text-slate-500 text-center italic">Послідовність: Запуск ➔ Привітання та назва ➔ Демонстрація ➔ Обмін порадами!</p>
+                </div>
+
+                <!-- Right: Step-by-step Instructions -->
+                <div class="space-y-4">
+                    <h3 class="font-fredoka text-xl font-bold text-slate-800">📋 Інструкція для роботи в парах:</h3>
+                    
+                    <ul class="space-y-3 font-medium text-slate-700 text-sm md:text-base">
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">1️⃣</span>
+                            <span>Відкрий свій створиний проєкт у <b>ScratchJr</b>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">2️⃣</span>
+                            <span>Покажи його своєму сусідові по парті, натиснувши на **зелений прапорець** 🏁.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">3️⃣</span>
+                            <span>Розкажи: *«Мій проєкт називається..., у ньому діють такі персонажі...»*.</span>
+                        </li>
+                        <li class="flex items-start gap-3 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-xl shrink-0">4️⃣</span>
+                            <span>Послухай свого друга, скажи йому **комплімент** ⭐ та **ввічливу пораду** 💡!</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="max-w-4xl mx-auto text-center mt-12 text-slate-500 text-xs md:text-sm">
+        <p>Інтерактивний робочий аркуш з інформатики для 2 класу • Презентація програмного проєкту. Взаємооцінювання 💜🇺🇦</p>
+    </footer>
+
+    <!-- JavaScript Implementation -->
+    <script>
+        // --- SPEECH SYNTHESIS HELPER (UKRAINIAN AUDIO VOICE) ---
+        function speakUkrainian(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); // Stop ongoing speech
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'uk-UA';
+                utterance.rate = 0.95; // Friendly pace for 2nd graders
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        // --- TASK 1: DRAG AND DROP MATCHING ---
+        const dragItems = document.querySelectorAll('#task-1 .drag-item');
+        const dropSlot1 = document.querySelector('#task-1 .drop-slot');
+        const dragContainer1 = document.getElementById('drag-container-1');
+
+        dragItems.forEach(item => {
+            item.addEventListener('dragstart', handleDragStart);
+        });
+
+        if (dropSlot1) {
+            dropSlot1.addEventListener('dragover', handleDragOver);
+            dropSlot1.addEventListener('dragleave', handleDragLeave);
+            dropSlot1.addEventListener('drop', handleDrop);
+        }
+
+        function handleDragStart(e) {
+            e.dataTransfer.setData('text/plain', e.target.id);
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const slot = e.currentTarget;
+            slot.classList.remove('drag-over');
+            const id = e.dataTransfer.getData('text/plain');
+            const draggedEl = document.getElementById(id);
+
+            if (draggedEl) {
+                const contentContainer = slot.querySelector('.slot-content');
+                if (contentContainer.children.length > 0) {
+                    dragContainer1.appendChild(contentContainer.children[0]);
+                }
+                contentContainer.appendChild(draggedEl);
+            }
+        }
+
+        function checkTask1() {
+            const child = dropSlot1.querySelector('.slot-content').firstElementChild;
+
+            if (!child) {
+                const msg = 'Перетягни картку у порожню рамку Кроку №2!';
+                showFeedback('feedback-1', '⚠️ ' + msg, 'bg-amber-100 text-amber-800');
+                speakUkrainian(msg);
+                return false;
+            }
+
+            const stepType = child.getAttribute('data-step');
+            if (stepType === 'explain') {
+                const msg = 'Чудово! Другий крок — це розповідь про тему проєкту та персонажів!';
+                showFeedback('feedback-1', '🎉 ' + msg, 'bg-emerald-100 text-emerald-800');
+                speakUkrainian(msg);
+                return true;
+            } else {
+                const msg = 'Подумай ще! Під час виступу потрібно розповісти глядачам про свій проєкт!';
+                showFeedback('feedback-1', '💡 ' + msg, 'bg-rose-100 text-rose-800');
+                speakUkrainian(msg);
+                return false;
+            }
+        }
+
+        function resetTask1() {
+            const content = dropSlot1.querySelector('.slot-content');
+            if (content.children.length > 0) {
+                dragContainer1.appendChild(content.children[0]);
+            }
+            document.getElementById('feedback-1').classList.add('hidden');
+        }
+
+
+        // --- TASK 2: OPTION SELECTION ---
+        function checkTask2() {
+            const val = document.getElementById('t2-correct-cmd').value;
+
+            if (!val) {
+                const msg = 'Обери варіант ввічливої поради!';
+                showFeedback('feedback-2', '⚠️ ' + msg, 'bg-amber-100 text-amber-800');
+                speakUkrainian(msg);
+                return false;
+            }
+
+            if (val === 'correct') {
+                const msg = 'Супер! Спочатку ми хвалимо роботу, а потім ввічливо пропонуємо пораду!';
+                showFeedback('feedback-2', '🎉 ' + msg, 'bg-emerald-100 text-emerald-800');
+                speakUkrainian(msg);
+                return true;
+            } else {
+                const msg = 'Пам\'ятай: порада має бути доброзичливою і не повинна ображати друга!';
+                showFeedback('feedback-2', '💡 ' + msg, 'bg-rose-100 text-rose-800');
+                speakUkrainian(msg);
+                return false;
+            }
+        }
+
+        function resetTask2() {
+            document.getElementById('t2-correct-cmd').value = '';
+            document.getElementById('feedback-2').classList.add('hidden');
+        }
+
+
+        // --- TASK 3: POLITE ADVICE VS RUDE COMMENT ---
+        function checkTask3() {
+            const q1 = document.getElementById('t3-q1').value;
+            const q2 = document.getElementById('t3-q2').value;
+            const q3 = document.getElementById('t3-q3').value;
+
+            if (!q1 || !q2 || !q3) {
+                const msg = 'Обери відповідь для кожного з трьох висловлювань!';
+                showFeedback('feedback-3', '⚠️ ' + msg, 'bg-amber-100 text-amber-800');
+                speakUkrainian(msg);
+                return false;
+            }
+
+            if (q1 === 'polite' && q2 === 'rude' && q3 === 'polite') {
+                const msg = 'Молодець! Ти чудово розрізняєш ввічливу підтримку та неввічливі коментарі!';
+                showFeedback('feedback-3', '🎉 ' + msg, 'bg-emerald-100 text-emerald-800');
+                speakUkrainian(msg);
+                return true;
+            } else {
+                const msg = 'Зверни увагу: якщо фраза викликає сум або образу — це неввічливий коментар!';
+                showFeedback('feedback-3', '💡 ' + msg, 'bg-rose-100 text-rose-800');
+                speakUkrainian(msg);
+                return false;
+            }
+        }
+
+        function resetTask3() {
+            document.getElementById('t3-q1').value = '';
+            document.getElementById('t3-q2').value = '';
+            document.getElementById('t3-q3').value = '';
+            document.getElementById('feedback-3').classList.add('hidden');
+        }
+
+
+        // --- TASK 4: SEQUENTIAL ORDERING ---
+        function checkTask4() {
+            const val = document.getElementById('t4-cmd-select').value;
+
+            if (!val) {
+                const msg = 'Обери пропущену дію для Кроку №2!';
+                showFeedback('feedback-4', '⚠️ ' + msg, 'bg-amber-100 text-amber-800');
+                speakUkrainian(msg);
+                return false;
+            }
+
+            if (val === 'correct') {
+                const msg = 'Чудово! Правило сендвіча: спочатку похвали кращі сторони робіти, а потім давай пораду!';
+                showFeedback('feedback-4', '🎉 ' + msg, 'bg-emerald-100 text-emerald-800');
+                speakUkrainian(msg);
+                return true;
+            } else {
+                const msg = 'Подумай! Перш ніж радити щось змінити, завжди треба знайти і похвалити хороше!';
+                showFeedback('feedback-4', '💡 ' + msg, 'bg-rose-100 text-rose-800');
+                speakUkrainian(msg);
+                return false;
+            }
+        }
+
+        function resetTask4() {
+            document.getElementById('t4-cmd-select').value = '';
+            document.getElementById('feedback-4').classList.add('hidden');
+        }
+
+
+        // --- TASK 5: TRUE / FALSE QUIZ ---
+        let tfAnswers = { 1: null, 2: null, 3: null };
+
+        function selectTrueFalse(questionNum, isTrue) {
+            tfAnswers[questionNum] = isTrue;
+            const btnTrue = document.getElementById(`tf-${questionNum}-true`);
+            const btnFalse = document.getElementById(`tf-${questionNum}-false`);
+
+            if (isTrue) {
+                btnTrue.className = "px-4 py-2 bg-purple-600 text-white rounded-xl font-bold text-xs shadow transition";
+                btnFalse.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+            } else {
+                btnFalse.className = "px-4 py-2 bg-purple-600 text-white rounded-xl font-bold text-xs shadow transition";
+                btnTrue.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+            }
+        }
+
+        function checkTask5() {
+            if (tfAnswers[1] === null || tfAnswers[2] === null || tfAnswers[3] === null) {
+                const msg = 'Дай відповідь на всі три запитання вікторини!';
+                showFeedback('feedback-5', '⚠️ ' + msg, 'bg-amber-100 text-amber-800');
+                speakUkrainian(msg);
+                return false;
+            }
+
+            const isCorrect = (tfAnswers[1] === true && tfAnswers[2] === false && tfAnswers[3] === true);
+
+            if (isCorrect) {
+                const msg = 'Правильно! Взаємооцінювання потрібне для допомоги та підтримки, а не для насмішок!';
+                showFeedback('feedback-5', '🎉 ' + msg, 'bg-emerald-100 text-emerald-800');
+                speakUkrainian(msg);
+                return true;
+            } else {
+                const msg = 'Переглянь твердження №2: ми оцінюємо роботи друзів, щоб підтримати їх та допомогти!';
+                showFeedback('feedback-5', '💡 ' + msg, 'bg-rose-100 text-rose-800');
+                speakUkrainian(msg);
+                return false;
+            }
+        }
+
+        function resetTask5() {
+            tfAnswers = { 1: null, 2: null, 3: null };
+            [1, 2, 3].forEach(n => {
+                const bt = document.getElementById(`tf-${n}-true`);
+                const bf = document.getElementById(`tf-${n}-false`);
+                if (bt) bt.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+                if (bf) bf.className = "px-4 py-2 border-2 border-slate-300 rounded-xl font-bold text-xs hover:border-purple-500 transition";
+            });
+            document.getElementById('feedback-5').classList.add('hidden');
+        }
+
+
+        // --- FEEDBACK DISPLAY HELPER ---
+        function showFeedback(elementId, text, className) {
+            const fb = document.getElementById(elementId);
+            fb.classList.remove('hidden');
+            fb.className = `text-sm font-semibold px-4 py-2 rounded-xl w-full sm:w-auto text-center ${className}`;
+            fb.innerText = text;
+        }
+
+
+        // --- FINAL RESULTS EVALUATION ---
+        function calculateFinalResult() {
+            let score = 0;
+            if (checkTask1()) score++;
+            if (checkTask2()) score++;
+            if (checkTask3()) score++;
+            if (checkTask4()) score++;
+            if (checkTask5()) score++;
+
+            const resultBox = document.getElementById('result-display');
+            resultBox.classList.remove('hidden');
+
+            const emojiEl = document.getElementById('result-emoji');
+            const titleEl = document.getElementById('result-level-title');
+            const scoreTextEl = document.getElementById('result-score-text');
+            const descEl = document.getElementById('result-description');
+
+            scoreTextEl.innerText = `Правильно виконано: ${score} з 5 завдань!`;
+
+            if (score === 5) {
+                emojiEl.innerText = "🏆";
+                titleEl.innerText = "Майстер Презентацій та Дружній Порадник!";
+                descEl.innerText = "Вітаємо! Ти чудово знаєш, як презентувати свій проєкт і давати корисні підбадьорливі поради!";
+                
+                speakUkrainian("Вітаємо! Ти отримав значок Майстер Презентацій та Дружній Порадник!");
+
+                if (typeof confetti === 'function') {
+                    confetti({ particleCount: 180, spread: 100, origin: { y: 0.6 } });
+                }
+            } else if (score >= 3) {
+                emojiEl.innerText = "🌟";
+                titleEl.innerText = "Знавець Взаємооцінювання!";
+                descEl.innerText = "Гарна робота! Подивися підказки в завданнях і спробуй отримати 5 з 5!";
+                speakUkrainian("Гарна робота! Ти справжній знавець взаємооцінювання!");
+            } else {
+                emojiEl.innerText = "🌱";
+                titleEl.innerText = "Юний Спікер!";
+                descEl.innerText = "Спробуй виконати вправи ще раз, щоб засвоїти секрети гарного виступу!";
+                speakUkrainian("Спробуй виконати вправи ще раз і у тебе все обов'язково вийде!");
+            }
+
+            resultBox.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
